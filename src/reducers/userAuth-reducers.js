@@ -9,7 +9,7 @@ export default (state=null, action) => {
 
   switch(type) {
     case 'SIGN_IN':
-      validateUserAuth(payload);
+      // validateUserAuth(payload);
       return payload;
     case 'SIGN_OUT':
       return null;
