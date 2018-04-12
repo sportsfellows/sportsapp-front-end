@@ -18,8 +18,8 @@ export const userProfileFetch = userProfile => ({
 // ASYNC
 export const userProfileCreateRequest = userProfile => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.post(`${__API_URL__}/api/${userAuth.userID}/profile`)
-    .set('Authorization', `Bearer ${userAuth.token}`)
+  return superagent.post(`${__API_URL__}/api/profiles`)
+    .set('Authorization', `Bearer ${userAuth}`)
     .field({username: userProfile.username, image: userProfile.image, country: userProfile.country, state: userProfile.state, birthdate: userProfile.birthdate, tags: userProfile.tags })
     // .attach('avatar', userProfile.avatar)
     .then( res => {
@@ -30,8 +30,8 @@ export const userProfileCreateRequest = userProfile => (dispatch, getState) => {
 
 export const userProfileUpdateRequest = userProfile => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.put(`${__API_URL__}/profile/${userProfile._id}`)
-    .set('Authorization', `Bearer ${userAuth.token}`)
+  return superagent.put(`${__API_URL__}/api/profiles/${userProfile._id}`)
+    .set('Authorization', `Bearer ${userAuth}`)
     .field({username: userProfile.username, image: userProfile.image, country: userProfile.country, state: userProfile.state, birthdate: userProfile.birthdate, tags: userProfile.tags })
     // .attach('avatar', userProfile.avatar)
     .then( res => {
@@ -42,8 +42,8 @@ export const userProfileUpdateRequest = userProfile => (dispatch, getState) => {
 
 export const userProfileFetchRequest = userProfile  => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.get(`${__API_URL__}/profile/${userProfile._id}`)
-    .set('Authorization', `Bearer ${userAuth.token}`)
+  return superagent.get(`${__API_URL__}/api/profiles/currentuser`)
+    .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
       dispatch(userProfileFetch(res.body));
       return res;
