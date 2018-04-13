@@ -16,7 +16,7 @@ class UserDashContainer extends React.Component {
         <div className='dash-league'>
 
           <ul className='league-links'>
-            <li><Link to='#'>View All Leagues</Link></li>
+            <li><Link to='/leagues'>View All Leagues</Link></li>
             <li><Link to='#'>Create a New League</Link></li>
           </ul>
 
@@ -31,7 +31,7 @@ class UserDashContainer extends React.Component {
         <div className='dash-group'>
 
           <ul className='group-links'>
-            <li><Link to='#'>View All Groups</Link></li>
+            <li><Link to='/groups'>View All Groups</Link></li>
             <li><Link to='#'>Create a New Group</Link></li>
           </ul>
 
