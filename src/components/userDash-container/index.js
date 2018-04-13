@@ -52,7 +52,7 @@ let mapStateToProps = (state) => ({
 });
 
 let mapDispatchToProps = (dispatch) => ({
-  userPhotosFetch: (photos) => dispatch(userProfileFetchRequest()),
+  userProfileFetch: (photos) => dispatch(userProfileFetchRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserDashContainer);
