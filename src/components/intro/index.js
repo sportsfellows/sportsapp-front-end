@@ -35,8 +35,11 @@ class Intro extends React.Component {
 
     let launchModal = false;
     let signup = true;
-    let handleModal = launchModal ? launchModal=false : launchModal=true;
     let handleComplete = signup ? this.handleSignup : this.handleSignin;
+    function handleModal() {
+      return launchModal ? launchModal=false : launchModal=true;
+    }
+   
 
     return (
       <div className="intro">
@@ -68,9 +71,7 @@ class Intro extends React.Component {
 
         {util.renderIf(launchModal,
           <Modal close={() => launchModal=false }>
-          
             <UserAuthForm signup={signup} onComplete={handleComplete}/>
-
           </Modal>
         )}
       </div>

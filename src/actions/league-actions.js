@@ -20,9 +20,9 @@ export const leagueDelete = league => ({
   payload: league,
 });
 
-export const leagueFetchRequest = () => (dispatch, getState) => {
+export const leagueFetchRequest = league => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.get(`${__API_URL__}/photos/me`)
+  return superagent.get(`${__API_URL__}/api/league/${league._id}`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
       dispatch(leagueFetch(res.body.data));
@@ -30,36 +30,34 @@ export const leagueFetchRequest = () => (dispatch, getState) => {
     });
 };
 
-export const userGalleryItemCreateRequest = userGalleryItem => (dispatch, getState) => {
+export const leagueCreateRequest = league => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.post(`${__API_URL__}/photos`)
+  return superagent.post(`${__API_URL__}/api/sportingevent/${league.sportingEventID}/league`)
     .set('Authorization', `Bearer ${userAuth}`)
-    .field('description', userGalleryItem.description)
-    .attach('photo', userGalleryItem.photo)
+    .send(league)
     .then(res => {
-      dispatch(userGalleryItemCreate(res.body));
+      dispatch(leagueCreate(res.body));
       return res;
     });
 };
 
-export const userGalleryItemDeleteRequest = userGalleryItem => (dispatch, getState) => {
+export const leagueDeleteRequest = league => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.delete(`${__API_URL__}/photos/${userGalleryItem._id}`)
+  return superagent.delete(`${__API_URL__}/api/league/${league._id}`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      dispatch(userGalleryItemDelete(userGalleryItem));
+      dispatch(leagueDelete(league));
       return res;
     });
 };
 
-export const userGalleryItemUpdateRequest = userGalleryItem => (dispatch, getState) => {
+export const leagueUpdateRequest = league => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.put(`${__API_URL__}/photos/${userGalleryItem._id}`)
+  return superagent.put(`${__API_URL__}/api/league/${league._id}`)
     .set('Authorization', `Bearer ${userAuth}`)
-    .field('description', userGalleryItem.description)
-    .attach('photo', userGalleryItem.photo)
+    .send(league)
     .then(res => {
-      dispatch(userGalleryItemUpdate(res.body));
+      dispatch(leagueUpdate(res.body));
       return res;
     });
 };
