@@ -11,39 +11,33 @@ import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 class Intro extends React.Component {
   constructor(props){
     super(props);
-    state = {
-      signup: true,
-    }
-
+    this.state = { authFormAction: 'sign up', };
   }
 
   handleSignin = user => {
+    console.log('handle signin: ', user);
     let { userProfileFetch, history } = this.props;
     return this.props.signIn(user)
       .then(() => userProfileFetch())
-      .then(() => history.push('/'))
+      // .then(() => history.push('/'))
       .catch(util.logError);
   };
 
   handleSignup = user => {
+    console.log('handle signup: ', user);
     return this.props.signUp(user)
-      .then(() => this.props.history.push('/'))
+      // .then(() => this.props.history.push('/'))
       .catch(util.logError);
   }
 
   render() {
-    let background = require('./../assetts/introBackground.png');
-    let lebron = require('./../assetts/introLebron.png');
-    let curry = require('./../assetts/introCurry.png');
+    let background = require('./../assets/introBackground.png');
+    let lebron = require('./../assets/introLebron.png');
+    let curry = require('./../assets/introCurry.png');
 
+    // let authFormAction = 'sign up';
+    let handleComplete = this.state.authFormAction === 'sign up' ? this.handleSignup : this.handleSignin;
     
-    let handleComplete = signup ? this.handleSignup : this.handleSignin;
-    let buttonText =  signup ? 'signup' : 'signin';
-    // function handleModal() {
-    //   return launchModal ? launchModal=false : launchModal=true;
-    // }
-   
-
     return (
       <div className="intro">
         <section id="introView" className="view introView">
@@ -72,15 +66,15 @@ class Intro extends React.Component {
           </div>
         </section>
           <div>
-            <UserAuthForm signup={signup} onComplete={handleComplete} buttonText={buttonText}/>
+            <UserAuthForm authFormAction={this.state.authFormAction} onComplete={handleComplete} />
 
             <div className='userauth-buttons'>
-              {util.renderIf(!signup,
-                <button onClick={() => signup=true}>signup</button>
+              {util.renderIf(this.state.authFormAction==='sign in',
+                <button onClick={() => this.setState({authFormAction: 'sign up'})}>signup</button>
               )}
 
-              {util.renderIf(signup,
-                <button onClick={() => signup=false}>signin</button>
+              {util.renderIf(this.state.authFormAction==='sign up',
+                <button onClick={() => this.setState({authFormAction: 'sign in'})}>signin</button>
               )}
             </div>
           </div>

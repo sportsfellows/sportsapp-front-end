@@ -89,11 +89,9 @@ class UserAuthForm extends React.Component {
       [name]: value,
     });
 
-    // :TODO:
-    // need to do some prop check on login or signup that changes the form and only runs below function on signup form
-    // if(this.props.userAuth === 'signup' && name === 'username') {
-    //   this.usernameCheckAvailable(value);
-    // }
+    if(this.props.authFormAction === 'sign up' && name === 'username') {
+      this.usernameCheckAvailable(value);
+    }
   };
 
   usernameCheckAvailable = username => {
@@ -104,6 +102,7 @@ class UserAuthForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log('state: ', this.state);
     if(!this.state.error) {
       this.props.onComplete(this.state)
         .catch(err => {
@@ -130,7 +129,7 @@ class UserAuthForm extends React.Component {
         'error': this.state.error && this.state.submitted,
       })}>
 
-        {util.renderIf(this.props.signup,
+        {util.renderIf(this.props.authFormAction === 'sign up',
           <div>
             <h2 className='title'>signup.</h2>
             <input
@@ -147,7 +146,7 @@ class UserAuthForm extends React.Component {
           </div>
         )}
 
-        {util.renderIf(!this.props.signup,
+        {util.renderIf(!this.props.authFormAction === 'sign in',
             <h2 className='title'>signin.</h2>
         )}
 
@@ -188,7 +187,7 @@ class UserAuthForm extends React.Component {
           <a href='https://accounts.google.com/o/oauth2/v2/auth?client_id=767730296032-vod2j41qvpemvu2glfusclouco0l1ld0.apps.googleusercontent.com&response_type=code&scope=openid%20profile%20email&prompt=consent&redirect_uri=http://localhost:3000/oauth/google' rel="noopener noreferrer" className='outh'>signin with Google</a>
         )} */}
 
-        <button type='submit'> {this.props.buttonText} </button>
+        <button type='submit'> {this.props.authFormAction} </button>
       </form>
     );
   }
