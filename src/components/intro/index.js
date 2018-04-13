@@ -11,6 +11,9 @@ import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 class Intro extends React.Component {
   constructor(props){
     super(props);
+    state = {
+      signup: true,
+    }
 
   }
 
@@ -18,14 +21,14 @@ class Intro extends React.Component {
     let { userProfileFetch, history } = this.props;
     return this.props.signIn(user)
       .then(() => userProfileFetch())
-      .then(() => history.push('/gallery'))
+      .then(() => history.push('/'))
       .catch(util.logError);
   };
 
   handleSignup = user => {
-    return this.props.signUp(user);
-      // .then(() => this.props.history.push('/profile'))
-      // .catch(util.logError);
+    return this.props.signUp(user)
+      .then(() => this.props.history.push('/'))
+      .catch(util.logError);
   }
 
   render() {
@@ -33,12 +36,12 @@ class Intro extends React.Component {
     let lebron = require('./../assetts/introLebron.png');
     let curry = require('./../assetts/introCurry.png');
 
-    let launchModal = false;
-    let signup = true;
+    
     let handleComplete = signup ? this.handleSignup : this.handleSignin;
-    function handleModal() {
-      return launchModal ? launchModal=false : launchModal=true;
-    }
+    let buttonText =  signup ? 'signup' : 'signin';
+    // function handleModal() {
+    //   return launchModal ? launchModal=false : launchModal=true;
+    // }
    
 
     return (
@@ -62,18 +65,25 @@ class Intro extends React.Component {
               <p className="author">
                 SUB HEADER HERE
               </p>
-              <button id="start-button" onClick={handleModal}>
+              <button id="start-button" >
                 START
               </button>
             </div>
           </div>
         </section>
+          <div>
+            <UserAuthForm signup={signup} onComplete={handleComplete} buttonText={buttonText}/>
 
-        {util.renderIf(launchModal,
-          <Modal close={() => launchModal=false }>
-            <UserAuthForm signup={signup} onComplete={handleComplete}/>
-          </Modal>
-        )}
+            <div className='userauth-buttons'>
+              {util.renderIf(!signup,
+                <button onClick={() => signup=true}>signup</button>
+              )}
+
+              {util.renderIf(signup,
+                <button onClick={() => signup=false}>signin</button>
+              )}
+            </div>
+          </div>
       </div>
     );
   }

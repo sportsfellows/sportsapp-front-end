@@ -36,16 +36,6 @@ class Navbar extends React.Component {
   };
 
   render() {
-    // let NavLink = props => (
-    //   <li className={util.classToggler({selected: props.url === `/${props.route}` })} >
-    //     <Link to={`/${props.route}`}>
-    //       {props.route}
-    //     </Link>
-    //   </li>
-    // );
-
-    // console.log('path', this.props.match)
-    // let { url } = this.props.match;
 
     return (
       <header>

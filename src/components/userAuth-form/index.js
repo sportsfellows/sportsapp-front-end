@@ -188,7 +188,7 @@ class UserAuthForm extends React.Component {
           <a href='https://accounts.google.com/o/oauth2/v2/auth?client_id=767730296032-vod2j41qvpemvu2glfusclouco0l1ld0.apps.googleusercontent.com&response_type=code&scope=openid%20profile%20email&prompt=consent&redirect_uri=http://localhost:3000/oauth/google' rel="noopener noreferrer" className='outh'>signin with Google</a>
         )} */}
 
-        <button type='submit'> {this.props.userAuth} </button>
+        <button type='submit'> {this.props.buttonText} </button>
       </form>
     );
   }
