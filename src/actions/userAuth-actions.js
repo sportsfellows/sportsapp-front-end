@@ -12,7 +12,7 @@ export const signOut = () => {
 };
 
 // ASYNC
-export const signupRequest = user => dispatch => {
+export const signUpRequest = user => dispatch => {
   return superagent.post(`${__API_URL__}/api/signup`)
     .withCredentials()
     .send(user)
@@ -28,7 +28,7 @@ export const signupRequest = user => dispatch => {
     });
 };
 
-export const signinRequest = user => dispatch => {
+export const signInRequest = user => dispatch => {
   return superagent.get(`${__API_URL__}/api/signin`)
     .withCredentials()
     .auth(user.username, user.password)

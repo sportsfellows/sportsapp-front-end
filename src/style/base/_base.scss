@@ -1,0 +1,32 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+h1, h2, h3, h4, h5, h6, p, a, span {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  text-decoration: none;
+}
+ul, li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  height: 38px;
+  width: 100%;
+  z-index: 101;
+}
+main {
+  margin-top: 38px;
+  position: relative;
+}

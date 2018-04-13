@@ -1,15 +1,8 @@
-let validateUserAuth = userAuth => {
-  if(!userAuth.userID || !userAuth.token){
-    throw  new Error('VALIDATION ERROR: user auth requires an ID and token');
-  }
-};
-
 export default (state=null, action) => {
   let { type, payload } = action;
 
   switch(type) {
     case 'SIGN_IN':
-      // validateUserAuth(payload);
       return payload;
     case 'SIGN_OUT':
       return null;
