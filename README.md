@@ -1,10 +1,10 @@
 # Bracket Busters
 
 ## Component Tree
-
+```
 <App>
-	<Nav>
-	<Footer>
+  <Nav>
+  <Footer>
   <LandingContainer>
     <Intro>
       <UserAuthForm>
@@ -14,7 +14,7 @@
       <UserLeagues>
       <UserGroups>
     <Profile>
-    <AllLeagues>	- lists all leagues
+    <AllLeagues> - lists all leagues
       <LeagueForm> - to be able to add leagues
     <LeagueContainer> - for individual leagues
       Render League Rules
@@ -28,3 +28,4 @@
     <GroupContainer>
       <GroupForm>
       <Messageboard>
+```
