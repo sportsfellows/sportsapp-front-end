@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
-import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import UserLeagues from '../userLeagues';
+import UserGroups from '../userGroups';
 import * as util from './../../lib/util.js';
 
 class UserDashContainer extends React.Component {
@@ -23,7 +24,7 @@ class UserDashContainer extends React.Component {
           <h2>My Leagues</h2>
 
           <div className='my-leagues'>
-            This box will contain links to leagues that the user is part of.
+            <UserLeagues />
           </div>
 
         </div>
@@ -38,7 +39,7 @@ class UserDashContainer extends React.Component {
           <h2>My Groups</h2>
 
           <div className='my-groups'>
-            This box will container links to groups that the user is part of.
+            <UserGroups />
           </div>
 
         </div>
@@ -47,12 +48,4 @@ class UserDashContainer extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => ({
-  userProfile: state.userProfile,
-});
-
-let mapDispatchToProps = (dispatch) => ({
-  userProfileFetch: (photos) => dispatch(userProfileFetchRequest()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserDashContainer);
+export default UserDashContainer;
