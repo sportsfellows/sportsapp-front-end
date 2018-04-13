@@ -27,30 +27,30 @@ describe('Auth actions', () => {
   });
 
   // ASYNC
-  test('signup req should return a token', done => {
-    superagent.post('http://localhost:3000/api/signup')
-      .send(mockUser)
-      .end((err, res) => {
-        if(err) return done(err);
-        expect(res.text).toBeTruthy();
-        expect(typeof res.text).toEqual('string');
-        expect(err).toEqual(null);
-        console.log('::::::::::::res.text:::::::', res.text);
-        tempUser = mockUser;
-        done();
-      });
-  });
+  // test('signup req should return a token', done => {
+  //   superagent.post('http://localhost:3000/api/signup')
+  //     .send(mockUser)
+  //     .end((err, res) => {
+  //       if(err) return done(err);
+  //       expect(res.text).toBeTruthy();
+  //       expect(typeof res.text).toEqual('string');
+  //       expect(err).toEqual(null);
+  //       console.log('::::::::::::res.text:::::::', res.text);
+  //       tempUser = mockUser;
+  //       done();
+  //     });
+  // });
 
-  test('login req should return a token', done => {
-    superagent.get('http://localhost:3000/api/signin')
-      .auth(tempUser.username, tempUser.password)
-      .end((err, res) => {
-        if(err) return done(err);
-        expect(res.text).toBeTruthy();
-        expect(typeof res.text).toEqual('string');
-        expect(err).toEqual(null);
-        console.log('::::::::::::res.text:::::::', res.text);
-        done();
-      });
-  });
+  // test('login req should return a token', done => {
+  //   superagent.get('http://localhost:3000/api/signin')
+  //     .auth(tempUser.username, tempUser.password)
+  //     .end((err, res) => {
+  //       if(err) return done(err);
+  //       expect(res.text).toBeTruthy();
+  //       expect(typeof res.text).toEqual('string');
+  //       expect(err).toEqual(null);
+  //       console.log('::::::::::::res.text:::::::', res.text);
+  //       done();
+  //     });
+  // });
 });
