@@ -13,6 +13,7 @@
       Link to AllGroups
       <UserLeagues>
       <UserGroups>
+    <Profile>
     <AllLeagues>	- lists all leagues
       <LeagueForm> - to be able to add leagues
     <LeagueContainer> - for individual leagues
