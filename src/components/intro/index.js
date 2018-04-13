@@ -11,7 +11,7 @@ import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 class Intro extends React.Component {
   constructor(props){
     super(props);
-    this.state = { authFormAction: 'sign up', };
+    this.state = { authFormAction: 'sign up', formDisplay: false, };
   }
 
   handleSignin = user => {
@@ -59,24 +59,28 @@ class Intro extends React.Component {
               <p className="author">
                 SUB HEADER HERE
               </p>
-              <button id="start-button" >
+              <button onClick={() => this.setState({formDisplay: true})}id="start-button" >
                 START
               </button>
             </div>
           </div>
         </section>
           <div>
-            <UserAuthForm authFormAction={this.state.authFormAction} onComplete={handleComplete} />
+            {util.renderIf(this.state.formDisplay,
+              <div>
+                <UserAuthForm authFormAction={this.state.authFormAction} onComplete={handleComplete} />
 
-            <div className='userauth-buttons'>
-              {util.renderIf(this.state.authFormAction==='sign in',
-                <button onClick={() => this.setState({authFormAction: 'sign up'})}>signup</button>
-              )}
+                <div className='userauth-buttons'>
+                  {util.renderIf(this.state.authFormAction==='sign in',
+                    <button onClick={() => this.setState({authFormAction: 'sign up'})}>signup</button>
+                  )}
 
-              {util.renderIf(this.state.authFormAction==='sign up',
-                <button onClick={() => this.setState({authFormAction: 'sign in'})}>signin</button>
-              )}
-            </div>
+                  {util.renderIf(this.state.authFormAction==='sign up',
+                    <button onClick={() => this.setState({authFormAction: 'sign in'})}>signin</button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
       </div>
     );
