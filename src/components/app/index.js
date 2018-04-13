@@ -6,7 +6,7 @@ import * as util from '../../lib/util.js';
 import Navbar from '../navbar';
 import LandingPage from '../landing-page';
 import LeagueContainer from '../league-container';
-import Group from '../group';
+// import Group from '../group';
 import Profile from '../profile';
 import Footer from '../footer';
 import { signIn } from '../../actions/userAuth-actions.js';
