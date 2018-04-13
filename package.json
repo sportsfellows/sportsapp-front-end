@@ -13,7 +13,7 @@
     "watch": "webpack-dev-server --inline --hot",
     "test": "jest",
     "test-watch": "jest --watchAll",
-    "start": "node-server.js",
+    "start": "node server.js",
     "heroku-postbuild": "webpack -p --progress"
   },
   "keywords": [],
