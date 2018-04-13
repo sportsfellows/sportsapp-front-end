@@ -1,0 +1,33 @@
+@import "../../style/lib/vars";
+
+.tooltip {
+  height: 0;
+
+  section {
+    transform: translateY(-6vw);
+    position: relative;
+    margin-bottom: 1vw;
+    width: 100%;
+    
+    p {
+      // background: $color-primary-dark;
+      background: #ccc;
+      color: #FFF;
+      display: inline-block;
+      padding: .5vw;
+      width: auto;
+      // border: 2px solid $color-primary-dark;
+      border: 2px solid black;
+      border-radius: 1vw / 2;
+    }
+
+    .fa-caret-up {
+      position: absolute;
+      top: -9px;
+      left: 10px;
+      color: black;
+      // color: $color-primary-dark;
+    }
+
+  }
+};
