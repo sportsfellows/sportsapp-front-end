@@ -13,6 +13,7 @@ export const signOut = () => {
 
 // ASYNC
 export const signUpRequest = user => dispatch => {
+  console.log('signup request action: ', user);
   return superagent.post(`${__API_URL__}/api/signup`)
     .withCredentials()
     .send(user)
