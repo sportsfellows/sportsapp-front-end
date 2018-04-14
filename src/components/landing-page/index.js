@@ -16,6 +16,7 @@ class LandingPage extends React.Component {
     return (
       <section className='landing-page'>
         <Intro />
+        <Link to="/user/sdf">Hellow</Link>
       </section>
     );
   }
