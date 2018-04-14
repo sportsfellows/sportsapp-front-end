@@ -49,3 +49,4 @@ export const signInRequest = user => dispatch => {
 // email: { type: String, required: true, unique: true },
 // password: {type: String, required: true },
 // findHash: { type: String, unique: true },
+

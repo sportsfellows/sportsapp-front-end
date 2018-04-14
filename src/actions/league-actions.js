@@ -31,6 +31,7 @@ export const leagueFetchRequest = league => (dispatch, getState) => {
 };
 
 export const leagueCreateRequest = league => (dispatch, getState) => {
+  console.log('league create req hit');
   let { userAuth } = getState();
   return superagent.post(`${__API_URL__}/api/sportingevent/${league.sportingEventID}/league`)
     .set('Authorization', `Bearer ${userAuth}`)

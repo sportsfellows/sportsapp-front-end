@@ -16,17 +16,14 @@ class Intro extends React.Component {
 
   handleSignin = user => {
     console.log('handle signin: ', user);
-    let { userProfileFetch, history } = this.props;
     return this.props.signIn(user)
-      .then(() => userProfileFetch())
-      // .then(() => history.push('/'))
+      .then(() => this.props.userProfileFetch())
       .catch(util.logError);
   };
 
   handleSignup = user => {
     console.log('handle signup: ', user);
     return this.props.signUp(user)
-      // .then(() => this.props.history.push('/'))
       .catch(util.logError);
   }
 
@@ -72,11 +69,11 @@ class Intro extends React.Component {
 
                 <div className='userauth-buttons'>
                   {util.renderIf(this.state.authFormAction==='sign in',
-                    <button onClick={() => this.setState({authFormAction: 'sign up'})}>signup</button>
+                    <button onClick={() => this.setState({authFormAction: 'sign up'})}>sign up</button>
                   )}
 
                   {util.renderIf(this.state.authFormAction==='sign up',
-                    <button onClick={() => this.setState({authFormAction: 'sign in'})}>signin</button>
+                    <button onClick={() => this.setState({authFormAction: 'sign in'})}>sign in</button>
                   )}
                 </div>
               </div>

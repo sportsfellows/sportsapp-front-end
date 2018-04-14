@@ -162,7 +162,7 @@ class UserAuthForm extends React.Component {
         />
         <Tooltip message={usernameError} show={focused === 'username' || submitted}/>
 
-        {util.renderIf(username,
+        {util.renderIf(username && this.props.authFormAction=== 'sign up',
           <div className='username-availability-outer'>
             <p className='username-availability'>
               {username} {usernameAvailable ? 'available': 'not available'}
