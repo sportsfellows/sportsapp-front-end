@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as util from '../../lib/util.js';
+
 import { leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/league-actions.js';
+import { signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
+import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import LeagueForm from '../league-form';
+import * as util from '../../lib/util.js';
 
 class LeagueContainer extends React.Component {
   constructor(props){
@@ -10,7 +13,7 @@ class LeagueContainer extends React.Component {
   }
 
   componentWillMount() {
-    util.secondaryUserValidation(this.props);
+    util.userValidation(this.props);
     // this.props.leagueFetch(this.props.league)
     //   .catch(util.logError);
   }
@@ -46,9 +49,12 @@ let mapStateToProps = state => ({
 });
 
 let mapDispatchToProps = dispatch => ({
+  signIn: user => dispatch(signInRequest(user)),
+  userProfileFetch: () => dispatch(userProfileFetchRequest()),
   leagueFetch: league => dispatch(leagueFetchRequest(league)),
   leagueUpdate: league => dispatch(leagueUpdateRequest(league)),
   leagueDelete: league => dispatch(leagueDeleteRequest(league)),
+  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeagueContainer);

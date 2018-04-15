@@ -10,7 +10,7 @@ import AllGroups from '../allGroups';
 import AllLeagues from '../allLeagues';
 import Profile from '../profile';
 import Footer from '../footer';
-import { signIn } from '../../actions/userAuth-actions.js';
+import { signIn, tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 
 class App extends React.Component {
@@ -39,6 +39,7 @@ let mapStateToProps = state => ({
 let mapDispatchToProps = dispatch => ({
   signIn: token => dispatch(signIn(token)),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
+  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -5,7 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import Intro from '../intro';
 import LeagueForm from '../league-form';
 import Profile from '../profile';
-import { signInRequest } from '../../actions/userAuth-actions.js';
+import { signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileUpdateRequest, userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leagueCreateRequest } from '../../actions/league-actions.js';
 import * as util from './../../lib/util.js';
@@ -81,6 +81,7 @@ let mapDispatchToProps = dispatch => ({
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
   userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
   leagueCreate: league => dispatch(leagueCreateRequest(league)),
+  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

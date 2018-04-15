@@ -5,7 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 import Icon from '../icons';
 import Avatar from '../avatar';
 import * as util from '../../lib/util.js';
-import { signInRequest, signOut } from '../../actions/userAuth-actions.js';
+import { signInRequest, signOut, tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 
 class Navbar extends React.Component {
@@ -14,25 +14,9 @@ class Navbar extends React.Component {
     this.state={hidden: true};
   }
 
-  componentWillMount() {
-    util.userValidation(this.props);
-  }
-
-  // initialUserValidation = props => {
-  //   let { history } = props;
-  //   let token;
-  
-  //   console.log('util.intialvalidation');
-  //   process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
-  //   if(token) {
-  //     this.props.signIn(token);
-  //   } else {
-  //     return history.replace('/');
-  //   }
-  //   if(this.props.userAuth) 
-  //     this.props.userProfileFetch()
-  //       .catch( () => console.log('USER PROFILE FETCH ERROR: no profile'));
-  // };
+  // componentWillMount() {
+  //   util.userValidation(this.props);
+  // }
 
   handleSignOut = () => {
     this.props.signOut();
@@ -41,7 +25,7 @@ class Navbar extends React.Component {
 
   render() {
     let profileImage = this.props.userProfile && this.props.userProfile.image ? <Avatar url={this.props.userProfile.image} /> : <span><i className='fa fa-user colorChangeHover'></i> </span>;
-    let profileName = this.props.userProfile && this.props.userProfile.username ? <span className='colorChangeHover'> {this.props.userProfile.username} </span>: <span></span>;
+    let profileName = this.props.userProfile && this.props.userProfile.username ? <span className='colorChangeHover nav-userName'> {this.props.userProfile.username} </span>: <span></span>;
     let profileLink = this.props.userProfile && this.props.userProfile._id ? `/user/${this.props.userProfile._id}` : '';
     return (
       <header>
@@ -56,7 +40,7 @@ class Navbar extends React.Component {
               {util.renderIf(this.props.userAuth,
                 <div>
                   <div className='avatarDiv' onClick={() => this.setState({ hidden: !this.state.hidden })} >
-                    <i className='fa fa-caret-down colorChangeHover'></i>
+                    <i className={this.props.userProfile && this.props.userProfile.image ? 'fa fa-caret-down colorChangeHover noTop' : 'fa fa-caret-down colorChangeHover' }></i>
                     {profileImage}
                     {profileName}
                   </div>
@@ -96,6 +80,7 @@ let mapDispatchToProps = dispatch => ({
   signIn: user => dispatch(signInRequest(user)),
   signOut: () => dispatch(signOut()),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
+  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

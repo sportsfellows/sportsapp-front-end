@@ -10,13 +10,15 @@ export const userValidation = props => {
     
     process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
     if(token) {
-      props.signIn(token)
+      console.log('token: ', token);
+      props.tokenSignIn(token)
         .then(() => props.userProfileFetch())
         .catch( () => {
           logError;
           if(props.location.pathname !== '/') return history.replace('/');
         });
     } else {
+      console.log('no token');
       if(props.location.pathname !== '/') return history.replace('/');
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { signInRequest } from '../../actions/userAuth-actions.js';
+import { signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import * as util from './../../lib/util.js';
 
@@ -32,6 +32,7 @@ let mapDispatchToProps = dispatch => {
   return {
     signIn: user => dispatch(signInRequest(user)),
     userProfileFetch: () => dispatch(userProfileFetchRequest()),
+    tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   };
 };
 

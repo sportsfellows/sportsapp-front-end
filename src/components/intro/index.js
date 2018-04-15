@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 import Modal from '../modal';
 import UserAuthForm from '../userAuth-form';
-import { signUpRequest, signInRequest } from '../../actions/userAuth-actions.js';
+import { signUpRequest, signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import * as util from './../../lib/util.js';
 
@@ -95,6 +95,7 @@ let mapDispatchToProps = dispatch => {
     signUp: user => dispatch(signUpRequest(user)),
     signIn: user => dispatch(signInRequest(user)),
     userProfileFetch: () => dispatch(userProfileFetchRequest()),
+    tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   };
 };
 
