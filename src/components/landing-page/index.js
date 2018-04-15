@@ -5,8 +5,9 @@ import { Link, Redirect } from 'react-router-dom';
 import Intro from '../intro';
 import LeagueForm from '../league-form';
 import Profile from '../profile';
+import { signInRequest } from '../../actions/userAuth-actions.js';
+import { userProfileUpdateRequest, userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leagueCreateRequest } from '../../actions/league-actions.js';
-import { userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
 import * as util from './../../lib/util.js';
 
 class LandingPage extends React.Component {
@@ -15,7 +16,8 @@ class LandingPage extends React.Component {
   }
 
   componentWillMount() {
-    util.secondaryUserValidation(this.props);
+    console.log('location: ', this.props.location.pathname);
+    util.userValidation(this.props);
   }
 
   handleLeagueCreate = league => {
@@ -75,15 +77,10 @@ let mapStateToProps = state => ({
 });
 
 let mapDispatchToProps = dispatch => ({
-  leagueCreate: league => dispatch(leagueCreateRequest(league)),
+  signIn: user => dispatch(signInRequest(user)),
+  userProfileFetch: () => dispatch(userProfileFetchRequest()),
   userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
+  leagueCreate: league => dispatch(leagueCreateRequest(league)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
-
-
-// let mapDispatchToProps = dispatch => ({
-//   signOut: () => dispatch(signOut()),
-//   userGalleryItemsFetch: () => dispatch(userGalleryItemsFetchRequest()),
-//   userGalleryItemCreate: userGalleryItem => dispatch(userGalleryItemCreateRequest(userGalleryItem)),
-// });

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { leagueCreateRequest } from '../../actions/league-actions.js';
-import { userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
+import { signInRequest } from '../../actions/userAuth-actions.js';
+import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import * as util from './../../lib/util.js';
 
 class AllLeagues extends React.Component {
@@ -11,7 +11,7 @@ class AllLeagues extends React.Component {
   }
 
   componentWillMount() {
-    util.secondaryUserValidation(this.props);
+    util.userValidation(this.props);
   }
 
   render() {
@@ -28,9 +28,11 @@ let mapStateToProps = state => ({
   userProfile: state.userProfile,
 });
 
-let mapDispatchToProps = dispatch => ({
-  leagueCreate: league => dispatch(leagueCreateRequest(league)),
-  userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
-});
+let mapDispatchToProps = dispatch => {
+  return {
+    signIn: user => dispatch(signInRequest(user)),
+    userProfileFetch: () => dispatch(userProfileFetchRequest()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllLeagues);

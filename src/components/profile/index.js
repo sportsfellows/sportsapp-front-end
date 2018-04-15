@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { signInRequest } from '../../actions/userAuth-actions.js';
+import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import * as util from './../../lib/util.js';
 
 class Profile extends React.Component {
@@ -18,7 +22,7 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    util.loggedInUserCheck(this.props);
+    util.userValidation(this.props);
   }
 
   handleSubmit = e => {
@@ -66,4 +70,16 @@ class Profile extends React.Component {
   }    
 }  
 
-export default Profile;
+let mapStateToProps = state => ({
+  userAuth: state.userAuth,
+  userProfile: state.userProfile,
+});
+
+let mapDispatchToProps = dispatch => {
+  return {
+    signIn: user => dispatch(signInRequest(user)),
+    userProfileFetch: () => dispatch(userProfileFetchRequest()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

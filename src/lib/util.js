@@ -3,9 +3,23 @@ export const logError = (...args) => __DEBUG__ ? console.error(...args) : undefi
 export const renderIf = (test, component) => test ? component : undefined;
 export const classToggler = (options) => Object.keys(options).filter(key => !!options[key]).join(' ');
 
-export const secondaryUserValidation = props => {
-  let { history } = props;
-  if(!props.userAuth) return history.replace('/');
+export const userValidation = props => {
+  if(!props.userAuth) {
+    let { history } = props;
+    let token;
+    
+    process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
+    if(token) {
+      props.signIn(token)
+        .then(() => props.userProfileFetch())
+        .catch( () => {
+          logError;
+          if(props.location.pathname !== '/') return history.replace('/');
+        });
+    } else {
+      if(props.location.pathname !== '/') return history.replace('/');
+    }
+  }
 };
 
 export const photoToDataURL = file => {
@@ -50,13 +64,4 @@ export const createCookie = (name,value,days) => {
 
 export const deleteCookie  = (name) => {
   return createCookie(name,'',-1);
-};
-
-export const loggedInUserCheck = props => {
-  let { history } = props;
-  let token;
-  
-  process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;
-  if(!token) return history.replace('/');
-  console.log('loggedinUsercheck: ', token);
 };

@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
-import * as util from './../../lib/util.js';
 import Modal from '../modal';
 import UserAuthForm from '../userAuth-form';
 import { signUpRequest, signInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import * as util from './../../lib/util.js';
 
 class Intro extends React.Component {
   constructor(props){
@@ -87,7 +87,7 @@ class Intro extends React.Component {
 
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
-  userprofile: state.userprofile,
+  userProfile: state.userProfile,
 });
 
 let mapDispatchToProps = dispatch => {

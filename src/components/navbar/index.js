@@ -5,7 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 import Icon from '../icons';
 import Avatar from '../avatar';
 import * as util from '../../lib/util.js';
-import { signIn, signOut } from '../../actions/userAuth-actions.js';
+import { signInRequest, signOut } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 
 class Navbar extends React.Component {
@@ -15,24 +15,24 @@ class Navbar extends React.Component {
   }
 
   componentWillMount() {
-    this.initialUserValidation(this.props);
+    util.userValidation(this.props);
   }
 
-  initialUserValidation = props => {
-    let { history } = props;
-    let token;
+  // initialUserValidation = props => {
+  //   let { history } = props;
+  //   let token;
   
-    console.log('util.intialvalidation');
-    process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
-    if(token) {
-      this.props.signIn(token);
-    } else {
-      return history.replace('/');
-    }
-    if(this.props.userAuth) 
-      this.props.userProfileFetch()
-        .catch( () => console.log('USER PROFILE FETCH ERROR: no profile'));
-  };
+  //   console.log('util.intialvalidation');
+  //   process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
+  //   if(token) {
+  //     this.props.signIn(token);
+  //   } else {
+  //     return history.replace('/');
+  //   }
+  //   if(this.props.userAuth) 
+  //     this.props.userProfileFetch()
+  //       .catch( () => console.log('USER PROFILE FETCH ERROR: no profile'));
+  // };
 
   handleSignOut = () => {
     this.props.signOut();
@@ -93,7 +93,7 @@ let mapStateToProps = state => ({
 });
 
 let mapDispatchToProps = dispatch => ({
-  signIn: token => dispatch(signIn(token)),
+  signIn: user => dispatch(signInRequest(user)),
   signOut: () => dispatch(signOut()),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
 });
