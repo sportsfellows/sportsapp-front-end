@@ -13,6 +13,11 @@ class LandingPage extends React.Component {
   constructor(props){
     super(props);
   }
+
+  componentWillMount() {
+    util.loggedInUserCheck(this.props);
+  }
+
   handleLeagueCreate = league => {
     console.log('handle leage create hi');
     league.sportingEventID='5ad2a2bffb35c1479596fdc2';
@@ -48,7 +53,15 @@ class LandingPage extends React.Component {
             )}
           </div>
         )}
-        <Link to="/user/sdf">Hellow</Link>
+
+        {util.renderIf(this.props.userProfile,
+          <div>
+            {/* <Link to={`/user/${this.props.userProfile._id}`}>Profile</Link> */}
+          </div>
+        )}
+
+        
+        <Link to="/user/jb">Hellow</Link>
 
       </section>
     );

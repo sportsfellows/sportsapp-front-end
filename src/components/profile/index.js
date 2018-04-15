@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
+import * as util from './../../lib/util.js';
 
 class Profile extends React.Component {
   constructor(props){
@@ -18,40 +17,42 @@ class Profile extends React.Component {
     }
   }
 
+  componentWillMount() {
+    util.loggedInUserCheck(this.props);
+  }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     console.log(this.state);
     return this.props.onComplete(this.state);
   } 
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
   render() {
-    console.log('fux yeah');
     return (
       <section>
         <form onSubmit={this.handleSubmit}>
           <input 
             type="text" 
             placeholder="State" 
-            value={this.state.state}
+            value={this.state.state || ''}
             name="state"
             onChange={this.handleChange}/>
           <input 
             type="text" 
             placeholder="Country"
-            value={this.state.country}
+            value={this.state.country || ''}
             name="country"
             onChange={this.handleChange}/>
           <input 
             type="text" 
             placeholder="img url"
-            value={this.state.image}
+            value={this.state.image || ''}
             name="image"
             onChange={this.handleChange}/>
           <input 

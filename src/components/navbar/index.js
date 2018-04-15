@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 
 import Icon from '../icons';
+import Avatar from '../avatar';
 import * as util from '../../lib/util.js';
-import { signIn } from '../../actions/userAuth-actions.js';
+import { signIn, signOut } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 
 class Navbar extends React.Component {
@@ -18,11 +19,12 @@ class Navbar extends React.Component {
 
   validateRoute = props => {
     let { match, history } = props;
-    let token = util.readCookie('Bracket-Busters-Token');
+    let token;
+    process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;
 
     // if(!token) return history.replace('/user/signup');
     
-    this.props.signIn(token);
+    if(token) this.props.signIn(token);
     if(this.props.userAuth)this.props.userProfileFetch()
       .catch( () => {
         console.log('USER PROFILE FETCH ERROR: no profile');
@@ -32,16 +34,24 @@ class Navbar extends React.Component {
 
   handleSignOut = () => {
     this.props.signOut();
-    // this.props.history.push('/user/signin');
+    this.props.history.push('/');
   };
 
   render() {
-
+    let profileImage = this.props.userProfile && this.props.userProfile.image ? <Avatar url={this.props.userProfile.image} /> : <span><i className="fa fa-user"></i></span>;
     return (
       <header>
         <nav>
           <div className="logo">
               <Link to='/' className='link logo-text'><span className="bold pr3">BRACKET</span><span className="light">BUSTERS</span></Link>
+          </div>
+          <div className='logOut'>
+              {util.renderIf(this.props.userAuth,
+                <div className='avatarDiv'>
+                  {profileImage}
+                  <p className='logout' onClick={this.handleSignOut}>logout</p>
+                </div>
+              )}
           </div>
           <ul className="socials">
             <li className="social facebook">
@@ -70,6 +80,7 @@ let mapStateToProps = state => ({
 
 let mapDispatchToProps = dispatch => ({
   signIn: token => dispatch(signIn(token)),
+  signOut: () => dispatch(signOut()),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
 });
 

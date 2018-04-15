@@ -30,7 +30,8 @@ export const userProfileCreateRequest = userProfile => (dispatch, getState) => {
 
 export const userProfileUpdateRequest = profile => (dispatch, getState) => {
   let { userAuth, userProfile } = getState();
-  return superagent.put(`${__API_URL__}/api/myprofile/${userProfile._id}`)
+  
+  return superagent.put(`${__API_URL__}/api/profile/${userProfile._id}`)
     .set('Authorization', `Bearer ${userAuth}`)
     // .field({username: userProfile.username, image: userProfile.image, country: userProfile.country, state: userProfile.state, birthdate: userProfile.birthdate })
     // .attach('avatar', userProfile.avatar)

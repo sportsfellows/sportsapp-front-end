@@ -44,5 +44,14 @@ export const createCookie = (name,value,days) => {
 };
 
 export const deleteCookie  = (name) => {
-  createCookie(name,'',-1);
+  return createCookie(name,'',-1);
+};
+
+export const loggedInUserCheck = props => {
+  let { history } = props;
+  let token;
+  
+  process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;
+  if(!token) return history.replace('/');
+  console.log('loggedinUsercheck: ', token);
 };
