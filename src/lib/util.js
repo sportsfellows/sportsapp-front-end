@@ -3,6 +3,11 @@ export const logError = (...args) => __DEBUG__ ? console.error(...args) : undefi
 export const renderIf = (test, component) => test ? component : undefined;
 export const classToggler = (options) => Object.keys(options).filter(key => !!options[key]).join(' ');
 
+export const secondaryUserValidation = props => {
+  let { history } = props;
+  if(!props.userAuth) return history.replace('/');
+};
+
 export const photoToDataURL = file => {
   return new Promise((resolve, reject) => {
     let reader = new FileReader();

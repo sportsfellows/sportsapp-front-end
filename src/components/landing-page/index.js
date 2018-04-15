@@ -15,7 +15,7 @@ class LandingPage extends React.Component {
   }
 
   componentWillMount() {
-    util.loggedInUserCheck(this.props);
+    util.secondaryUserValidation(this.props);
   }
 
   handleLeagueCreate = league => {
@@ -61,7 +61,8 @@ class LandingPage extends React.Component {
         )}
 
         
-        <Link to="/user/jb">Hellow</Link>
+        <Link to="/user/jb">user</Link>
+        <Link to="/league/jb">league</Link>
 
       </section>
     );

@@ -14,22 +14,23 @@ class Navbar extends React.Component {
   }
 
   componentWillMount() {
-    this.validateRoute(this.props);
+    this.initialUserValidation(this.props);
   }
 
-  validateRoute = props => {
-    let { match, history } = props;
+  initialUserValidation = props => {
+    let { history } = props;
     let token;
-    process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;
-
-    // if(!token) return history.replace('/user/signup');
-    
-    if(token) this.props.signIn(token);
-    if(this.props.userAuth)this.props.userProfileFetch()
-      .catch( () => {
-        console.log('USER PROFILE FETCH ERROR: no profile');
-        // if(!match.url.startsWith('/profile')) return history.replace('/profile');
-      })
+  
+    console.log('util.intialvalidation');
+    process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
+    if(token) {
+      this.props.signIn(token);
+    } else {
+      return history.replace('/');
+    }
+    if(this.props.userAuth) 
+      this.props.userProfileFetch()
+        .catch( () => console.log('USER PROFILE FETCH ERROR: no profile'));
   };
 
   handleSignOut = () => {
@@ -104,3 +105,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
     </ul>
   </nav>
 </header> */}
+

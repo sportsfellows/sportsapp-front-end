@@ -10,7 +10,16 @@ class LeagueContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.leagueFetch(this.props.league)
+    util.secondaryUserValidation(this.props);
+    // this.props.leagueFetch(this.props.league)
+    //   .catch(util.logError);
+  }
+
+  handleLeagueCreate = league => {
+    console.log('handle leage create hi');
+    league.sportingEventID='5ad2a2bffb35c1479596fdc2';
+    return this.props.leagueCreate(league)
+      // .then(() => )
       .catch(util.logError);
   }
 
@@ -23,13 +32,15 @@ class LeagueContainer extends React.Component {
   render(){
     return (
       <div className='league-container'>
-        <LeagueForm league={this.props.league} onComplete={handleComplete}/>
+        <LeagueForm onComplete={this.handleLeagueCreate} />
+        {/* <LeagueForm league={this.props.league} onComplete={this.handleLeagueCreate} /> */}
       </div>
     );
   }
 }
 
 let mapStateToProps = state => ({
+  userAuth: state.userAuth,
   userProfile: state.userProfile,
   league: state.league,
 });
