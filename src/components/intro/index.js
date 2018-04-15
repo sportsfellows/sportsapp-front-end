@@ -24,6 +24,7 @@ class Intro extends React.Component {
   handleSignup = user => {
     console.log('handle signup: ', user);
     return this.props.signUp(user)
+      .then(() => this.props.userProfileFetch())
       .catch(util.logError);
   }
 

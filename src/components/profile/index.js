@@ -5,18 +5,24 @@ import { connect } from 'react-redux';
 class Profile extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
+    this.state = props.userProfile ? {...props.userprofile} :{
       state: '',
       country: '',
-      imgURL: '',
-      date: '',
+      image: '',
+      birthdate: '',
+    };
+  }
+  componentWillReceiveProps(props) {
+    if (props.userProfile) {
+      this.setState(props.userProfile);
     }
   }
+
 
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
-
+    return this.props.onComplete(this.state);
   } 
 
   handleChange = (e) => {
@@ -45,12 +51,12 @@ class Profile extends React.Component {
           <input 
             type="text" 
             placeholder="img url"
-            value={this.state.imgURL}
-            name="imgURL"
+            value={this.state.image}
+            name="image"
             onChange={this.handleChange}/>
           <input 
             type="date"
-            name="date"
+            name="birthdate"
             onChange={this.handleChange}/>
           <button type="submit">Submit</button>
         </form>  

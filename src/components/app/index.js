@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <section>
-          {/*<Route path='*' component={Navbar} /> */}
+          <Route path='*' component={Navbar} />
           <Route exact path='/' component={LandingPage} />
           <Route path='/league/:leagueID' component={LeagueContainer} />
           {/* <Route path='/group/:groupID' component={Group} /> */}
