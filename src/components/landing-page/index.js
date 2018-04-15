@@ -36,7 +36,7 @@ class LandingPage extends React.Component {
     let { params } = this.props.match;
     let handleComplete = params.userAuth === 'signin' ? this.handleSignin : this.handleSignup;
     return (
-      <section className='landing-page'>
+      <section className='landing-page page-outer-div'>
         
 
         {util.renderIf(!this.props.userAuth,

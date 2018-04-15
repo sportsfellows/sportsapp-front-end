@@ -44,8 +44,12 @@
 }
 .social:nth-child(1) {
   margin-right: 8px;
+  width: auto;
 }
 .social:nth-child(2) {
+  margin-right: 8px;
+}
+.social:nth-child(3) {
   margin-right: 16px;
 }
 .social-icons {
@@ -57,5 +61,40 @@
   fill: #ECECEC;
 }
 .social-icons path {
+  transition: all 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.nav-dropdown-button {
+  float: right;
+}
+.fa-user, .fa-caret-down {
+  color: #9B9B9B;
+  font-size: 20px;
+}
+.dropdown {
+  color: #9B9B9B;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 900;
+}
+.dropdownDiv .link {
+  display: block;
+  color: #9B9B9B;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.dropdownDiv .link:hover {
+  color: #ECECEC;
+}
+.avatarDiv:hover .colorChangeHover {
+  color: #ECECEC;
+}
+.colorChangeHover{
+  transition: all 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.avatarDiv{
+  cursor: pointer;
+  transition-delay: 0.5s;
   transition: all 0.35s cubic-bezier(0.77, 0, 0.175, 1);
 }

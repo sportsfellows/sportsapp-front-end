@@ -35,7 +35,7 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className='page-outer-div'>
         <form onSubmit={this.handleSubmit}>
           <input 
             type="text" 
