@@ -1,14 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
-import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import * as util from './../../lib/util.js';
 
-class Profile extends React.Component {
+class ProfileForm extends React.Component {
   constructor(props){
     super(props)
-    this.state = props.userProfile ? {...props.userprofile} :{
+    this.state = props.userProfile ? {...props.userProfile} :{
       state: '',
       country: '',
       image: '',
@@ -16,13 +12,7 @@ class Profile extends React.Component {
     };
   }
   componentWillReceiveProps(props) {
-    if (props.userProfile) {
-      this.setState(props.userProfile);
-    }
-  }
-
-  componentWillMount() {
-    util.userValidation(this.props);
+    if (props.userProfile) this.setState(props.userProfile);
   }
 
   handleSubmit = e => {
@@ -39,7 +29,7 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <section className='page-outer-div'>
+      <section className='profile-form'>
         <form onSubmit={this.handleSubmit}>
           <input 
             type="text" 
@@ -70,17 +60,4 @@ class Profile extends React.Component {
   }    
 }  
 
-let mapStateToProps = state => ({
-  userAuth: state.userAuth,
-  userProfile: state.userProfile,
-});
-
-let mapDispatchToProps = dispatch => {
-  return {
-    signIn: user => dispatch(signInRequest(user)),
-    userProfileFetch: () => dispatch(userProfileFetchRequest()),
-    tokenSignIn: token => dispatch(tokenSignInRequest(token)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default ProfileForm;

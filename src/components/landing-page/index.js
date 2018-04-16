@@ -4,7 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 
 import Intro from '../intro';
 import LeagueForm from '../league-form';
-import Profile from '../profile';
+import ProfileForm from '../profile-form';
+import Modal from '../modal';
 import { signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileUpdateRequest, userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leagueCreateRequest } from '../../actions/league-actions.js';
@@ -13,6 +14,7 @@ import * as util from './../../lib/util.js';
 class LandingPage extends React.Component {
   constructor(props){
     super(props);
+    this.state = { profileFormDisplay: true,}
   }
 
   componentWillMount() {
@@ -34,13 +36,12 @@ class LandingPage extends React.Component {
   }
 
   render() {
-    let q= console.log('hi');
+    console.log('hi');
     let { params } = this.props.match;
     let handleComplete = params.userAuth === 'signin' ? this.handleSignin : this.handleSignup;
     return (
       <section className='landing-page page-outer-div'>
         
-
         {util.renderIf(!this.props.userAuth,
           <Intro />
         )}
@@ -48,24 +49,28 @@ class LandingPage extends React.Component {
 
         {util.renderIf(this.props.userAuth,
           <div>
-            <LeagueForm onComplete={this.handleLeagueCreate} />
+            <LeagueForm 
+              onComplete={this.handleLeagueCreate} 
+            />
 
-            {util.renderIf(this.props.userProfile && this.props.userProfile.lastLogin === this.props.userProfile.createdOn,
-              <Profile userProfile={this.props.userProfile} onComplete={this.handleProfileUpdate}/>
+            {util.renderIf(this.state.profileFormDisplay && this.props.userProfile && this.props.userProfile.lastLogin === this.props.userProfile.createdOn,
+              <Modal heading='Fill Out Your Profile'
+                close={() => {
+                  this.setState({ profileFormDisplay: false });
+                  this.handleProfileUpdate(this.props.userProfile);
+                }}>
+
+                <ProfileForm 
+                  userProfile={this.props.userProfile} 
+                  onComplete={this.handleProfileUpdate}
+                />
+
+              </Modal>
             )}
           </div>
         )}
-
-        {util.renderIf(this.props.userProfile,
-          <div>
-            {/* <Link to={`/user/${this.props.userProfile._id}`}>Profile</Link> */}
-          </div>
-        )}
-
-        
         <Link to="/user/jb">user</Link>
         <Link to="/league/jb">league</Link>
-
       </section>
     );
   }
