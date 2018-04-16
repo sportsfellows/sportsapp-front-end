@@ -7,6 +7,9 @@
 .font-md {
   @include responsive-font(3.8vw, 20px, 32px);
 }
+.font-lg {
+  @include responsive-font(5.1vw, 28px, 44px);
+}
 
 *, *:before, *:after {
   box-sizing: inherit;

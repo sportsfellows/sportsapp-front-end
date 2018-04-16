@@ -1,0 +1,19 @@
+@import '../lib/vars'; 
+
+input {
+  width: 100%;
+  border-radius: $border-radius;
+  border-color: $color-black;
+  border-width: 1px;
+  border-style: solid;
+  padding: $pad;
+  margin: $margin;
+}
+
+input:focus {
+  background-color: $color-primary-hover;
+  border-radius: $border-radius;
+  border-color: $color-black;
+  border-width: 1px;
+  border-style: solid;
+}
