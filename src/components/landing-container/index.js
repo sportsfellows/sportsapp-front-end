@@ -18,7 +18,6 @@ class LandingContainer extends React.Component {
   }
 
   componentWillMount() {
-    console.log('location: ', this.props.location.pathname);
     util.userValidation(this.props);
   }
 
@@ -79,6 +78,8 @@ class LandingContainer extends React.Component {
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
+  leagues: state.leagues,
+  groups: state.groups,
 });
 
 let mapDispatchToProps = dispatch => ({

@@ -32,8 +32,6 @@ class Intro extends React.Component {
     let background = require('./../helpers/assets/introBackground.png');
     let lebron = require('./../helpers/assets/introLebron.png');
     let curry = require('./../helpers/assets/introCurry.png');
-
-    // let authFormAction = 'Sign Up';
     let handleComplete = this.state.authFormAction === 'Sign Up' ? this.handleSignup : this.handleSignin;
     
     return (

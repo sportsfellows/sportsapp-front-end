@@ -5,11 +5,11 @@ import sportingEvent from './sportingEvent-reducers';
 import league from './league-reducers';
 import group from './group-reducers';
 import messageBoard from './messageBoard-reducers';
-import comment from './comment-reducers';
-import scoreBoard from './scoreBoard-reducers';
-import game from './game-reducers';
-import userPick from './userPick-reducers';
-import team from './team-reducers';
+import comments from './comment-reducers';
+import scoreBoards from './scoreBoard-reducers';
+import games from './game-reducers';
+import userPicks from './userPick-reducers';
+import teams from './team-reducers';
 
 
 export default combineReducers({
@@ -19,9 +19,9 @@ export default combineReducers({
   league,
   group,
   messageBoard,
-  comment,
-  scoreBoard,
-  game,
-  userPick,
-  team,
+  comments,
+  scoreBoards,
+  games,
+  userPicks,
+  teams,
 });

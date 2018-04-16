@@ -14,8 +14,6 @@ class LeagueAllContainer extends React.Component {
 
   componentWillMount() {
     util.userValidation(this.props);
-    // this.props.leagueFetch(this.props.league)
-    //   .catch(util.logError);
   }
 
   handleLeagueCreate = league => {
@@ -45,7 +43,6 @@ class LeagueAllContainer extends React.Component {
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
-  league: state.league,
 });
 
 let mapDispatchToProps = dispatch => ({

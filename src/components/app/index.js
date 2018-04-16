@@ -34,6 +34,7 @@ class App extends React.Component {
 }
 
 let mapStateToProps = state => ({
+  userAuth: state.userAuth,
   userProfile: state.userProfile,
 });
 
