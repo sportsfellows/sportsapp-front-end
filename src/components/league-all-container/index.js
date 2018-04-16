@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/league-actions.js';
-import { signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
+import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import LeagueForm from '../league-form';
 import * as util from '../../lib/util.js';
 
-class LeagueContainer extends React.Component {
+class LeagueAllContainer extends React.Component {
   constructor(props){
     super(props);
   }
@@ -49,12 +49,11 @@ let mapStateToProps = state => ({
 });
 
 let mapDispatchToProps = dispatch => ({
-  signIn: user => dispatch(signInRequest(user)),
+  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
   leagueFetch: league => dispatch(leagueFetchRequest(league)),
   leagueUpdate: league => dispatch(leagueUpdateRequest(league)),
   leagueDelete: league => dispatch(leagueDeleteRequest(league)),
-  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeagueContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LeagueAllContainer);

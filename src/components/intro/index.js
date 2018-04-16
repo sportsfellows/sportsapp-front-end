@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
-import Modal from '../modal';
+import Modal from '../helpers/modal';
 import UserAuthForm from '../userAuth-form';
-import { signUpRequest, signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
+import { signUpRequest, signInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import * as util from './../../lib/util.js';
 
@@ -29,9 +29,9 @@ class Intro extends React.Component {
   }
 
   render() {
-    let background = require('./../assets/introBackground.png');
-    let lebron = require('./../assets/introLebron.png');
-    let curry = require('./../assets/introCurry.png');
+    let background = require('./../helpers/assets/introBackground.png');
+    let lebron = require('./../helpers/assets/introLebron.png');
+    let curry = require('./../helpers/assets/introCurry.png');
 
     // let authFormAction = 'Sign Up';
     let handleComplete = this.state.authFormAction === 'Sign Up' ? this.handleSignup : this.handleSignin;
@@ -97,7 +97,6 @@ let mapDispatchToProps = dispatch => {
     signUp: user => dispatch(signUpRequest(user)),
     signIn: user => dispatch(signInRequest(user)),
     userProfileFetch: () => dispatch(userProfileFetchRequest()),
-    tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   };
 };
 

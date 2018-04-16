@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 
-import Icon from '../icons';
-import Avatar from '../avatar';
+import Icon from '../helpers/icons';
+import Avatar from '../helpers/avatar';
 import * as util from '../../lib/util.js';
-import { signInRequest, signOut, tokenSignInRequest } from '../../actions/userAuth-actions.js';
-import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import {  signOut  } from '../../actions/userAuth-actions.js';
 
 class Navbar extends React.Component {
   constructor(props){
@@ -77,10 +76,7 @@ let mapStateToProps = state => ({
 });
 
 let mapDispatchToProps = dispatch => ({
-  signIn: user => dispatch(signInRequest(user)),
   signOut: () => dispatch(signOut()),
-  userProfileFetch: () => dispatch(userProfileFetchRequest()),
-  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

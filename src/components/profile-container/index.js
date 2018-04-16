@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import ProfileForm from '../profile-form';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
-import { userProfileUpdateRequest, userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import { userProfileFetchRequest, userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
 import * as util from './../../lib/util.js';
 
 class ProfileContainer extends React.Component {
@@ -40,9 +40,9 @@ let mapStateToProps = (state) => ({
 })
 
 let mapDispatchToProps = (dispatch) => ({
+  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
   userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
-  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

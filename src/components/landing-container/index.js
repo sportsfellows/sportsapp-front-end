@@ -5,13 +5,13 @@ import { Link, Redirect } from 'react-router-dom';
 import Intro from '../intro';
 import LeagueForm from '../league-form';
 import ProfileForm from '../profile-form';
-import Modal from '../modal';
-import { signInRequest, tokenSignInRequest } from '../../actions/userAuth-actions.js';
-import { userProfileUpdateRequest, userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import Modal from '../helpers/modal';
+import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
+import { userProfileFetchRequest, userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
 import { leagueCreateRequest } from '../../actions/league-actions.js';
 import * as util from './../../lib/util.js';
 
-class LandingPage extends React.Component {
+class LandingContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = { profileFormDisplay: true,}
@@ -82,11 +82,10 @@ let mapStateToProps = state => ({
 });
 
 let mapDispatchToProps = dispatch => ({
-  signIn: user => dispatch(signInRequest(user)),
+  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
   userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
   leagueCreate: league => dispatch(leagueCreateRequest(league)),
-  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer);
