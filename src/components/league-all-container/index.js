@@ -43,6 +43,7 @@ class LeagueAllContainer extends React.Component {
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
+  leagues: state.leagues,
 });
 
 let mapDispatchToProps = dispatch => ({

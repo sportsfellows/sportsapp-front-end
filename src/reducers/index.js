@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 import userAuth from './userAuth-reducers';
 import userProfile from './userProfile-reducers';
 import sportingEvent from './sportingEvent-reducers';
-import league from './league-reducers';
-import group from './group-reducers';
+import leagues from './league-reducers';
+import groups from './group-reducers';
 import messageBoard from './messageBoard-reducers';
 import comments from './comment-reducers';
 import scoreBoards from './scoreBoard-reducers';
@@ -16,8 +16,8 @@ export default combineReducers({
   userAuth,
   userProfile,
   sportingEvent,
-  league,
-  group,
+  leagues,
+  groups,
   messageBoard,
   comments,
   scoreBoards,

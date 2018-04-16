@@ -44,7 +44,7 @@ class GroupItemContainer extends React.Component {
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
-  group: state.group,
+  groups: state.groups,
 });
 
 let mapDispatchToProps = dispatch => ({

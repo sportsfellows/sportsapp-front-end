@@ -6,6 +6,7 @@ import Modal from '../helpers/modal';
 import UserAuthForm from '../userAuth-form';
 import { signUpRequest, signInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import { leaguesFetchRequest } from '../../actions/league-actions.js';
 import * as util from './../../lib/util.js';
 
 class Intro extends React.Component {
@@ -18,6 +19,11 @@ class Intro extends React.Component {
     console.log('handle signin: ', user);
     return this.props.signIn(user)
       .then(() => this.props.userProfileFetch())
+      .then(profile => {
+        console.log('profile: ', profile.body.leagues);
+        return this.props.leaguesFetch(profile.body.leagues);
+      })
+      // .then(() => this.props.leaguesFetch(["5ad43fc9b9d63b823e098f54", "5ad44c0db9d63b823e098f57"]))
       .catch(util.logError);
   };
 
@@ -88,6 +94,7 @@ class Intro extends React.Component {
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
+  leagues: state.leagues,
 });
 
 let mapDispatchToProps = dispatch => {
@@ -95,6 +102,7 @@ let mapDispatchToProps = dispatch => {
     signUp: user => dispatch(signUpRequest(user)),
     signIn: user => dispatch(signInRequest(user)),
     userProfileFetch: () => dispatch(userProfileFetchRequest()),
+    leaguesFetch: leagueArr => dispatch(leaguesFetchRequest(leagueArr)),
   };
 };
 

@@ -43,7 +43,6 @@ class LeagueContainer extends React.Component {
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
-  league: state.league,
 });
 
 let mapDispatchToProps = dispatch => ({
