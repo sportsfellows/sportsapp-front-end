@@ -35,6 +35,10 @@ header {
   top: 0;
   left: 0;
   background-color: rgb(233, 233, 233);
+  border-width: 0 0 0 0;
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: rgb(194, 194, 194);
   height: 65px;
   width: 100%;
   z-index: 101;
@@ -51,6 +55,10 @@ button {
 }
 
 h2.title, h2 {
-  margin-left: $margin;
   margin-bottom: $margin;
+  margin-left: $margin;
+}
+
+.page-outer-div h2 {
+  margin-top: 3vw;
 }

@@ -91,7 +91,15 @@ nav .fa-caret-down {
   font-weight: 900;
 }
 .dropdownDiv {
-  background-color: #fff;
+  background-color: rgb(233, 233, 233);
+  position: fixed;
+  right: 67px;
+  top: 65px;
+  padding: 15px;
+  border-width: 1px 1px 1px 1px;
+  border-top: 0px;
+  border-style: solid;
+  border-color: rgb(194, 194, 194);
 }
 .dropdownDiv .link {
   display: block;
