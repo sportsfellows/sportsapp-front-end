@@ -3,6 +3,27 @@ export const logError = (...args) => __DEBUG__ ? console.error(...args) : undefi
 export const renderIf = (test, component) => test ? component : undefined;
 export const classToggler = (options) => Object.keys(options).filter(key => !!options[key]).join(' ');
 
+export const userValidation = props => {
+  if(!props.userAuth) {
+    let { history } = props;
+    let token;
+    
+    process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
+    if(token) {
+      console.log('token: ', token);
+      props.tokenSignIn(token)
+        .then(() => props.userProfileFetch())
+        .catch( () => {
+          logError;
+          if(props.location.pathname !== '/') return history.replace('/');
+        });
+    } else {
+      console.log('no token');
+      if(props.location.pathname !== '/') return history.replace('/');
+    }
+  }
+};
+
 export const photoToDataURL = file => {
   return new Promise((resolve, reject) => {
     let reader = new FileReader();
@@ -44,5 +65,5 @@ export const createCookie = (name,value,days) => {
 };
 
 export const deleteCookie  = (name) => {
-  createCookie(name,'',-1);
+  return createCookie(name,'',-1);
 };

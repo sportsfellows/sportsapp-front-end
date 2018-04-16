@@ -3,7 +3,7 @@ import superagent from 'superagent';
 import { isEmail, isAlphanumeric, isAscii } from 'validator';
 // import debounce from 'lodash/fp/debounce';
 
-import Tooltip from '../tooltip';
+import Tooltip from '../helpers/tooltip';
 import * as util from '../../lib/util';
 
 class UserAuthForm extends React.Component {
@@ -129,14 +129,14 @@ class UserAuthForm extends React.Component {
         'error': this.state.error && this.state.submitted,
       })}>
 
-        {util.renderIf(this.props.authFormAction === 'sign up',
+        {util.renderIf(this.props.authFormAction === 'Sign Up',
           <div>
             <h2 className='title'>signup.</h2>
             <input
               className={util.classToggler({error: emailError})}
               type='text'
               name='email'
-              placeholder='email'
+              placeholder='Email Address'
               value={this.state.email}
               onChange={this.handleChange}
               onFocus={this.handleFocus}
@@ -146,7 +146,7 @@ class UserAuthForm extends React.Component {
           </div>
         )}
 
-        {util.renderIf(!this.props.authFormAction === 'sign in',
+        {util.renderIf(!this.props.authFormAction === 'Sign In',
             <h2 className='title'>signin.</h2>
         )}
 
@@ -154,7 +154,7 @@ class UserAuthForm extends React.Component {
           className={util.classToggler({error: usernameError || !usernameAvailable})}
           type='text'
           name='username'
-          placeholder='username'
+          placeholder='Username'
           value={this.state.username}
           onChange={this.handleChange}
           onFocus={this.handleFocus}
@@ -162,7 +162,7 @@ class UserAuthForm extends React.Component {
         />
         <Tooltip message={usernameError} show={focused === 'username' || submitted}/>
 
-        {util.renderIf(username,
+        {util.renderIf(username && this.props.authFormAction=== 'Sign Up',
           <div className='username-availability-outer'>
             <p className='username-availability'>
               {username} {usernameAvailable ? 'available': 'not available'}
@@ -175,7 +175,7 @@ class UserAuthForm extends React.Component {
           className={util.classToggler({passwordError})}
           type='password'
           name='password'
-          placeholder='password'
+          placeholder='Password (case sensitive)'
           value={this.state.password}
           onChange={this.handleChange}
           onFocus={this.handleFocus}

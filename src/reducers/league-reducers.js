@@ -10,6 +10,9 @@ export default (state=[], action) => {
   switch(type) {
     case 'LEAGUE_FETCH':
       return payload;
+    case 'LEAGUES_FETCH':
+      console.log('leagues_fetch: ', payload);
+      return [...payload, ...state];
     case 'LEAGUE_CREATE':
       validateLeague(payload);
       return [payload, ...state];

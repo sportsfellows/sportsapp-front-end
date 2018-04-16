@@ -15,6 +15,11 @@ export const leagueFetch = league => ({
   payload: league,
 });
 
+export const leaguesFetch = leagues => ({
+  type: 'LEAGUES_FETCH',
+  payload: leagues,
+});
+
 export const leagueDelete = league => ({
   type: 'LEAGUE_DELETE',
   payload: league,
@@ -30,7 +35,21 @@ export const leagueFetchRequest = league => (dispatch, getState) => {
     });
 };
 
+export const leaguesFetchRequest = leaguesArr => (dispatch, getState) => {
+  console.log('leagues fetch hit: ', leaguesArr);
+  let { userAuth } = getState();
+  return superagent.get(`${__API_URL__}/api/leagues/user`)
+    .set('Authorization', `Bearer ${userAuth}`)
+    .query(leaguesArr)
+    .then(res => {
+      console.log('res.body.data: ', res.body);
+      dispatch(leaguesFetch(res.body));
+      return res;
+    });
+};
+
 export const leagueCreateRequest = league => (dispatch, getState) => {
+  console.log('league create req hit');
   let { userAuth } = getState();
   return superagent.post(`${__API_URL__}/api/sportingevent/${league.sportingEventID}/league`)
     .set('Authorization', `Bearer ${userAuth}`)

@@ -3,17 +3,17 @@ import superagent from 'superagent';
 import { isEmail, isAlphanumeric, isAscii } from 'validator';
 // import debounce from 'lodash/fp/debounce';
 
-import Tooltip from '../tooltip';
+import Tooltip from '../helpers/tooltip';
 import * as util from '../../lib/util';
 
 class LeagueForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = props.league ? this.props.league : { leagueName: '', scoring: '', poolSize: '', privacy: '', password: '',   leagueNameError: null, poolSizeError: null, leagueNameAvailable: true, passwordError: null, error: null, focused: null, submitted: false, };
+    this.state = props.league ? this.props.league : { leagueName: '', scoring: 'regular', poolSize: '', privacy: 'public', password: '',   leagueNameError: null, poolSizeError: null, leagueNameAvailable: true, passwordError: null, error: null, focused: null, submitted: false, };
   }
 
   componentWillUnmount() {
-    this.setState({ leagueName: '', scoring: '', poolSize: '', privacy: '', password: '' });
+    this.setState({ leagueName: '', scoring: 'regular', poolSize: '', privacy: 'public', password: '' });
   }
 
   validateInput = e => {
@@ -98,7 +98,7 @@ class LeagueForm extends React.Component {
   };
 
   render(){
-    let { focused, submitted, username, emailError, passwordError, usernameError, usernameAvailable } = this.state;
+    let { focused, submitted, leagueName, emailError, passwordError, leagueNameError, leagueNameAvailable } = this.state;
     let buttonText = this.props.league ? 'update' : 'create';
     return (
       <form onSubmit={this.handleSubmit} className={util.classToggler({
@@ -152,6 +152,7 @@ class LeagueForm extends React.Component {
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
+          checked
         />
         <label>regular</label>
 
@@ -174,6 +175,7 @@ class LeagueForm extends React.Component {
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
+          checked
         />
         <label>public</label>
 
@@ -188,7 +190,7 @@ class LeagueForm extends React.Component {
         <label>private</label>
         </div>
 
-        {util.renderIf(input[name='privacy'].value === 'private',
+        {util.renderIf(this.state.privacy === 'private',
           <div>
             <input
               className={util.classToggler({passwordError})}
