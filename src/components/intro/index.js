@@ -2,41 +2,43 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
-import * as util from './../../lib/util.js';
-import Modal from '../modal';
+import Modal from '../helpers/modal';
 import UserAuthForm from '../userAuth-form';
 import { signUpRequest, signInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import { leaguesFetchRequest } from '../../actions/league-actions.js';
+import * as util from './../../lib/util.js';
 
 class Intro extends React.Component {
   constructor(props){
     super(props);
-    this.state = { authFormAction: 'sign up', formDisplay: false, };
+    this.state = { authFormAction: 'Sign Up', formDisplay: false, };
   }
 
   handleSignin = user => {
     console.log('handle signin: ', user);
-    let { userProfileFetch, history } = this.props;
     return this.props.signIn(user)
-      .then(() => userProfileFetch())
-      // .then(() => history.push('/'))
+      .then(() => this.props.userProfileFetch())
+      .then(profile => {
+        console.log('profile: ', profile.body.leagues);
+        return this.props.leaguesFetch(profile.body.leagues);
+      })
+      // .then(() => this.props.leaguesFetch(["5ad43fc9b9d63b823e098f54", "5ad44c0db9d63b823e098f57"]))
       .catch(util.logError);
   };
 
   handleSignup = user => {
     console.log('handle signup: ', user);
     return this.props.signUp(user)
-      // .then(() => this.props.history.push('/'))
+      .then(() => this.props.userProfileFetch())
       .catch(util.logError);
   }
 
   render() {
-    let background = require('./../assets/introBackground.png');
-    let lebron = require('./../assets/introLebron.png');
-    let curry = require('./../assets/introCurry.png');
-
-    // let authFormAction = 'sign up';
-    let handleComplete = this.state.authFormAction === 'sign up' ? this.handleSignup : this.handleSignin;
+    let background = require('./../helpers/assets/introBackground.png');
+    let lebron = require('./../helpers/assets/introLebron.png');
+    let curry = require('./../helpers/assets/introCurry.png');
+    let handleComplete = this.state.authFormAction === 'Sign Up' ? this.handleSignup : this.handleSignin;
     
     return (
       <div className="intro">
@@ -68,17 +70,19 @@ class Intro extends React.Component {
           <div>
             {util.renderIf(this.state.formDisplay,
               <div>
-                <UserAuthForm authFormAction={this.state.authFormAction} onComplete={handleComplete} />
+                <Modal heading='Bracket Busters' close={() => this.setState({ formDisplay: false })}>
+                  <UserAuthForm authFormAction={this.state.authFormAction} onComplete={handleComplete} />
 
-                <div className='userauth-buttons'>
-                  {util.renderIf(this.state.authFormAction==='sign in',
-                    <button onClick={() => this.setState({authFormAction: 'sign up'})}>signup</button>
-                  )}
+                  <div className='userauth-buttons'>
+                    {util.renderIf(this.state.authFormAction==='Sign In',
+                      <button onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
+                    )}
 
-                  {util.renderIf(this.state.authFormAction==='sign up',
-                    <button onClick={() => this.setState({authFormAction: 'sign in'})}>signin</button>
-                  )}
-                </div>
+                    {util.renderIf(this.state.authFormAction==='Sign Up',
+                      <button onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
+                    )}
+                  </div>
+                </Modal>
               </div>
             )}
           </div>
@@ -89,7 +93,8 @@ class Intro extends React.Component {
 
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
-  userprofile: state.userprofile,
+  userProfile: state.userProfile,
+  leagues: state.leagues,
 });
 
 let mapDispatchToProps = dispatch => {
@@ -97,6 +102,7 @@ let mapDispatchToProps = dispatch => {
     signUp: user => dispatch(signUpRequest(user)),
     signIn: user => dispatch(signInRequest(user)),
     userProfileFetch: () => dispatch(userProfileFetchRequest()),
+    leaguesFetch: leagueArr => dispatch(leaguesFetchRequest(leagueArr)),
   };
 };
 

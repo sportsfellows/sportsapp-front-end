@@ -4,12 +4,14 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import * as util from '../../lib/util.js';
 import Navbar from '../navbar';
-import LandingPage from '../landing-page';
-import LeagueContainer from '../league-container';
-// import Group from '../group';
-import Profile from '../profile';
+import LandingContainer from '../landing-container';
+import LeagueAllContainer from '../league-all-container';
+import LeagueItemContainer from '../league-item-container';
+import GroupAllContainer from '../group-all-container';
+import GroupItemContainer from '../group-item-container';
+import ProfileContainer from '../profile-container';
 import Footer from '../footer';
-import { signIn } from '../../actions/userAuth-actions.js';
+import { signIn, tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 
 class App extends React.Component {
@@ -18,10 +20,12 @@ class App extends React.Component {
       <BrowserRouter>
         <section>
           <Route path='*' component={Navbar} />
-          <Route exact path='/' component={LandingPage} />
-          <Route path='/league/:leagueID' component={LeagueContainer} />
-          {/* <Route path='/group/:groupID' component={Group} />
-          <Route path='/user/:profileID' component={Profile} /> */}
+          <Route exact path='/' component={LandingContainer} />
+          <Route exact path='/leagues' component={LeagueAllContainer} />
+          <Route exact path='/league/:leagueID' component={LeagueItemContainer} />
+          <Route exact path='/groups' component={GroupAllContainer} />
+          <Route path='/group/:groupID' component={GroupItemContainer} />
+          <Route exact path='/user/:profileID' component={ProfileContainer} /> 
           <Route path='*' component={Footer} />
         </section>
       </BrowserRouter>
@@ -30,12 +34,14 @@ class App extends React.Component {
 }
 
 let mapStateToProps = state => ({
+  userAuth: state.userAuth,
   userProfile: state.userProfile,
 });
 
 let mapDispatchToProps = dispatch => ({
   signIn: token => dispatch(signIn(token)),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
+  tokenSignIn: token => dispatch(tokenSignInRequest(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
