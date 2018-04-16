@@ -1,3 +1,13 @@
+@import '../lib/vars'; 
+
+
+.font-sm {
+  @include responsive-font(2.5vw, 12px, 20px);
+}
+.font-md {
+  @include responsive-font(3.8vw, 20px, 32px);
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -29,4 +39,10 @@ header {
 main {
   margin-top: 38px;
   position: relative;
+}
+input {
+  box-sizing : border-box;
+}
+button {
+  cursor: pointer;
 }

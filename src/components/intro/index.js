@@ -11,7 +11,7 @@ import * as util from './../../lib/util.js';
 class Intro extends React.Component {
   constructor(props){
     super(props);
-    this.state = { authFormAction: 'sign up', formDisplay: false, };
+    this.state = { authFormAction: 'Sign Up', formDisplay: false, };
   }
 
   handleSignin = user => {
@@ -33,8 +33,8 @@ class Intro extends React.Component {
     let lebron = require('./../assets/introLebron.png');
     let curry = require('./../assets/introCurry.png');
 
-    // let authFormAction = 'sign up';
-    let handleComplete = this.state.authFormAction === 'sign up' ? this.handleSignup : this.handleSignin;
+    // let authFormAction = 'Sign Up';
+    let handleComplete = this.state.authFormAction === 'Sign Up' ? this.handleSignup : this.handleSignin;
     
     return (
       <div className="intro">
@@ -66,17 +66,19 @@ class Intro extends React.Component {
           <div>
             {util.renderIf(this.state.formDisplay,
               <div>
-                <UserAuthForm authFormAction={this.state.authFormAction} onComplete={handleComplete} />
+                <Modal heading='Bracket Busters' close={() => this.setState({ formDisplay: false })}>
+                  <UserAuthForm authFormAction={this.state.authFormAction} onComplete={handleComplete} />
 
-                <div className='userauth-buttons'>
-                  {util.renderIf(this.state.authFormAction==='sign in',
-                    <button onClick={() => this.setState({authFormAction: 'sign up'})}>sign up</button>
-                  )}
+                  <div className='userauth-buttons'>
+                    {util.renderIf(this.state.authFormAction==='Sign In',
+                      <button onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
+                    )}
 
-                  {util.renderIf(this.state.authFormAction==='sign up',
-                    <button onClick={() => this.setState({authFormAction: 'sign in'})}>sign in</button>
-                  )}
-                </div>
+                    {util.renderIf(this.state.authFormAction==='Sign Up',
+                      <button onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
+                    )}
+                  </div>
+                </Modal>
               </div>
             )}
           </div>
