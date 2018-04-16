@@ -20,10 +20,8 @@ class Intro extends React.Component {
     return this.props.signIn(user)
       .then(() => this.props.userProfileFetch())
       .then(profile => {
-        console.log('profile: ', profile.body.leagues);
         return this.props.leaguesFetch(profile.body.leagues);
       })
-      // .then(() => this.props.leaguesFetch(["5ad43fc9b9d63b823e098f54", "5ad44c0db9d63b823e098f57"]))
       .catch(util.logError);
   };
 

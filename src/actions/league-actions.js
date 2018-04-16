@@ -36,7 +36,6 @@ export const leagueFetchRequest = league => (dispatch, getState) => {
 };
 
 export const leaguesFetchRequest = leaguesArr => (dispatch, getState) => {
-  console.log('leagues fetch hit: ', leaguesArr);
   let { userAuth } = getState();
   return superagent.get(`${__API_URL__}/api/leagues/user`)
     .set('Authorization', `Bearer ${userAuth}`)
