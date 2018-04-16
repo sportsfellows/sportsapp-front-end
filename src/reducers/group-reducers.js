@@ -10,6 +10,8 @@ export default (state=[], action) => {
   switch(type) {
     case 'GROUP_FETCH':
       return payload;
+    case 'GROUPS_FETCH':
+      return [...payload, ...state];
     case 'GROUP_CREATE':
       validateGroup(payload);
       return [payload, ...state];

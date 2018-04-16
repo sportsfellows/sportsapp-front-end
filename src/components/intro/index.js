@@ -7,6 +7,7 @@ import UserAuthForm from '../userAuth-form';
 import { signUpRequest, signInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest } from '../../actions/league-actions.js';
+import { groupsFetchRequest } from '../../actions/group-actions.js';
 import * as util from './../../lib/util.js';
 
 class Intro extends React.Component {
@@ -20,7 +21,10 @@ class Intro extends React.Component {
     return this.props.signIn(user)
       .then(() => this.props.userProfileFetch())
       .then(profile => {
-        return this.props.leaguesFetch(profile.body.leagues);
+        return (profile.body.leagues.length ? this.props.leaguesFetch(profile.body.leagues) : profile);
+      })
+      .then(() => {
+        if(this.props.userProfile.groups.length) return this.props.groupsFetch(this.props.userProfile.groups);
       })
       .catch(util.logError);
   };
@@ -101,6 +105,7 @@ let mapDispatchToProps = dispatch => {
     signIn: user => dispatch(signInRequest(user)),
     userProfileFetch: () => dispatch(userProfileFetchRequest()),
     leaguesFetch: leagueArr => dispatch(leaguesFetchRequest(leagueArr)),
+    groupsFetch: groupArr => dispatch(groupsFetchRequest(groupArr)),
   };
 };
 
