@@ -8,7 +8,8 @@ import ProfileForm from '../profile-form';
 import Modal from '../helpers/modal';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest, userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
-import { leagueCreateRequest } from '../../actions/league-actions.js';
+import { leaguesFetchRequest, leagueCreateRequest } from '../../actions/league-actions.js';
+import { groupsFetchRequest } from '../../actions/group-actions.js';
 import * as util from './../../lib/util.js';
 
 class LandingContainer extends React.Component {
@@ -85,6 +86,8 @@ let mapStateToProps = state => ({
 let mapDispatchToProps = dispatch => ({
   tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
+  leaguesFetch: leagueArr => dispatch(leaguesFetchRequest(leagueArr)),
+  groupsFetch: groupArr => dispatch(groupsFetchRequest(groupArr)),
   userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
   leagueCreate: league => dispatch(leagueCreateRequest(league)),
 });

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/league-actions.js';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import { leaguesFetchRequest, leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/league-actions.js';
+import { groupsFetchRequest } from '../../actions/group-actions.js';
 import LeagueForm from '../league-form';
 import * as util from '../../lib/util.js';
 
@@ -44,11 +45,14 @@ let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
   leagues: state.leagues,
+  groups: state.groups,
 });
 
 let mapDispatchToProps = dispatch => ({
   tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
+  leaguesFetch: leagueArr => dispatch(leaguesFetchRequest(leagueArr)),
+  groupsFetch: groupArr => dispatch(groupsFetchRequest(groupArr)),
   leagueFetch: league => dispatch(leagueFetchRequest(league)),
   leagueUpdate: league => dispatch(leagueUpdateRequest(league)),
   leagueDelete: league => dispatch(leagueDeleteRequest(league)),

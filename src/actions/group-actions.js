@@ -53,10 +53,12 @@ export const groupFetchRequest = group => (dispatch, getState) => {
 
 export const groupsFetchRequest = groupsArr => (dispatch, getState) => {
   let { userAuth } = getState();
+  console.log('groups fetch req hit: ', groupsArr);
   return superagent.post(`${__API_URL__}/api/groups/user`)
     .set('Authorization', `Bearer ${userAuth}`)
     .send(groupsArr)
     .then(res => {
+      console.log('res.body: ', res.body);
       dispatch(groupsFetch(res.body));
       return res;
     });

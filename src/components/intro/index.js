@@ -21,10 +21,15 @@ class Intro extends React.Component {
     return this.props.signIn(user)
       .then(() => this.props.userProfileFetch())
       .then(profile => {
-        return (profile.body.leagues.length ? this.props.leaguesFetch(profile.body.leagues) : profile);
+        // return (profile.body.leagues.length ? this.props.leaguesFetch(profile.body.leagues) : profile);
+        if(profile.body.leagues.length) this.props.leaguesFetch(profile.body.leagues);
+        return profile;
       })
-      .then(() => {
-        if(this.props.userProfile.groups.length) return this.props.groupsFetch(this.props.userProfile.groups);
+      .then(profile => {
+        // if(this.props.userProfile.groups.length) return this.props.groupsFetch(this.props.userProfile.groups);
+        console.log('profile.body.groups: ', profile.body.groups);
+        return this.props.groupsFetch(profile.body.groups);
+        // if(profile.body.groups.length) this.props.groupsFetch(profile.body.groups);
       })
       .catch(util.logError);
   };
@@ -34,7 +39,7 @@ class Intro extends React.Component {
     return this.props.signUp(user)
       .then(() => this.props.userProfileFetch())
       .catch(util.logError);
-  }
+  };
 
   render() {
     let background = require('./../helpers/assets/introBackground.png');
@@ -97,6 +102,7 @@ let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
   leagues: state.leagues,
+  groups: state.groups,
 });
 
 let mapDispatchToProps = dispatch => {
