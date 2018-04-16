@@ -23,7 +23,7 @@ class ProfileContainer extends React.Component {
   render(){
     return (
       <div className='profile-container page-outer-div'>
-        <h2>tell us about yourself</h2>
+        <h2>tell us about yourself.</h2>
 
         <ProfileForm 
           userProfile={this.props.userProfile} 

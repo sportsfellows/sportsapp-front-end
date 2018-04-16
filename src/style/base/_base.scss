@@ -49,3 +49,8 @@ input {
 button {
   cursor: pointer;
 }
+
+h2.title, h2 {
+  margin-left: $margin;
+  margin-bottom: $margin;
+}

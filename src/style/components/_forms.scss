@@ -1,19 +1,74 @@
 @import '../lib/vars'; 
 
-input {
-  width: 100%;
-  border-radius: $border-radius;
-  border-color: $color-black;
-  border-width: 1px;
-  border-style: solid;
-  padding: $pad;
-  margin: $margin;
+.modal-body {
+
+  input {
+    width: 100%;
+    border-radius: $border-radius;
+    border-color: $color-black;
+    border-width: 1px;
+    border-style: solid;
+    padding: $pad;
+    margin: $margin;
+  }
+
+  input:focus {
+    background-color: $color-primary-hover;
+    border-radius: $border-radius;
+    border-color: $color-black;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  button {
+    padding: $pad;
+    margin: $margin;
+    border-radius: $border-radius;
+    border-color: $color-black;
+    border-width: 1px;
+    border-style: solid;
+    width: 20%;
+  }
+
+  button:hover {
+    background-color: $color-primary-hover;
+  }
 }
 
-input:focus {
-  background-color: $color-primary-hover;
-  border-radius: $border-radius;
-  border-color: $color-black;
-  border-width: 1px;
-  border-style: solid;
+.profile-form, .league-form {
+  input {
+    width: 80%;
+    border-radius: $border-radius;
+    border-color: $color-black;
+    border-width: 1px;
+    border-style: solid;
+    padding: $pad;
+    margin: $margin;
+  }
+
+  input[type="radio"] {
+    width: 5%;
+  }
+
+  input:focus {
+    background-color: $color-primary-hover;
+    border-radius: $border-radius;
+    border-color: $color-black;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  button {
+    padding: $pad;
+    margin: $margin;
+    border-radius: $border-radius;
+    border-color: $color-black;
+    border-width: 1px;
+    border-style: solid;
+    width: 20%;
+  }
+
+  button:hover {
+    background-color: $color-primary-hover;
+  }
 }

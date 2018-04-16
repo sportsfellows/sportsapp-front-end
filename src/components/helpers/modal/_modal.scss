@@ -53,7 +53,10 @@
 }
 .modal-heading {
   // choose font size
-  font-size: 3vw;
+  font-size: 3.5vw;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $color-gray;
 }
 
 // .intro {
