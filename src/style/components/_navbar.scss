@@ -1,7 +1,7 @@
 .logo {
   position: absolute;
   left: 16px;
-  top: 15px;
+  top: 16px;
   height: auto;
   z-index: 103;
 }
@@ -128,7 +128,7 @@ nav .avatarDiv{
 }
 nav .avatar {
   display: inline-block;
-  margin: $margin;
+  margin: 4px;
 }
 nav .avatar img {
   border-radius: 50%;
