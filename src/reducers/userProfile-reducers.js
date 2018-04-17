@@ -21,6 +21,7 @@ export default (state=null, action) => {
     case 'LEAGUE_JOIN':
       console.log('payload: ', payload);
       console.log('state: ', state);
+      state.leagues.push(payload._id);
       return state;
     case 'SIGN_OUT':
       return null;

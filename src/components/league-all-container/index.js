@@ -33,8 +33,12 @@ class LeagueAllContainer extends React.Component {
   };
 
   handleLeagueJoin = leagueID => {
+    console.log('leagueID: ', leagueID);
     return this.props.leagueJoin(leagueID)
-      .then(() => this.props.history.push(`/league/${this.props.league._id}`))
+      .then(league => {
+        console.log('league: ', league);
+        this.props.history.push(`/league/${league._id}`)
+      })
       .catch(util.logError);
   };
 
