@@ -6,6 +6,8 @@ export default (state={}, action) => {
       return payload;
     case 'GROUP_CREATE':
       return payload;
+    case 'GROUP_JOIN':
+      return payload;
     case 'GROUP_UPDATE':
       if(state === {}) throw new Error('USAGE ERROR: can not update group not in state, currentGroup reducer');
       return payload;
