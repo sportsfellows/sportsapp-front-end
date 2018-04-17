@@ -3,7 +3,6 @@ export default (state=[], action) => {
 
   switch(type) {
     case 'ALL_PUBLIC_LEAGUES_FETCH':
-      console.log('payload: ', payload);
       return payload;
     case 'SIGN_OUT':
       return [];

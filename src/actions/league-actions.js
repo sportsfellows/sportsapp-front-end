@@ -107,7 +107,7 @@ export const leagueJoinRequest = leagueID => (dispatch, getState) => {
     .then(res => {
       console.log('res.body: ', res.body);
       dispatch(leagueJoin(res.body));
-      return res;
+      return res.body;
     });
 };
 
@@ -120,6 +120,6 @@ export const privateLeagueJoinRequest = credentials => (dispatch, getState) => {
     .then(res => {
       console.log('res.body: ', res.body);
       dispatch(leagueJoin(res.body));
-      return res;
+      return res.body;
     });
 };

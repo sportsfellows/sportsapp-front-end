@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
@@ -12,8 +11,7 @@ import * as util from '../../lib/util.js';
 class LeagueAllContainer extends React.Component {
   constructor(props){
     super(props);
-    
-  };
+  }
 
   componentWillMount() {
     util.userValidation(this.props);

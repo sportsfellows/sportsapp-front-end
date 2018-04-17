@@ -25,6 +25,11 @@ export const allPublicGroupsFetch = groups => ({
   payload: groups,
 });
 
+export const groupJoin = group => ({
+  type: 'GROUP_JOIN',
+  payload: group,
+});
+
 export const groupDelete = group => ({
   type: 'GROUP_DELETE',
   payload: group,
@@ -66,10 +71,12 @@ export const groupsFetchRequest = groupsArr => (dispatch, getState) => {
 
 export const allPublicGroupsFetchRequest = () => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.get(`${__API_URL__}/api/groups/allpublic`)
+  console.log('allpublic groups hit');
+  return superagent.get(`${__API_URL__}/api/groups/all/public`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      dispatch(groupFetch(res.body));
+      console.log('res.body: ', res.body);
+      dispatch(allPublicGroupsFetch(res.body));
       return res;
     });
 };
@@ -93,5 +100,30 @@ export const groupUpdateRequest = group => (dispatch, getState) => {
     .then(res => {
       dispatch(groupUpdate(res.body));
       return res;
+    });
+};
+
+export const groupJoinRequest = groupID => (dispatch, getState) => {
+  let { userAuth } = getState();
+  console.log('group join request hit: ', groupID);
+  return superagent.put(`${__API_URL__}/api/group/${groupID}/adduser`)
+    .set('Authorization', `Bearer ${userAuth}`)
+    .then(res => {
+      console.log('res.body: ', res.body);
+      dispatch(groupJoin(res.body));
+      return res.body;
+    });
+};
+
+export const privateGroupJoinRequest = credentials => (dispatch, getState) => {
+  let { userAuth } = getState();
+  console.log('privategroupjoinreq hit: ', credentials);
+  return superagent.post(`${__API_URL__}/api/group/private/adduser`)
+    .set('Authorization', `Bearer ${userAuth}`)
+    .send(credentials)
+    .then(res => {
+      console.log('res.body: ', res.body);
+      dispatch(groupJoin(res.body));
+      return res.body;
     });
 };
