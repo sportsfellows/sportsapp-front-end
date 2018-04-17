@@ -1,9 +1,9 @@
 .link {
   cursor: pointer;
 }
-.hidden {
-  display: none;
-}
+// .hidden {
+//   display: none;
+// }
 .center {
   text-align: center;
 }
@@ -12,4 +12,8 @@
 }
 .page-outer-div {
   padding-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
 }

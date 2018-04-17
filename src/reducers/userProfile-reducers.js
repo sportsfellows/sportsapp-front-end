@@ -18,6 +18,9 @@ export default (state=null, action) => {
     case 'USERPROFILE_FETCH':
       validateUserProfile(payload);
       return payload;
+    case 'LEAGUE_JOIN':
+      state.leagues.push(payload._id);
+      return state;
     case 'SIGN_OUT':
       return null;
     default:

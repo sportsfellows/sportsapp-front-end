@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 // import { leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/group-actions.js';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
+import { leaguesFetchRequest } from '../../actions/league-actions.js';
+import { groupsFetchRequest } from '../../actions/group-actions.js';
 import GroupForm from '../group-form';
 import * as util from '../../lib/util.js';
 
@@ -44,12 +46,15 @@ class GroupItemContainer extends React.Component {
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
+  leagues: state.leagues,
   groups: state.groups,
 });
 
 let mapDispatchToProps = dispatch => ({
   tokenSignIn: token => dispatch(tokenSignInRequest(token)),
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
+  leaguesFetch: leagueArr => dispatch(leaguesFetchRequest(leagueArr)),
+  groupsFetch: groupArr => dispatch(groupsFetchRequest(groupArr)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupItemContainer);

@@ -44,9 +44,9 @@ class Navbar extends React.Component {
                     {profileName}
                   </div>
                   <div className={ this.state.hidden ? 'hidden dropdownDiv' : 'dropdownDiv' }>
-                    <Link to={profileLink} className='link'>profile</Link>
-                    <Link to='/leagues' className='link'>leagues</Link>
-                    <Link to='/groups' className='link'>groups</Link>
+                    <Link to={profileLink} className='link' onClick={() => this.setState({ hidden: !this.state.hidden })}>profile</Link>
+                    <Link to='/leagues' className='link' onClick={() => this.setState({ hidden: !this.state.hidden })}>leagues</Link>
+                    <Link to='/groups' className='link' onClick={() => this.setState({ hidden: !this.state.hidden })}>groups</Link>
                     <p className='logout link' onClick={this.handleSignOut}>logout</p>
                   </div>
                 </div>

@@ -11,7 +11,6 @@ export default (state=[], action) => {
     case 'LEAGUE_FETCH':
       return payload;
     case 'LEAGUES_FETCH':
-      console.log('leagues_fetch: ', payload);
       return [...payload, ...state];
     case 'LEAGUE_CREATE':
       validateLeague(payload);
@@ -24,6 +23,8 @@ export default (state=[], action) => {
       if(state === []) throw new Error('USAGE ERROR: can not delete league not in state');
       validateLeague(payload);
       return state.filter(league => league._id !== payload._id);
+    case 'LEAGUE_JOIN':
+      return [payload, ...state];
     case 'SIGN_OUT':
       return [];
     default:

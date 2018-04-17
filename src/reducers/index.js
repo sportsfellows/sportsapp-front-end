@@ -10,6 +10,11 @@ import scoreBoards from './scoreBoard-reducers';
 import games from './game-reducers';
 import userPicks from './userPick-reducers';
 import teams from './team-reducers';
+import currentLeague from './currentLeague-reducers.js';
+import currentGroup from './currentGroup-reducers.js';
+import publicLeagues from './allPublicLeagues-reducers.js';
+import publicGroups from './allPublicGroups-reducers.js';
+
 
 
 export default combineReducers({
@@ -24,4 +29,8 @@ export default combineReducers({
   games,
   userPicks,
   teams,
+  currentLeague,
+  currentGroup,
+  publicLeagues,
+  publicGroups,
 });
