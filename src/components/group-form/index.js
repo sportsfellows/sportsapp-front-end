@@ -9,7 +9,7 @@ import * as util from '../../lib/util';
 class GroupForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = props.group ? this.props.group : { groupName: '', privacy: 'public', motto: '', image: '', password: '', tags: '', groupNameError: null, groupNameAvailable: true, passwordError: null, error: null, focused: null, submitted: false, };
+    this.state = props.group ? this.props.group : { groupName: '', privacy: 'public', motto: '', image: '', password: '', groupNameError: null, groupNameAvailable: true, passwordError: null, error: null, focused: null, submitted: false, };
   }
 
   componentWillUnmount() {
@@ -129,65 +129,52 @@ class GroupForm extends React.Component {
         {util.renderIf(groupName,
           <div className='groupName-availability-outer'>
             <p className='groupName-availability'>
-              {groupName} {groupNameAvailable ? 'available': 'not available'}
+              {groupName} {groupNameAvailable ? 'is available': 'is not available'}
             </p>
           </div>
         )}
 
         <input
           type='text'
-          name='poolSize'
-          placeholder='pool size'
-          value={this.state.poolSize}
+          name='image'
+          placeholder='image url'
+          value={this.state.image}
+          onChange={this.handleChange}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+        />
+
+        <input
+          type='text'
+          name='motto'
+          placeholder='brief description'
+          value={this.state.motto}
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
         />
 
         <div>
-        <input 
-          type="radio"
-          name="scoring" 
-          value="regular"
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          checked
-        />
-        <label>regular</label>
+          <input 
+            type="radio"
+            name="privacy" 
+            value="public"
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            checked
+          />
+          <label>public</label>
 
-        <input 
-          type="radio"
-          name="scoring" 
-          value="underDog"
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        />
-        <label>Under Dog</label>
-        </div>
-
-        <div>
-        <input 
-          type="radio"
-          name="privacy" 
-          value="public"
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          checked
-        />
-        <label>public</label>
-
-        <input 
-          type="radio"
-          name="privacy" 
-          value="private"
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        />
-        <label>private</label>
+          <input 
+            type="radio"
+            name="privacy" 
+            value="private"
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+          />
+          <label>private</label>
         </div>
 
         {util.renderIf(this.state.privacy === 'private',

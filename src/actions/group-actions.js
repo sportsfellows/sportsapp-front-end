@@ -69,7 +69,7 @@ export const allPublicGroupsFetchRequest = () => (dispatch, getState) => {
   return superagent.get(`${__API_URL__}/api/groups/allpublic`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      dispatch(groupFetch(res.body.data));
+      dispatch(groupFetch(res.body));
       return res;
     });
 };

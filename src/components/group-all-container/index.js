@@ -18,7 +18,7 @@ class GroupAllContainer extends React.Component {
 
   render() {
     return (
-      <section className='page-outer-div'>
+      <section className='groups-container page-outer-div'>
         <p> all groups page</p>
       </section>
     );

@@ -6,6 +6,8 @@ export default (state={}, action) => {
       return payload;
     case 'LEAGUE_CREATE':
       return payload;
+    case 'LEAGUE_JOIN':
+      return payload;
     case 'LEAGUE_UPDATE':
       if(state === {}) throw new Error('USAGE ERROR: can not update league not in state, currentLeague reducer');
       return payload;

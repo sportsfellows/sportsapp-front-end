@@ -1,0 +1,27 @@
+@import "../../../style/lib/vars";
+
+.inline-containerleague, .inline-containergroup {
+  padding: 1vw;
+  background: #fff;
+  margin: 20px 0;
+  position: relative;
+  text-align: center;
+}
+.inner-wrapper {
+  padding: 1vw;
+}
+.join-text {
+  display: inline-block;
+}
+.join-button {
+  color: $color-primary;
+  margin-top: 1rem;
+  width:100%;
+  background: #FFF;
+}
+@media only screen and (min-width: 500px) {
+  .join-button {
+    width: auto;
+    margin-left: 10vw;
+  }
+}

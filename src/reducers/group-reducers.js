@@ -1,6 +1,6 @@
 let validateGroup = group => {
-  if(!group._id || !group.groupName || !group.sportingEventID || !group.owner || !group.scoring || !group.poolSize || !group.privacy) {
-    throw new Error('VALIDATION ERROR: group requires a id, name, sportingeventid, owner, scoring, poolsize and privacy.');
+  if(!group._id || !group.groupName || !group.size|| !group.createdOn || !group.owner || !group.privacy || !group.users) {
+    throw new Error('VALIDATION ERROR: group requires a id, name, size, createdOn date, owner, privacy and users.');
   }
 };
 

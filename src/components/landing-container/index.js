@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Intro from '../intro';
 import LeagueForm from '../league-form';
+import GroupForm from '../group-form';
 import ProfileForm from '../profile-form';
 import Modal from '../helpers/modal';
 import CreateSection from '../helpers/createSection';
+import JoinSection from '../helpers/joinSection';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest, userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest, leagueCreateRequest } from '../../actions/league-actions.js';
@@ -35,7 +37,7 @@ class LandingContainer extends React.Component {
   handleGroupCreate = group => {
     console.log('handle group create');
     return this.props.groupCreate(group)
-      .then(group => console.log('group created: ', group))
+      // .then(group => console.log('group created: ', group))
       .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
       .catch(util.logError);
   }
@@ -61,6 +63,8 @@ class LandingContainer extends React.Component {
         {util.renderIf(this.props.userAuth,
           <div>
             <CreateSection formType={formTypeLeague} handleCreate={() => this.setState({ leagueFormDisplay: true })}/>
+
+            <JoinSection joinType={formTypeLeague}/>
             
             {util.renderIf(this.state.leagueFormDisplay,
               <Modal heading='Create League' close={() => this.setState({ leagueFormDisplay: false })}>
@@ -70,19 +74,22 @@ class LandingContainer extends React.Component {
               </Modal>
             )}
 
-            {/* {util.renderIf(this.state.groupFormDisplay,
+            {this.props.leagues.map(league =>
+              <div key={league._id}>
+                <p>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</p>
+              </div>
+            )}
+
+            <CreateSection formType={formTypeGroup} handleCreate={() => this.setState({ groupFormDisplay: true })}/>
+
+            <JoinSection joinType={formTypeGroup}/>
+
+            {util.renderIf(this.state.groupFormDisplay,
               <Modal heading='Create Group' close={() => this.setState({ groupFormDisplay: false })}>
                 <GroupForm 
                   onComplete={this.handleGroupCreate} 
                 />
               </Modal>
-            )} */}
-
-
-            {this.props.leagues.map(league =>
-              <div key={league._id}>
-                <p>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</p>
-              </div>
             )}
 
             {this.props.groups.map(group =>
