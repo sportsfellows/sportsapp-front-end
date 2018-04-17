@@ -7,7 +7,7 @@ class CreateSection extends React.Component {
       <div className={`component-container${this.props.formType}`}>
         <div className='inner-wrapper'>
           <p className='create-header'>Create Your Own {this.props.formType}! </p>
-          <p className='create-text'>Create a {this.props.formType} of your own and invite your friendss!</p>
+          <p className='create-text'>Create a {this.props.formType} of your own, and invite your friends!</p>
           <button className='create-button' onClick={this.props.handleCreate}>Create {this.props.formType} </button>
         </div>
       </div>

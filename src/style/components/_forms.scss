@@ -62,7 +62,7 @@
     display: inline-block;
     width: 30%;
   }
-
+  
   div.radio-div {
     width: 48%;
     border-width: 1px;
@@ -88,3 +88,7 @@
     background-color: $color-primary-hover;
   }
 }
+
+  .group-form div {
+    margin: $margin;
+  }
