@@ -76,7 +76,7 @@ class LandingContainer extends React.Component {
 
             {this.props.leagues.map(league =>
               <div key={league._id}>
-                <p>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</p>
+                <p><Link to={`/league/${league._id}`} className='link'>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</Link></p>
               </div>
             )}
 
@@ -94,7 +94,7 @@ class LandingContainer extends React.Component {
 
             {this.props.groups.map(group =>
               <div key={group._id}>
-                <p>{group.groupName} {group.ownerName} {group.privacy} {group.size} </p>
+                <p><Link to={`/group/${group._id}`} className='link'>{group.groupName} {group.ownerName} {group.privacy} {group.size} </Link></p>
               </div>
             )}
 

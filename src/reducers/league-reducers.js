@@ -1,3 +1,5 @@
+import { checkAndAdd } from '../lib/util.js';
+
 let validateLeague = league => {
   if(!league._id || !league.leagueName || !league.sportingEventID || !league.owner || !league.scoring || !league.poolSize || !league.privacy) {
     throw new Error('VALIDATION ERROR: league requires a id, name, sportingeventid, owner, scoring, poolsize and privacy.');
@@ -9,7 +11,7 @@ export default (state=[], action) => {
 
   switch(type) {
     case 'LEAGUE_FETCH':
-      return payload;
+      return checkAndAdd(payload, state);
     case 'LEAGUES_FETCH':
       return [...payload, ...state];
     case 'LEAGUE_CREATE':

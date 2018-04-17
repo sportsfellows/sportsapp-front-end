@@ -4,7 +4,7 @@ import userProfile from './userProfile-reducers';
 import sportingEvent from './sportingEvent-reducers';
 import leagues from './league-reducers';
 import groups from './group-reducers';
-import messageBoard from './messageBoard-reducers';
+import messageBoards from './messageBoard-reducers';
 import comments from './comment-reducers';
 import scoreBoards from './scoreBoard-reducers';
 import games from './game-reducers';
@@ -12,6 +12,7 @@ import userPicks from './userPick-reducers';
 import teams from './team-reducers';
 import currentLeague from './currentLeague-reducers.js';
 import currentGroup from './currentGroup-reducers.js';
+import currentMessageBoard from './currentMessageBoard-reducers.js';
 import publicLeagues from './allPublicLeagues-reducers.js';
 import publicGroups from './allPublicGroups-reducers.js';
 
@@ -23,7 +24,7 @@ export default combineReducers({
   sportingEvent,
   leagues,
   groups,
-  messageBoard,
+  messageBoards,
   comments,
   scoreBoards,
   games,
@@ -31,6 +32,7 @@ export default combineReducers({
   teams,
   currentLeague,
   currentGroup,
+  currentMessageBoard,
   publicLeagues,
   publicGroups,
 });
