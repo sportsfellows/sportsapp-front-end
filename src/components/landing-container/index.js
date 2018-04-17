@@ -6,16 +6,17 @@ import Intro from '../intro';
 import LeagueForm from '../league-form';
 import ProfileForm from '../profile-form';
 import Modal from '../helpers/modal';
+import CreateSection from '../helpers/createSection';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest, userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest, leagueCreateRequest } from '../../actions/league-actions.js';
-import { groupsFetchRequest } from '../../actions/group-actions.js';
+import { groupsFetchRequest, groupCreateRequest } from '../../actions/group-actions.js';
 import * as util from './../../lib/util.js';
 
 class LandingContainer extends React.Component {
   constructor(props){
     super(props);
-    this.state = { profileFormDisplay: true,}
+    this.state = { profileFormDisplay: true, leagueFormDisplay: false, groupFormDisplay: false }
   }
 
   componentWillMount() {
@@ -23,10 +24,19 @@ class LandingContainer extends React.Component {
   }
 
   handleLeagueCreate = league => {
-    console.log('handle leage create hi');
+    console.log('handle league create');
     league.sportingEventID='5ad2a2bffb35c1479596fdc2';
     return this.props.leagueCreate(league)
-      // .then(() => )
+      // .then(league => console.log('league created: ', league.body._id))
+      .then(newLeague => this.props.history.push(`/league/${newLeague.body._id}`))
+      .catch(util.logError);
+  }
+
+  handleGroupCreate = group => {
+    console.log('handle group create');
+    return this.props.groupCreate(group)
+      .then(group => console.log('group created: ', group))
+      .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
       .catch(util.logError);
   }
 
@@ -39,6 +49,8 @@ class LandingContainer extends React.Component {
     console.log('hi');
     let { params } = this.props.match;
     let handleComplete = params.userAuth === 'signin' ? this.handleSignin : this.handleSignup;
+    let formTypeLeague = 'league';
+    let formTypeGroup = 'group';
     return (
       <section className='landing-page page-outer-div'>
         
@@ -46,12 +58,38 @@ class LandingContainer extends React.Component {
           <Intro />
         )}
 
-
         {util.renderIf(this.props.userAuth,
           <div>
-            <LeagueForm 
-              onComplete={this.handleLeagueCreate} 
-            />
+            <CreateSection formType={formTypeLeague} handleCreate={() => this.setState({ leagueFormDisplay: true })}/>
+            
+            {util.renderIf(this.state.leagueFormDisplay,
+              <Modal heading='Create League' close={() => this.setState({ leagueFormDisplay: false })}>
+                <LeagueForm 
+                  onComplete={this.handleLeagueCreate} 
+                />
+              </Modal>
+            )}
+
+            {/* {util.renderIf(this.state.groupFormDisplay,
+              <Modal heading='Create Group' close={() => this.setState({ groupFormDisplay: false })}>
+                <GroupForm 
+                  onComplete={this.handleGroupCreate} 
+                />
+              </Modal>
+            )} */}
+
+
+            {this.props.leagues.map(league =>
+              <div key={league._id}>
+                <p>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</p>
+              </div>
+            )}
+
+            {this.props.groups.map(group =>
+              <div key={group._id}>
+                <p>{group.groupName} {group.ownerName} {group.privacy} {group.size} </p>
+              </div>
+            )}
 
             {util.renderIf(this.state.profileFormDisplay && this.props.userProfile && this.props.userProfile.lastLogin === this.props.userProfile.createdOn,
               <Modal heading='Fill Out Your Profile'
@@ -90,6 +128,7 @@ let mapDispatchToProps = dispatch => ({
   groupsFetch: groupArr => dispatch(groupsFetchRequest(groupArr)),
   userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
   leagueCreate: league => dispatch(leagueCreateRequest(league)),
+  groupCreate: group => dispatch(groupCreateRequest(group)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer);
