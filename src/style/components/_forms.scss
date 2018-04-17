@@ -58,6 +58,21 @@
     border-style: solid;
   }
 
+  label {
+    display: inline-block;
+    width: 30%;
+  }
+
+  div.radio-div {
+    width: 48%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $color-black;
+    border-radius: $border-radius;
+    margin: $margin;
+    padding: $pad;
+  }
+
   button {
     padding: $pad;
     margin: $margin;
