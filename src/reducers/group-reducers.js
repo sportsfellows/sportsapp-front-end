@@ -1,3 +1,5 @@
+import { checkAndAdd } from '../lib/util.js';
+
 let validateGroup = group => {
   if(!group._id || !group.groupName || !group.size|| !group.createdOn || !group.owner || !group.privacy || !group.users) {
     throw new Error('VALIDATION ERROR: group requires a id, name, size, createdOn date, owner, privacy and users.');
@@ -9,7 +11,7 @@ export default (state=[], action) => {
 
   switch(type) {
     case 'GROUP_FETCH':
-      return payload;
+      return checkAndAdd(payload, state);
     case 'GROUPS_FETCH':
       return [...payload, ...state];
     case 'GROUP_CREATE':
@@ -23,6 +25,8 @@ export default (state=[], action) => {
       if(state === []) throw new Error('USAGE ERROR: can not delete group not in state');
       validateGroup(payload);
       return state.filter(group => group._id !== payload._id);
+    case 'GROUP_JOIN':
+      return [payload, ...state];
     case 'SIGN_OUT':
       return [];
     default:

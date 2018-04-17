@@ -5,6 +5,7 @@ import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest, leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/league-actions.js';
 import { groupsFetchRequest } from '../../actions/group-actions.js';
+import { messageBoardFetchRequest } from '../../actions/messageBoard-actions.js';
 import LeagueForm from '../league-form';
 import * as util from '../../lib/util.js';
 
@@ -45,7 +46,7 @@ let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
   leagues: state.leagues,
-  groups: state.groups,
+  messageBoards: state.messageBoards,
 });
 
 let mapDispatchToProps = dispatch => ({
@@ -56,6 +57,7 @@ let mapDispatchToProps = dispatch => ({
   leagueFetch: league => dispatch(leagueFetchRequest(league)),
   leagueUpdate: league => dispatch(leagueUpdateRequest(league)),
   leagueDelete: league => dispatch(leagueDeleteRequest(league)),
+  messageBoardFetch: messageBoardID => dispatch(messageBoardFetchRequest(messageBoardID)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeagueContainer);

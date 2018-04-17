@@ -1,11 +1,11 @@
-export default (state=[], action) => {
+export default (state={}, action) => {
   let { type, payload } = action;
 
   switch(type) {
-    case 'ALL_PUBLIC_LEAGUES_FETCH':
+    case 'MESSAGEBOARD_FETCH':
       return payload;
     case 'SIGN_OUT':
-      return [];
+      return {};
     default:
       return state;
   }

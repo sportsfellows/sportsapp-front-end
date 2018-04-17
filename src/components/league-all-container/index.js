@@ -1,35 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
-import { leaguesFetchRequest, allPublicLeaguesFetchRequest, leagueJoinRequest } from '../../actions/league-actions.js';
+import { leaguesFetchRequest, allPublicLeaguesFetchRequest, leagueJoinRequest, privateLeagueJoinRequest } from '../../actions/league-actions.js';
 import { groupsFetchRequest } from '../../actions/group-actions.js';
+import LeagueAllPrivateForm from '../league-all-private-form';
 import * as util from '../../lib/util.js';
 
 class LeagueAllContainer extends React.Component {
   constructor(props){
     super(props);
-  };
+  }
 
   componentWillMount() {
     util.userValidation(this.props);
     this.props.allPublicLeaguesFetch();
-  };
-
-  handleLeagueCreate = league => {
-    console.log('handle leage create hi');
-    league.sportingEventID='5ad2a2bffb35c1479596fdc2';
-    return this.props.leagueCreate(league)
-      // .then(() => )
-      .catch(util.logError);
-  };
-
-  handleComplete = league => {
-    return this.props.leagueUpdate(league)
-      .then(() => this.props.history.push(`/league/${this.props.league._id}`))
-      .catch(util.logError);
   };
 
   handleLeagueJoin = leagueID => {
@@ -38,6 +24,16 @@ class LeagueAllContainer extends React.Component {
       .then(league => {
         console.log('league: ', league);
         this.props.history.push(`/league/${league._id}`)
+      })
+      .catch(util.logError);
+  };
+
+  handlePrivateLeagueJoin = credentials => {
+    console.log('credentials: ', credentials);
+    return this.props.privateLeagueJoin(credentials)
+      .then(league => {
+        console.log('league: ', league);
+        return this.props.history.push(`/league/${league._id}`)
       })
       .catch(util.logError);
   };
@@ -52,6 +48,8 @@ class LeagueAllContainer extends React.Component {
             </div>
           )}
         </div>
+        
+        <LeagueAllPrivateForm onComplete={this.handlePrivateLeagueJoin}/>
 
       </div>
     );
@@ -73,6 +71,7 @@ let mapDispatchToProps = dispatch => ({
   groupsFetch: groupArr => dispatch(groupsFetchRequest(groupArr)),
   allPublicLeaguesFetch: () => dispatch(allPublicLeaguesFetchRequest()),
   leagueJoin: leagueID => dispatch(leagueJoinRequest(leagueID)),
+  privateLeagueJoin: credentials => dispatch(privateLeagueJoinRequest(credentials)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeagueAllContainer);

@@ -33,21 +33,17 @@ export const userValidation = props => {
   }
 };
 
-// handleSignin = user => {
-//   console.log('handle signin: ', user);
-//   return this.props.signIn(user)
-//     .then(() => this.props.userProfileFetch())
-//     .then(profile => {
-//       if(profile.body.leagues.length) props.leaguesFetch(profile.body.leagues);
-//       return profile;
-//     })
-//     .then(profile => {
-//       console.log('profile.body.groups: ', profile.body.groups);
-//       return props.groupsFetch(profile.body.groups);
-//       // if(profile.body.groups.length) this.props.groupsFetch(profile.body.groups);
-//     })
-//     .catch(util.logError);
-// };
+export const privacyCheck = props => {
+
+};
+
+export const checkAndAdd = (payload, state) => {
+  var found = state.some(function (el) {
+    return el._id === payload._id;
+  });
+  if (!found) state.push(payload);
+  return state;
+};
 
 export const photoToDataURL = file => {
   return new Promise((resolve, reject) => {
