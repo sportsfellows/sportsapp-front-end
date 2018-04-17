@@ -110,3 +110,16 @@ export const leagueJoinRequest = leagueID => (dispatch, getState) => {
       return res;
     });
 };
+
+export const privateLeagueJoinRequest = credentials => (dispatch, getState) => {
+  let { userAuth } = getState();
+  console.log('privateleaguejoinreq hit: ', credentials);
+  return superagent.post(`${__API_URL__}/api/league/private/adduser`)
+    .set('Authorization', `Bearer ${userAuth}`)
+    .send(credentials)
+    .then(res => {
+      console.log('res.body: ', res.body);
+      dispatch(leagueJoin(res.body));
+      return res;
+    });
+};
