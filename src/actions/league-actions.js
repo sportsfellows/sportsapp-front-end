@@ -25,6 +25,16 @@ export const leagueDelete = league => ({
   payload: league,
 });
 
+export const allPublicLeaguesFetch = leagues => ({
+  type: 'ALL_PUBLIC_LEAGUES_FETCH',
+  payload: leagues,
+});
+
+export const leagueJoin = league => ({
+  type: 'LEAGUE_JOIN',
+  payload: league,
+});
+
 export const leagueFetchRequest = league => (dispatch, getState) => {
   let { userAuth } = getState();
   return superagent.get(`${__API_URL__}/api/league/${league._id}`)
@@ -36,20 +46,17 @@ export const leagueFetchRequest = league => (dispatch, getState) => {
 };
 
 export const leaguesFetchRequest = leaguesArr => (dispatch, getState) => {
-  console.log('leagues fetch hit: ', leaguesArr);
   let { userAuth } = getState();
-  return superagent.get(`${__API_URL__}/api/leagues/user`)
+  return superagent.post(`${__API_URL__}/api/leagues/user`)
     .set('Authorization', `Bearer ${userAuth}`)
-    .query(leaguesArr)
+    .send(leaguesArr)
     .then(res => {
-      console.log('res.body.data: ', res.body);
       dispatch(leaguesFetch(res.body));
       return res;
     });
 };
 
 export const leagueCreateRequest = league => (dispatch, getState) => {
-  console.log('league create req hit');
   let { userAuth } = getState();
   return superagent.post(`${__API_URL__}/api/sportingevent/${league.sportingEventID}/league`)
     .set('Authorization', `Bearer ${userAuth}`)
@@ -77,6 +84,29 @@ export const leagueUpdateRequest = league => (dispatch, getState) => {
     .send(league)
     .then(res => {
       dispatch(leagueUpdate(res.body));
+      return res;
+    });
+};
+
+export const allPublicLeaguesFetchRequest = () => (dispatch, getState) => {
+  let { userAuth } = getState();
+  console.log('all public leagues hit');
+  return superagent.get(`${__API_URL__}/api/leagues/allpublic`)
+    .set('Authorization', `Bearer ${userAuth}`)
+    .then(res => {
+      dispatch(allPublicLeaguesFetch(res.body));
+      return res;
+    });
+};
+
+export const leagueJoinRequest = leagueID => (dispatch, getState) => {
+  let { userAuth } = getState();
+  console.log('league join request hit: ', leagueID);
+  return superagent.put(`${__API_URL__}/api/league/${leagueID}/adduser`)
+    .set('Authorization', `Bearer ${userAuth}`)
+    .then(res => {
+      console.log('res.body: ', res.body);
+      dispatch(leagueJoin(res.body));
       return res;
     });
 };

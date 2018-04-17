@@ -13,6 +13,15 @@ export const userValidation = props => {
       console.log('token: ', token);
       props.tokenSignIn(token)
         .then(() => props.userProfileFetch())
+        .then(profile => {
+          if(profile.body.leagues.length) props.leaguesFetch(profile.body.leagues);
+          return profile;
+        })
+        .then(profile => {
+          console.log('profile.body.groups: ', profile.body.groups);
+          return props.groupsFetch(profile.body.groups);
+          // if(profile.body.groups.length) this.props.groupsFetch(profile.body.groups);
+        })
         .catch( () => {
           logError;
           if(props.location.pathname !== '/') return history.replace('/');
@@ -23,6 +32,22 @@ export const userValidation = props => {
     }
   }
 };
+
+// handleSignin = user => {
+//   console.log('handle signin: ', user);
+//   return this.props.signIn(user)
+//     .then(() => this.props.userProfileFetch())
+//     .then(profile => {
+//       if(profile.body.leagues.length) props.leaguesFetch(profile.body.leagues);
+//       return profile;
+//     })
+//     .then(profile => {
+//       console.log('profile.body.groups: ', profile.body.groups);
+//       return props.groupsFetch(profile.body.groups);
+//       // if(profile.body.groups.length) this.props.groupsFetch(profile.body.groups);
+//     })
+//     .catch(util.logError);
+// };
 
 export const photoToDataURL = file => {
   return new Promise((resolve, reject) => {
