@@ -19,8 +19,6 @@ export default (state=null, action) => {
       validateUserProfile(payload);
       return payload;
     case 'LEAGUE_JOIN':
-      console.log('payload: ', payload);
-      console.log('state: ', state);
       state.leagues.push(payload._id);
       return state;
     case 'SIGN_OUT':
