@@ -4,6 +4,7 @@
   padding: 1vw;
   background: #fff;
   border: 1px solid $color-lightgray;
+  border-radius: $border-radius;
   margin: 20px 0;
   position: relative;
 }
@@ -23,6 +24,7 @@
 .create-text {
   margin-top: 16px;
 }
+
 .create-button {
   color: #fff;
   margin-top: 1rem;

@@ -52,6 +52,11 @@ input {
 }
 button {
   cursor: pointer;
+  padding: $pad;
+  border-radius: $border-radius;
+  border-color: $color-black;
+  border-width: 1px;
+  border-style: solid;
 }
 
 h2.title, h2 {

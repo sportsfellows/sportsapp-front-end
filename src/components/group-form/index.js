@@ -154,7 +154,7 @@ class GroupForm extends React.Component {
           onBlur={this.handleBlur}
         />
 
-        <div>
+        <div className='radio-div'>
           <input 
             type="radio"
             name="privacy" 
