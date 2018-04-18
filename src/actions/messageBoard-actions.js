@@ -23,7 +23,7 @@ export const messageBoardLeagueFetchRequest = leagueID  => (dispatch, getState) 
   return superagent.get(`${__API_URL__}/api/messageboard/league/${leagueID}`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      console.log('messageBoard fetch res: ', res.body);
+      console.log('messageBoard fetch res: ', res.body[0]);
       dispatch(messageBoardFetch(res.body[0]));
       return res.body[0];
     });

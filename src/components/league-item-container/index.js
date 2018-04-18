@@ -17,23 +17,15 @@ class LeagueContainer extends React.Component {
 
   componentWillMount() {
     return util.userValidation(this.props);
-      // .then( () => {
-      //   return this.props.messageBoardLeagueFetch(this.props.currentLeague._id)
-      // })
-      // .catch(util.logError);
   }
-  // componentDidMount(){
-  //   return this.props.messageBoardLeagueFetch()
-  //   .catch(util.logError);
-  // }
 
-  handleLeagueCreate = league => {
-    console.log('handle leage create hi');
-    league.sportingEventID='5ad2a2bffb35c1479596fdc2';
-    return this.props.leagueCreate(league)
-      // .then(() => )
-      .catch(util.logError);
-  }
+  // handleLeagueCreate = league => {
+  //   console.log('handle leage create hi');
+  //   league.sportingEventID='5ad2a2bffb35c1479596fdc2';
+  //   return this.props.leagueCreate(league)
+  //     // .then(() => )
+  //     .catch(util.logError);
+  // }
 
   handleComplete = league => {
     return this.props.leagueUpdate(league)
@@ -45,7 +37,7 @@ class LeagueContainer extends React.Component {
     console.log('this.props.currentMessageBoard: ', this.props.currentMessageBoard);
     return (
       <div className='league-container'>
-        <LeagueForm onComplete={this.handleLeagueCreate} />
+        {/* <LeagueForm onComplete={this.handleLeagueCreate} /> */}
         {/* <LeagueForm league={this.props.league} onComplete={this.handleLeagueCreate} /> */}
 
         <MessageBoardContainer mBoardId={this.props.currentMessageBoard._id}/>
