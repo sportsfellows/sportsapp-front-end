@@ -16,7 +16,7 @@ class Intro extends React.Component {
     this.state = { authFormAction: 'Sign Up', formDisplay: false, };
   }
 
-  handleSignin = user => {
+  handleSignin = (user, errCB) => {
     console.log('handle signin: ', user);
     return this.props.signIn(user)
       .then(() => this.props.userProfileFetch())
@@ -31,14 +31,20 @@ class Intro extends React.Component {
         return this.props.groupsFetch(profile.body.groups);
         // if(profile.body.groups.length) this.props.groupsFetch(profile.body.groups);
       })
-      .catch(util.logError);
+      .catch(err => {
+        util.logError(err);
+        errCB(err);
+      });
   };
 
-  handleSignup = user => {
+  handleSignup = (user, errCB) => {
     console.log('handle signup: ', user);
     return this.props.signUp(user)
       .then(() => this.props.userProfileFetch())
-      .catch(util.logError);
+      .catch(err => {
+        util.logError(err);
+        errCB(err);
+    });
   };
 
   render() {
