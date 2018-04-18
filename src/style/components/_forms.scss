@@ -23,7 +23,7 @@
   }
 }
 
-.profile-form, .league-form, .group-form {
+.profile-form, .league-form, .group-form, .league-all-private-form, .group-all-private-form {
   input {
     width: 50%;
     background-color: #c2c2c2;
@@ -63,6 +63,4 @@
     margin: $margin;
     display: block;
   }
-
-
 }

@@ -1,4 +1,4 @@
-p.my-leagues, p.my-groups, p.public-leagues {
+p.my-leagues, p.my-groups, p.public-leagues, .public-groups p {
   background-color: $color-lightgray;
   border-width: 1px;
   border-style: solid;
@@ -37,4 +37,8 @@ p.my-leagues, p.my-groups, p.public-leagues {
     display: inline-block;
     width: 10vw;
   }
+}
+
+.public-leagues, .public-groups {
+  margin-bottom: 5vh;
 }

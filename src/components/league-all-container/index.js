@@ -42,8 +42,9 @@ class LeagueAllContainer extends React.Component {
   render(){
     return (
       <div className='leagues-container page-outer-div'>
-        <div className='public-leagues'>
 
+        <div className='public-leagues'>
+          <h2>public leagues.</h2>
           {this.props.publicLeagues.map(league => {
             let boundLeagueJoinClick = this.handleLeagueJoin.bind(this, league);
             return <div key={league._id}>
