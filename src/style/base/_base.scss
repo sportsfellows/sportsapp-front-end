@@ -57,16 +57,19 @@ button {
   cursor: pointer;
   padding: $pad;
   border-radius: $border-radius;
-  border-color: $color-black;
-  border-width: 1px;
-  border-style: solid;
+  background-color: #444;
+  color: #fff;
+  // border-color: $color-black;
+  border-width: 0px;
+  // border-style: solid;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
+}
+
+button:hover {
+  background-color: $color-primary-hover;
 }
 
 h2.title, h2 {
   margin-bottom: $margin;
   margin-left: $margin;
-}
-
-.page-outer-div h2 {
-  margin-top: 3vw;
 }
