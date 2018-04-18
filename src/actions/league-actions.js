@@ -35,12 +35,14 @@ export const leagueJoin = league => ({
   payload: league,
 });
 
-export const leagueFetchRequest = league => (dispatch, getState) => {
+export const leagueFetchRequest = leagueID => (dispatch, getState) => {
   let { userAuth } = getState();
-  return superagent.get(`${__API_URL__}/api/league/${league._id}`)
+  console.log('league fetch hit');
+  return superagent.get(`${__API_URL__}/api/league/${leagueID}`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      dispatch(leagueFetch(res.body.data));
+      console.log('res: ', res);
+      dispatch(leagueFetch(res.body));
       return res;
     });
 };

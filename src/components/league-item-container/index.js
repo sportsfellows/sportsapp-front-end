@@ -7,6 +7,7 @@ import { leaguesFetchRequest, leagueFetchRequest, leagueDeleteRequest, leagueUpd
 import { groupsFetchRequest } from '../../actions/group-actions.js';
 import { messageBoardFetchRequest } from '../../actions/messageBoard-actions.js';
 import LeagueForm from '../league-form';
+import MessageBoardContainer from '../message-board-container';
 import * as util from '../../lib/util.js';
 
 class LeagueContainer extends React.Component {
@@ -37,6 +38,8 @@ class LeagueContainer extends React.Component {
       <div className='league-container'>
         <LeagueForm onComplete={this.handleLeagueCreate} />
         {/* <LeagueForm league={this.props.league} onComplete={this.handleLeagueCreate} /> */}
+
+        <MessageBoardContainer />
       </div>
     );
   }
@@ -47,6 +50,8 @@ let mapStateToProps = state => ({
   userProfile: state.userProfile,
   leagues: state.leagues,
   messageBoards: state.messageBoards,
+  currentMessageBoard: state.currentMessageBoard,
+  currentLeague: state.currentLeague,
 });
 
 let mapDispatchToProps = dispatch => ({
