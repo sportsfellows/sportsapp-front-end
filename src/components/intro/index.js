@@ -33,7 +33,7 @@ class Intro extends React.Component {
       })
       .catch(err => {
         util.logError(err);
-        errCB();
+        errCB(err.status);
       });
   };
 
@@ -43,7 +43,7 @@ class Intro extends React.Component {
       .then(() => this.props.userProfileFetch())
       .catch(err => {
         util.logError(err);
-        errCB();
+        errCB(err.status);
     });
   };
 
