@@ -34,11 +34,11 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgb(233, 233, 233);
+  background-color: $color-lightgray;
   border-width: 0 0 0 0;
   border-bottom: 1px;
   border-style: solid;
-  border-color: rgb(194, 194, 194);
+  border-color: $color-gray;
   height: 65px;
   width: 100%;
   z-index: 101;
@@ -57,11 +57,9 @@ button {
   cursor: pointer;
   padding: $pad;
   border-radius: $border-radius;
-  background-color: #444;
+  background-color: $color-secondary;
   color: #fff;
-  // border-color: $color-black;
   border-width: 0px;
-  // border-style: solid;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
 }
 

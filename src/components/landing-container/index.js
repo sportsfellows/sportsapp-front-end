@@ -30,15 +30,31 @@ class LandingContainer extends React.Component {
   handleLeagueCreate = league => {
     league.sportingEventID='5ad2a2bffb35c1479596fdc2';
     return this.props.leagueCreate(league)
-      .then(newLeague => this.props.history.push(`/league/${newLeague.body._id}`))
+      .then(myLeague => this.props.messageBoardLeagueFetch(myLeague.body._id))
+      .then(messageBoard => {
+        this.props.commentsFetch(messageBoard.comments);
+        return messageBoard.leagueID
+      })
+      .then(leagueID => this.props.history.push(`/league/${leagueID}`))
       .catch(util.logError);
   }
 
   handleGroupCreate = group => {
     return this.props.groupCreate(group)
-      .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
+      .then(myGroup => this.props.messageBoardGroupFetch(myGroup.body._id))
+      .then(messageBoard => {
+        this.props.commentsFetch(messageBoard.comments);
+        return messageBoard.groupID
+      })
+      .then(groupID => this.props.history.push(`/group/${groupID}`))
       .catch(util.logError);
   }
+
+  // handleGroupCreate = group => {
+  //   return this.props.groupCreate(group)
+  //     .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
+  //     .catch(util.logError);
+  // }
 
   handleProfileUpdate = profile => {
     return this.props.userProfileUpdate(profile)
@@ -58,8 +74,19 @@ class LandingContainer extends React.Component {
 
   onGroupClick = (group, e) => {
     this.props.groupFetchRequest(group);
-    this.props.history.push(`/group/${group._id}`);
+    return this.props.messageBoardGroupFetch(group._id)
+      .then(messageBoard => {
+        console.log('messageBoard.body: ', messageBoard.body);
+        this.props.commentsFetch(messageBoard.comments);
+      })
+      .then( () =>  this.props.history.push(`/group/${group._id}`))
+      .catch(util.logError);
   }
+
+  // onGroupClick = (group, e) => {
+  //   this.props.groupFetchRequest(group);
+  //   this.props.history.push(`/group/${group._id}`);
+  // }
 
   render() {
     console.log('hi');
@@ -87,13 +114,18 @@ class LandingContainer extends React.Component {
                 />
               </Modal>
             )}
-            
+            <h2>my leagues.</h2>
             {util.renderIf(this.props.leagues,
               <div>
                 {this.props.leagues.map(league => {
                   let boundLeagueClick = this.onLeagueClick.bind(this, league);
                   return <div key={league._id}>
-                    <p className='link' onClick={boundLeagueClick}>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</p>
+                    <p className='my-leagues' onClick={boundLeagueClick}>
+                      <span className='span-name'>{league.leagueName} </span>
+                      <span className='span-owner'>{league.ownerName} </span>
+                      <span className='span-size'>{league.size} </span>
+                      <span className='span-scoring'>{league.scoring} </span>
+                    </p>
                   </div>
                 })}
               </div>
@@ -111,12 +143,22 @@ class LandingContainer extends React.Component {
               </Modal>
             )}
 
-            {this.props.groups.map(group => {
-              let boundGroupClick = this.onGroupClick.bind(this, group);
-              return <div key={group._id}>
-                <p onClick={boundGroupClick} className='link'>{group.groupName} {group.ownerName} {group.privacy} {group.size}</p>
+            {util.renderIf(this.props.groups,
+              <div>
+                <h2>my groups.</h2>
+                {this.props.groups.map(group => {
+                  let boundGroupClick = this.onGroupClick.bind(this, group);
+                  return <div key={group._id}>
+                    <p onClick={boundGroupClick} className='my-groups'>
+                      <span className='span-name'>{group.groupName} </span>
+                      <span className='span-owner'>{group.ownerName} </span>
+                      <span className='span-privacy'>{group.privacy} </span>
+                      <span className='span-size'>{group.size} </span>
+                    </p>
+                  </div>
+                })}
               </div>
-            })}
+            )}
 
             {util.renderIf(this.state.profileFormDisplay && this.props.userProfile && this.props.userProfile.lastLogin === this.props.userProfile.createdOn,
               <Modal heading='Fill Out Your Profile'

@@ -11,6 +11,7 @@ export default (state=[], action) => {
     case 'COMMENT_FETCH':
       return [payload];
     case 'COMMENTS_FETCH':
+      console.log('payload: ', payload);
       return payload;
     case 'COMMENT_CREATE':
       validateComment(payload);
