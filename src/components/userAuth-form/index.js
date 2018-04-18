@@ -104,9 +104,8 @@ class UserAuthForm extends React.Component {
     e.preventDefault();
     console.log('state: ', this.state);
     if(!this.state.error) {
-      this.props.onComplete(this.state)
+      this.props.onComplete(this.state, this.handleUnauthorized)
         .catch(err => {
-          console.error(err);
           this.setState({ 
             error,
             submitted: true,
@@ -121,6 +120,12 @@ class UserAuthForm extends React.Component {
     }))
   };
 
+  handleUnauthorized = () => {
+    this.setState({
+      usernameError: 'username or password incorrect'
+    })
+  }
+  
   render() {
     let { focused, submitted, username, emailError, passwordError, usernameError, usernameAvailable } = this.state;
     return (
