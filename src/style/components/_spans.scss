@@ -1,11 +1,13 @@
-p.link {
-  background-color: #e9e9e9;
+p.my-leagues, p.my-groups, p.public-leagues {
+  background-color: $color-lightgray;
   border-width: 1px;
   border-style: solid;
-  border-color: #c2c2c2;
+  border-color: $color-gray;
   border-radius: $border-radius;
   margin: $margin;
   padding: $pad;
+  width: auto;
+  cursor: pointer;
 
   .span-name {
     display: inline-block;
@@ -17,7 +19,7 @@ p.link {
   }
   .span-size {
     display: inline-block;
-    width: 15vw;
+    width: 10vw;
   }
   .span-owner {
     display: inline-block;
@@ -30,5 +32,9 @@ p.link {
   .span-scoring {
     display: inline-block;
     width: 15vw;
+  }
+  .span-join {
+    display: inline-block;
+    width: 10vw;
   }
 }

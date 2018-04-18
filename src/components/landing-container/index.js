@@ -87,13 +87,13 @@ class LandingContainer extends React.Component {
                 />
               </Modal>
             )}
-            
+            <h2>my leagues.</h2>
             {util.renderIf(this.props.leagues,
               <div>
                 {this.props.leagues.map(league => {
                   let boundLeagueClick = this.onLeagueClick.bind(this, league);
                   return <div key={league._id}>
-                    <p className='link' onClick={boundLeagueClick}>
+                    <p className='my-leagues' onClick={boundLeagueClick}>
                       <span className='span-name'>{league.leagueName} </span>
                       <span className='span-owner'>{league.ownerName} </span>
                       <span className='span-size'>{league.size} </span>
@@ -115,11 +115,11 @@ class LandingContainer extends React.Component {
                 />
               </Modal>
             )}
-
+            <h2>my groups.</h2>
             {this.props.groups.map(group => {
               let boundGroupClick = this.onGroupClick.bind(this, group);
               return <div key={group._id}>
-                <p onClick={boundGroupClick} className='link'>
+                <p onClick={boundGroupClick} className='my-groups'>
                   <span className='span-name'>{group.groupName} </span>
                   <span className='span-owner'>{group.ownerName} </span>
                   <span className='span-privacy'>{group.privacy} </span>
