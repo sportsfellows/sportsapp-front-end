@@ -67,7 +67,7 @@ class LeagueForm extends React.Component {
       [name]: value,
     });
 
-    if(this.props.league && name === 'leagueName') {
+    if(!this.props.league && name === 'leagueName') {
       this.leagueNameCheckAvailable(value);
     }
   };
@@ -152,7 +152,7 @@ class LeagueForm extends React.Component {
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          checked
+          checked={this.state.scoring === 'regular' ? true : false}
         />
         <label>regular</label>
 
@@ -175,7 +175,7 @@ class LeagueForm extends React.Component {
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          checked
+          checked={this.state.privacy === 'public' ? true : false}
         />
         <label>public</label>
 
@@ -186,6 +186,7 @@ class LeagueForm extends React.Component {
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
+          checked={this.state.privacy === 'private' ? true : false}
         />
         <label>private</label>
         </div>
