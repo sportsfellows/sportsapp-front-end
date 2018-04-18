@@ -31,6 +31,7 @@ export const userValidation = props => {
       if(props.location.pathname !== '/') return history.replace('/');
     }
   }
+  return;
 };
 
 export const privacyCheck = props => {

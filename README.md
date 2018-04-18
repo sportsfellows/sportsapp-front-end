@@ -29,3 +29,5 @@
       <GroupForm>
       <Messageboard>
 ```
+
+<!-- join and create league/group get a messageboard; also when you click on group, also logic if you sign into the page with a token; or logic to make token redirect to homepage -->

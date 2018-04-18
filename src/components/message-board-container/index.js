@@ -18,8 +18,8 @@ class MessageBoardContainer extends React.Component {
   }
   handleComplete = comment => {
     comment.username = this.props.userProfile.username;
-    comment.image = this.props.userProfile.image;
-    comment.messageBoardID = this.props.currentMessageBoard._id;
+    if(this.props.userProfile.image) comment.image = this.props.userProfile.image;
+    comment.messageBoardID = this.props.mBoardId;
     console.log('comment: ', comment); 
     return this.props.commentCreate(comment)
       .catch(console.error);
@@ -35,7 +35,9 @@ class MessageBoardContainer extends React.Component {
         </div>
       
         {this.props.comments.map(comment =>
-          <CommentItem key={comment._id} comment={comment} image={profileImage} />
+          <div key={comment._id}>
+            <CommentItem  comment={comment} image={profileImage} />
+          </div>
         )}
       </div>
     );

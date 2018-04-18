@@ -13,6 +13,8 @@ import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest, userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest, leagueCreateRequest, leagueFetch } from '../../actions/league-actions.js';
 import { groupsFetchRequest, groupCreateRequest, groupFetch } from '../../actions/group-actions.js';
+import { messageBoardLeagueFetchRequest, messageBoardGroupFetchRequest } from '../../actions/messageBoard-actions.js';
+import { commentsFetchRequest } from '../../actions/comment-actions.js';
 import * as util from './../../lib/util.js';
 
 class LandingContainer extends React.Component {
@@ -45,7 +47,13 @@ class LandingContainer extends React.Component {
 
   onLeagueClick = (league, e) => {
     this.props.leagueFetchRequest(league);
-    this.props.history.push(`/league/${league._id}`);
+    return this.props.messageBoardLeagueFetch(league._id)
+      .then(messageBoard => {
+        console.log('messageBoard.body: ', messageBoard.body);
+        this.props.commentsFetch(messageBoard.comments);
+      })
+      .then( () =>  this.props.history.push(`/league/${league._id}`))
+      .catch(util.logError);
   }
 
   onGroupClick = (group, e) => {
@@ -150,6 +158,9 @@ let mapDispatchToProps = dispatch => ({
   groupCreate: group => dispatch(groupCreateRequest(group)),
   leagueFetchRequest: league => dispatch(leagueFetch(league)),
   groupFetchRequest: group => dispatch(groupFetch(group)),
+  messageBoardLeagueFetch: leagueID => dispatch(messageBoardLeagueFetchRequest(leagueID)),
+  messageBoardGroupFetch: groupID => dispatch(messageBoardGroupFetchRequest(groupID)),
+  commentsFetch: commentArr => dispatch(commentsFetchRequest(commentArr)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer);
