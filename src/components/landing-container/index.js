@@ -41,9 +41,20 @@ class LandingContainer extends React.Component {
 
   handleGroupCreate = group => {
     return this.props.groupCreate(group)
-      .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
+      .then(myGroup => this.props.messageBoardGroupFetch(myGroup.body._id))
+      .then(messageBoard => {
+        this.props.commentsFetch(messageBoard.comments);
+        return messageBoard.groupID
+      })
+      .then(groupID => this.props.history.push(`/group/${groupID}`))
       .catch(util.logError);
   }
+
+  // handleGroupCreate = group => {
+  //   return this.props.groupCreate(group)
+  //     .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
+  //     .catch(util.logError);
+  // }
 
   handleProfileUpdate = profile => {
     return this.props.userProfileUpdate(profile)
@@ -63,8 +74,19 @@ class LandingContainer extends React.Component {
 
   onGroupClick = (group, e) => {
     this.props.groupFetchRequest(group);
-    this.props.history.push(`/group/${group._id}`);
+    return this.props.messageBoardGroupFetch(group._id)
+      .then(messageBoard => {
+        console.log('messageBoard.body: ', messageBoard.body);
+        this.props.commentsFetch(messageBoard.comments);
+      })
+      .then( () =>  this.props.history.push(`/group/${group._id}`))
+      .catch(util.logError);
   }
+
+  // onGroupClick = (group, e) => {
+  //   this.props.groupFetchRequest(group);
+  //   this.props.history.push(`/group/${group._id}`);
+  // }
 
   render() {
     console.log('hi');
@@ -116,12 +138,16 @@ class LandingContainer extends React.Component {
               </Modal>
             )}
 
-            {this.props.groups.map(group => {
-              let boundGroupClick = this.onGroupClick.bind(this, group);
-              return <div key={group._id}>
-                <p onClick={boundGroupClick} className='link'>{group.groupName} {group.ownerName} {group.privacy} {group.size}</p>
+            {util.renderIf(this.props.groups,
+              <div>
+                {this.props.groups.map(group => {
+                  let boundGroupClick = this.onGroupClick.bind(this, group);
+                  return <div key={group._id}>
+                    <p className='link' onClick={boundGroupClick}>{group.groupName} {group.ownerName} {group.privacy} {group.size}</p>
+                  </div>
+                })}
               </div>
-            })}
+            )}
 
             {util.renderIf(this.state.profileFormDisplay && this.props.userProfile && this.props.userProfile.lastLogin === this.props.userProfile.createdOn,
               <Modal heading='Fill Out Your Profile'
