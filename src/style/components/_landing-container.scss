@@ -1,0 +1,34 @@
+p.link {
+  background-color: #e9e9e9;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #c2c2c2;
+  border-radius: $border-radius;
+  margin: $margin;
+  padding: $pad;
+
+  .span-name {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-owner {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-size {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-owner {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-privacy {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-scoring {
+    display: inline-block;
+    width: 15vw;
+  }
+}
