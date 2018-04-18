@@ -114,9 +114,9 @@ class LandingContainer extends React.Component {
                 />
               </Modal>
             )}
-            <h2>my leagues.</h2>
             {util.renderIf(this.props.leagues,
               <div>
+                <h2>my leagues.</h2>
                 {this.props.leagues.map(league => {
                   let boundLeagueClick = this.onLeagueClick.bind(this, league);
                   return <div key={league._id}>
