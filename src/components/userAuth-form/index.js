@@ -89,7 +89,7 @@ class UserAuthForm extends React.Component {
       [name]: value,
     });
 
-    if(this.props.authFormAction === 'sign up' && name === 'username') {
+    if(this.props.authFormAction === 'Sign Up' && name === 'username') {
       this.usernameCheckAvailable(value);
     }
   };
@@ -104,9 +104,8 @@ class UserAuthForm extends React.Component {
     e.preventDefault();
     console.log('state: ', this.state);
     if(!this.state.error) {
-      this.props.onComplete(this.state)
+      this.props.onComplete(this.state, this.handleError)
         .catch(err => {
-          console.error(err);
           this.setState({ 
             error,
             submitted: true,
@@ -121,6 +120,18 @@ class UserAuthForm extends React.Component {
     }))
   };
 
+  handleError = (err) => {
+    const usernameError = (
+      err.status === 401 
+        ? 'username or password incorrect' 
+        : 'username or email already taken'
+      );
+
+    this.setState({
+      usernameError
+    });
+  }
+  
   render() {
     let { focused, submitted, username, emailError, passwordError, usernameError, usernameAvailable } = this.state;
     return (

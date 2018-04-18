@@ -114,13 +114,18 @@ class LandingContainer extends React.Component {
                 />
               </Modal>
             )}
-            
+            <h2>my leagues.</h2>
             {util.renderIf(this.props.leagues,
               <div>
                 {this.props.leagues.map(league => {
                   let boundLeagueClick = this.onLeagueClick.bind(this, league);
                   return <div key={league._id}>
-                    <p className='link' onClick={boundLeagueClick}>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</p>
+                    <p className='my-leagues' onClick={boundLeagueClick}>
+                      <span className='span-name'>{league.leagueName} </span>
+                      <span className='span-owner'>{league.ownerName} </span>
+                      <span className='span-size'>{league.size} </span>
+                      <span className='span-scoring'>{league.scoring} </span>
+                    </p>
                   </div>
                 })}
               </div>
@@ -140,10 +145,16 @@ class LandingContainer extends React.Component {
 
             {util.renderIf(this.props.groups,
               <div>
+                <h2>my groups.</h2>
                 {this.props.groups.map(group => {
                   let boundGroupClick = this.onGroupClick.bind(this, group);
                   return <div key={group._id}>
-                    <p className='link' onClick={boundGroupClick}>{group.groupName} {group.ownerName} {group.privacy} {group.size}</p>
+                    <p onClick={boundGroupClick} className='my-groups'>
+                      <span className='span-name'>{group.groupName} </span>
+                      <span className='span-owner'>{group.ownerName} </span>
+                      <span className='span-privacy'>{group.privacy} </span>
+                      <span className='span-size'>{group.size} </span>
+                    </p>
                   </div>
                 })}
               </div>

@@ -7,6 +7,9 @@
 .font-md {
   @include responsive-font(3.8vw, 20px, 32px);
 }
+.font-lg {
+  @include responsive-font(5.1vw, 28px, 44px);
+}
 
 *, *:before, *:after {
   box-sizing: inherit;
@@ -31,8 +34,12 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: white;
-  height: 38px;
+  background-color: $color-lightgray;
+  border-width: 0 0 0 0;
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: $color-gray;
+  height: 65px;
   width: 100%;
   z-index: 101;
 }
@@ -48,4 +55,19 @@ input[type='text'], input[type='password'] {
 }
 button {
   cursor: pointer;
+  padding: $pad;
+  border-radius: $border-radius;
+  background-color: $color-secondary;
+  color: #fff;
+  border-width: 0px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
+}
+
+button:hover {
+  background-color: $color-primary-hover;
+}
+
+h2.title, h2 {
+  margin-bottom: $margin;
+  margin-left: $margin;
 }

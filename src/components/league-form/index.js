@@ -144,7 +144,7 @@ class LeagueForm extends React.Component {
           onBlur={this.handleBlur}
         />
 
-        <div>
+        <div className='radio-div'>
         <input 
           type="radio"
           name="scoring" 
@@ -167,7 +167,7 @@ class LeagueForm extends React.Component {
         <label>Under Dog</label>
         </div>
 
-        <div>
+        <div className='radio-div'>
         <input 
           type="radio"
           name="privacy" 
