@@ -44,7 +44,13 @@ class LeagueAllContainer extends React.Component {
         <div className='public-leagues'>
           {this.props.publicLeagues.map(league =>
             <div key={league._id}>
-              <p>{league.leagueName} {league.ownerName} {league.size} {league.scoring}<button onClick={() => this.handleLeagueJoin(league._id)}>join</button></p>
+              <p className='public-leagues'>
+                <span className='span-name'>{league.leagueName} </span>
+                <span className='span-owner'>{league.ownerName} </span>
+                <span className='span-size'>{league.size} </span>
+                <span className='span-scoring'>{league.scoring} </span>
+                <span className='span-join'><button onClick={() => this.handleLeagueJoin(league._id)}>join</button></span>
+              </p>
             </div>
           )}
         </div>
