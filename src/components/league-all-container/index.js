@@ -23,39 +23,21 @@ class LeagueAllContainer extends React.Component {
   handleLeagueJoin = (league, e) => {
     return this.props.leagueJoin(league._id)
       .then(() => this.props.messageBoardLeagueFetch(league._id))
-      .then(messageBoard => {
-        console.log('messageBoard.body: ', messageBoard.body);
-        return this.props.commentsFetch(messageBoard.comments);
-      })
+      .then(messageBoard => this.props.commentsFetch(messageBoard.comments))
       .then(() => this.props.history.push(`/league/${league._id}`))
       .catch(util.logError);
   };
 
   handlePrivateLeagueJoin = credentials => {
-    console.log('credentials: ', credentials);
     return this.props.privateLeagueJoin(credentials)
       .then(league => this.props.messageBoardLeagueFetch(league._id))
       .then(messageBoard => {
-        console.log('messageBoard: ', messageBoard);
         this.props.commentsFetch(messageBoard.comments);
         return messageBoard.leagueID
       })
-      .then(leagueID => {
-        console.log('leagueID: ', leagueID);
-        return this.props.history.push(`/league/${leagueID}`)
-      })
+      .then(leagueID => this.props.history.push(`/league/${leagueID}`))
       .catch(util.logError);
   };
-
-  // handlePrivateLeagueJoin = credentials => {
-  //   console.log('credentials: ', credentials);
-  //   return this.props.privateLeagueJoin(credentials)
-  //     .then(league => {
-  //       console.log('league: ', league);
-  //       return this.props.history.push(`/league/${league._id}`)
-  //     })
-  //     .catch(util.logError);
-  // };
 
   render(){
     return (

@@ -30,7 +30,12 @@ class LandingContainer extends React.Component {
   handleLeagueCreate = league => {
     league.sportingEventID='5ad2a2bffb35c1479596fdc2';
     return this.props.leagueCreate(league)
-      .then(newLeague => this.props.history.push(`/league/${newLeague.body._id}`))
+      .then(myLeague => this.props.messageBoardLeagueFetch(myLeague.body._id))
+      .then(messageBoard => {
+        this.props.commentsFetch(messageBoard.comments);
+        return messageBoard.leagueID
+      })
+      .then(leagueID => this.props.history.push(`/league/${leagueID}`))
       .catch(util.logError);
   }
 
