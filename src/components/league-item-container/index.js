@@ -5,8 +5,9 @@ import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest, leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/league-actions.js';
 import { groupsFetchRequest } from '../../actions/group-actions.js';
-import { messageBoardFetchRequest } from '../../actions/messageBoard-actions.js';
+// import { messageBoardLeagueFetchRequest, messageBoardGroupFetchRequest } from '../../actions/messageBoard-actions.js';
 import LeagueForm from '../league-form';
+import MessageBoardContainer from '../message-board-container';
 import * as util from '../../lib/util.js';
 
 class LeagueContainer extends React.Component {
@@ -15,8 +16,16 @@ class LeagueContainer extends React.Component {
   }
 
   componentWillMount() {
-    util.userValidation(this.props);
+    return util.userValidation(this.props);
+      // .then( () => {
+      //   return this.props.messageBoardLeagueFetch(this.props.currentLeague._id)
+      // })
+      // .catch(util.logError);
   }
+  // componentDidMount(){
+  //   return this.props.messageBoardLeagueFetch()
+  //   .catch(util.logError);
+  // }
 
   handleLeagueCreate = league => {
     console.log('handle leage create hi');
@@ -33,10 +42,13 @@ class LeagueContainer extends React.Component {
   }
 
   render(){
+    console.log('this.props.currentMessageBoard: ', this.props.currentMessageBoard);
     return (
       <div className='league-container'>
         <LeagueForm onComplete={this.handleLeagueCreate} />
         {/* <LeagueForm league={this.props.league} onComplete={this.handleLeagueCreate} /> */}
+
+        <MessageBoardContainer mBoardId={this.props.currentMessageBoard._id}/>
       </div>
     );
   }
@@ -47,6 +59,8 @@ let mapStateToProps = state => ({
   userProfile: state.userProfile,
   leagues: state.leagues,
   messageBoards: state.messageBoards,
+  currentLeague: state.currentLeague,
+  currentMessageBoard: state.currentMessageBoard,
 });
 
 let mapDispatchToProps = dispatch => ({
@@ -57,7 +71,7 @@ let mapDispatchToProps = dispatch => ({
   leagueFetch: league => dispatch(leagueFetchRequest(league)),
   leagueUpdate: league => dispatch(leagueUpdateRequest(league)),
   leagueDelete: league => dispatch(leagueDeleteRequest(league)),
-  messageBoardFetch: messageBoardID => dispatch(messageBoardFetchRequest(messageBoardID)),
+  // messageBoardLeagueFetch: leagueID => dispatch(messageBoardLeagueFetchRequest(leagueID)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeagueContainer);

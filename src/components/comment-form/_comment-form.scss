@@ -1,0 +1,49 @@
+@import '../../style/lib/vars';
+
+.comment-form {
+  margin-bottom: 24px;
+
+  .photo-div {
+    display: inline-block;
+    margin-right: 8px;
+
+    img {
+      height: 48px;
+      width: 48px;
+    }
+  }
+
+  .commentInput-div {
+    border: 1px solid #d3d6db;
+    padding: 3px;
+
+    .commentInputWrapper {
+      padding: 12px 8px;
+
+      input {
+        font-size: 16px;
+
+          ::placeholder {
+            color: #a9a9a9;
+        }
+        :-ms-input-placeholder {
+            color: #a9a9a9;
+        }
+        ::-ms-input-placeholder {
+            color: #a9a9a9;
+        }
+      }
+    }
+  }
+
+  .commentFormButtonDiv {
+    border: 1px solid #d3d6db;
+    border-top: 0;
+
+    .ButtonDiv {
+      background: #f6f7f9;
+      padding: 8px;
+      text-align: right;
+    }
+  }
+}

@@ -1,5 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import CommentForm from '../comment-form';
+import CommentItem from '../comment-item';
+import { messageBoardFetchRequest } from '../../actions/messageBoard-actions.js';
+import { commentCreateRequest, commentFetchRequest, commentsFetchRequest } from '../../actions/comment-actions.js';
 import * as util from '../../lib/util.js';
 
 
@@ -9,32 +13,31 @@ class MessageBoardContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.userGalleryItemsFetch()
-      .catch(util.logError);
+    // this.props.commentsFetch()
+    //   .catch(util.logError);
+  }
+  handleComplete = comment => {
+    comment.username = this.props.userProfile.username;
+    if(this.props.userProfile.image) comment.image = this.props.userProfile.image;
+    comment.messageBoardID = this.props.mBoardId;
+    console.log('comment: ', comment); 
+    return this.props.commentCreate(comment)
+      .catch(console.error);
   }
 
   render(){
+    let placeholderImage = require('./../helpers/assets/profilePlaceholder.jpeg');
+    let profileImage = this.props.userProfile && this.props.userProfile.image ? this.props.userProfile.image : placeholderImage;
     return (
       <div className='messageBoard-container'>
+        <div className='messageBoard-wrapper'>
+          <CommentForm onComplete={this.handleComplete} image={profileImage}/>
+        </div>
       
-        {util.renderIf(this.props.userprofile,
-          <div className='avatarDiv'>
-            <Avatar userprofile={this.props.userprofile} />
-            <p className='logout' onClick={this.handleSignOut}>logout</p>
+        {this.props.comments.map(comment =>
+          <div key={comment._id}>
+            <CommentItem  comment={comment} image={profileImage} />
           </div>
-        )}
-
-        <h2 className='title'>gallery. </h2>
-        <UserGalleryForm 
-          buttonText='post'
-          onComplete={userGalleryItem => {
-            return this.props.userGalleryItemCreate(userGalleryItem)
-              .catch(console.error);
-          }}
-        />
-        
-        {this.props.userGalleryItems.map(userGalleryItem =>
-          <UserGalleryItem key={userGalleryItem._id} userGalleryItem={userGalleryItem} />
         )}
       </div>
     );
@@ -42,14 +45,17 @@ class MessageBoardContainer extends React.Component {
 }
 
 let mapStateToProps = state => ({
-  userprofile: state.userprofile,
-  userGalleryItems: state.userGalleryItems,
+  userAuth: state.userAuth,
+  userProfile: state.userProfile,
+  currentMessageBoard: state.currentMessageBoard,
+  comments: state.comments,
 });
 
 let mapDispatchToProps = dispatch => ({
-  signOut: () => dispatch(signOut()),
-  userGalleryItemsFetch: () => dispatch(userGalleryItemsFetchRequest()),
-  userGalleryItemCreate: userGalleryItem => dispatch(userGalleryItemCreateRequest(userGalleryItem)),
+  messageBoardFetch: messageBoardID => dispatch(messageBoardFetchRequest(messageBoardFetchRequest)),
+  commentCreate: comment => dispatch(commentCreateRequest(comment)),
+  commentFetch: commentID => dispatch(commentFetchRequest(commentID)),
+  commentsFetch: comments => dispatch(commentsFetchRequest(comments)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageBoardContainer);

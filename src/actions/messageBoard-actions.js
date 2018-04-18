@@ -5,14 +5,26 @@ export const messageBoardFetch = messageBoard => ({
   payload: messageBoard,
 });
 
-export const messageBoardFetchRequest = messageBoardID  => (dispatch, getState) => {
+export const messageBoardGroupFetchRequest = groupID  => (dispatch, getState) => {
   let { userAuth } = getState();
-  console.log('messageBoard fetch');
-  return superagent.get(`${__API_URL__}/api/messageboard/${messageBoardID}`)
+  console.log('group messageBoard fetch');
+  return superagent.get(`${__API_URL__}/api/messageboard/group/${groupID}`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
       console.log('messageBoard fetch res: ', res.body);
-      dispatch(messageBoardFetch(res.body));
-      return res;
+      dispatch(messageBoardFetch(res.body[0]));
+      return res.body[0];
+    });
+};
+
+export const messageBoardLeagueFetchRequest = leagueID  => (dispatch, getState) => {
+  let { userAuth } = getState();
+  console.log(' league messageBoard fetch');
+  return superagent.get(`${__API_URL__}/api/messageboard/league/${leagueID}`)
+    .set('Authorization', `Bearer ${userAuth}`)
+    .then(res => {
+      console.log('messageBoard fetch res: ', res.body);
+      dispatch(messageBoardFetch(res.body[0]));
+      return res.body[0];
     });
 };

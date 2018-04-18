@@ -11,8 +11,10 @@ import CreateSection from '../helpers/createSection';
 import JoinSection from '../helpers/joinSection';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest, userProfileUpdateRequest } from '../../actions/userProfile-actions.js';
-import { leaguesFetchRequest, leagueCreateRequest } from '../../actions/league-actions.js';
-import { groupsFetchRequest, groupCreateRequest } from '../../actions/group-actions.js';
+import { leaguesFetchRequest, leagueCreateRequest, leagueFetch } from '../../actions/league-actions.js';
+import { groupsFetchRequest, groupCreateRequest, groupFetch } from '../../actions/group-actions.js';
+import { messageBoardLeagueFetchRequest, messageBoardGroupFetchRequest } from '../../actions/messageBoard-actions.js';
+import { commentsFetchRequest } from '../../actions/comment-actions.js';
 import * as util from './../../lib/util.js';
 
 class LandingContainer extends React.Component {
@@ -26,18 +28,14 @@ class LandingContainer extends React.Component {
   }
 
   handleLeagueCreate = league => {
-    console.log('handle league create');
     league.sportingEventID='5ad2a2bffb35c1479596fdc2';
     return this.props.leagueCreate(league)
-      // .then(league => console.log('league created: ', league.body._id))
       .then(newLeague => this.props.history.push(`/league/${newLeague.body._id}`))
       .catch(util.logError);
   }
 
   handleGroupCreate = group => {
-    console.log('handle group create');
     return this.props.groupCreate(group)
-      // .then(group => console.log('group created: ', group))
       .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
       .catch(util.logError);
   }
@@ -45,6 +43,22 @@ class LandingContainer extends React.Component {
   handleProfileUpdate = profile => {
     return this.props.userProfileUpdate(profile)
       .catch(util.logError);
+  }
+
+  onLeagueClick = (league, e) => {
+    this.props.leagueFetchRequest(league);
+    return this.props.messageBoardLeagueFetch(league._id)
+      .then(messageBoard => {
+        console.log('messageBoard.body: ', messageBoard.body);
+        this.props.commentsFetch(messageBoard.comments);
+      })
+      .then( () =>  this.props.history.push(`/league/${league._id}`))
+      .catch(util.logError);
+  }
+
+  onGroupClick = (group, e) => {
+    this.props.groupFetchRequest(group);
+    this.props.history.push(`/group/${group._id}`);
   }
 
   render() {
@@ -73,10 +87,15 @@ class LandingContainer extends React.Component {
                 />
               </Modal>
             )}
-
-            {this.props.leagues.map(league =>
-              <div key={league._id}>
-                <p><Link to={`/league/${league._id}`} className='link'>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</Link></p>
+            
+            {util.renderIf(this.props.leagues,
+              <div>
+                {this.props.leagues.map(league => {
+                  let boundLeagueClick = this.onLeagueClick.bind(this, league);
+                  return <div key={league._id}>
+                    <p className='link' onClick={boundLeagueClick}>{league.leagueName} {league.ownerName} {league.size} {league.scoring}</p>
+                  </div>
+                })}
               </div>
             )}
 
@@ -92,11 +111,12 @@ class LandingContainer extends React.Component {
               </Modal>
             )}
 
-            {this.props.groups.map(group =>
-              <div key={group._id}>
-                <p><Link to={`/group/${group._id}`} className='link'>{group.groupName} {group.ownerName} {group.privacy} {group.size} </Link></p>
+            {this.props.groups.map(group => {
+              let boundGroupClick = this.onGroupClick.bind(this, group);
+              return <div key={group._id}>
+                <p onClick={boundGroupClick} className='link'>{group.groupName} {group.ownerName} {group.privacy} {group.size}</p>
               </div>
-            )}
+            })}
 
             {util.renderIf(this.state.profileFormDisplay && this.props.userProfile && this.props.userProfile.lastLogin === this.props.userProfile.createdOn,
               <Modal heading='Fill Out Your Profile'
@@ -136,6 +156,11 @@ let mapDispatchToProps = dispatch => ({
   userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
   leagueCreate: league => dispatch(leagueCreateRequest(league)),
   groupCreate: group => dispatch(groupCreateRequest(group)),
+  leagueFetchRequest: league => dispatch(leagueFetch(league)),
+  groupFetchRequest: group => dispatch(groupFetch(group)),
+  messageBoardLeagueFetch: leagueID => dispatch(messageBoardLeagueFetchRequest(leagueID)),
+  messageBoardGroupFetch: groupID => dispatch(messageBoardGroupFetchRequest(groupID)),
+  commentsFetch: commentArr => dispatch(commentsFetchRequest(commentArr)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer);

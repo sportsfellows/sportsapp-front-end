@@ -50,6 +50,9 @@ main {
 input {
   box-sizing : border-box;
 }
+input[type='text'], input[type='password'] {
+  white-space: pre-wrap;
+}
 button {
   cursor: pointer;
   padding: $pad;
