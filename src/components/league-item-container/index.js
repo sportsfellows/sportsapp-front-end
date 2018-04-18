@@ -42,6 +42,7 @@ class LeagueContainer extends React.Component {
   }
 
   render(){
+    console.log('this.props.currentMessageBoard: ', this.props.currentMessageBoard);
     return (
       <div className='league-container'>
         <LeagueForm onComplete={this.handleLeagueCreate} />
