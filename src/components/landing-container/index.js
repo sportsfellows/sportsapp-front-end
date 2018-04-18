@@ -105,15 +105,6 @@ class LandingContainer extends React.Component {
           <div>
             <CreateSection formType={formTypeLeague} handleCreate={() => this.setState({ leagueFormDisplay: true })}/>
 
-            <JoinSection joinType={formTypeLeague}/>
-            
-            {util.renderIf(this.state.leagueFormDisplay,
-              <Modal heading='Create League' close={() => this.setState({ leagueFormDisplay: false })}>
-                <LeagueForm 
-                  onComplete={this.handleLeagueCreate} 
-                />
-              </Modal>
-            )}
             {util.renderIf(this.props.leagues,
               <div>
                 <h2>my leagues.</h2>
@@ -130,8 +121,35 @@ class LandingContainer extends React.Component {
                 })}
               </div>
             )}
+            
+            <JoinSection joinType={formTypeLeague}/>
+            
+            {util.renderIf(this.state.leagueFormDisplay,
+              <Modal heading='Create League' close={() => this.setState({ leagueFormDisplay: false })}>
+                <LeagueForm 
+                  onComplete={this.handleLeagueCreate} 
+                />
+              </Modal>
+            )}
 
             <CreateSection formType={formTypeGroup} handleCreate={() => this.setState({ groupFormDisplay: true })}/>
+            {util.renderIf(this.props.groups,
+
+              <div>
+                <h2>my groups.</h2>
+                {this.props.groups.map(group => {
+                  let boundGroupClick = this.onGroupClick.bind(this, group);
+                  return <div key={group._id}>
+                    <p onClick={boundGroupClick} className='my-groups'>
+                      <span className='span-name'>{group.groupName} </span>
+                      <span className='span-owner'>{group.ownerName} </span>
+                      <span className='span-size'>{group.size} </span>
+                      <span className='span-privacy'>{group.privacy} </span>
+                    </p>
+                  </div>
+                })}
+              </div>
+            )}
 
             <JoinSection joinType={formTypeGroup}/>
 
@@ -141,23 +159,6 @@ class LandingContainer extends React.Component {
                   onComplete={this.handleGroupCreate} 
                 />
               </Modal>
-            )}
-
-            {util.renderIf(this.props.groups,
-              <div>
-                <h2>my groups.</h2>
-                {this.props.groups.map(group => {
-                  let boundGroupClick = this.onGroupClick.bind(this, group);
-                  return <div key={group._id}>
-                    <p onClick={boundGroupClick} className='my-groups'>
-                      <span className='span-name'>{group.groupName} </span>
-                      <span className='span-owner'>{group.ownerName} </span>
-                      <span className='span-privacy'>{group.privacy} </span>
-                      <span className='span-size'>{group.size} </span>
-                    </p>
-                  </div>
-                })}
-              </div>
             )}
 
             {util.renderIf(this.state.profileFormDisplay && this.props.userProfile && this.props.userProfile.lastLogin === this.props.userProfile.createdOn,
