@@ -21,17 +21,13 @@
   }
 
   button {
-    padding: $pad;
+    // padding: $pad;
     margin: $margin;
-    border-radius: $border-radius;
-    border-color: $color-black;
-    border-width: 1px;
-    border-style: solid;
+    // border-radius: $border-radius;
+    // border-color: $color-black;
+    // border-width: 1px;
+    // border-style: solid;
     width: 20%;
-  }
-
-  button:hover {
-    background-color: $color-primary-hover;
   }
 }
 
@@ -74,19 +70,12 @@
   }
 
   button {
-    padding: $pad;
-    margin: $margin;
-    border-radius: $border-radius;
-    border-color: $color-black;
-    border-width: 1px;
-    border-style: solid;
     width: 20%;
+    margin: $margin;
     display: block;
   }
 
-  button:hover {
-    background-color: $color-primary-hover;
-  }
+
 }
 
   .group-form div {
