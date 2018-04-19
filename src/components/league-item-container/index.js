@@ -27,7 +27,7 @@ class LeagueContainer extends React.Component {
     console.log('this.props.currentMessageBoard: ', this.props.currentMessageBoard);
     return (
       <div className='leagueItem-container page-outer-div'>
-        <UserPickContainer leagueID={this.props.currentLeague._id} />
+        <UserPickContainer sportingEventID={this.props.currentLeague.sportingEventID} leagueID={this.props.currentLeague._id} />
         <MessageBoardContainer mBoardId={this.props.currentMessageBoard._id}/>
       </div>
     );
