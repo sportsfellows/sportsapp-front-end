@@ -53,7 +53,7 @@ class LeagueAllContainer extends React.Component {
                 <span className='span-owner'>{league.ownerName} </span>
                 <span className='span-size'>{league.size} </span>
                 <span className='span-scoring'>{league.scoring} </span>
-                <span className='span-join'><button className='button' onClick={() => this.handleLeagueJoin(league._id)}>join</button></span>
+                <span className='span-join'><button className='button' onClick={boundLeagueJoinClick}>join</button></span>
               </p>
             </div>
           })}
