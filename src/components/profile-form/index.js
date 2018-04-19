@@ -51,6 +51,7 @@ class ProfileForm extends React.Component {
             onChange={this.handleChange}/>
           <input 
             type="date"
+            value={this.state.birthdate}
             name="birthdate"
             onChange={this.handleChange}/>
           <button className='button' type="submit">Submit</button>
