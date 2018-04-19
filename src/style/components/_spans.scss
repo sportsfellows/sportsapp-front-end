@@ -12,7 +12,7 @@
   .span-name {
     display: inline-block;
     width: 20%;
-    padding-left: 2vw;
+    padding-left: 1vw;
     box-sizing: border-box;
   }
   .span-owner {
@@ -28,6 +28,7 @@
   .span-privacy {
     display: inline-block;
     width: 20%;
+    text-align: center;
   }
   .span-scoring {
     display: inline-block;
@@ -38,7 +39,8 @@
     display: inline-block;
     width: 20%;
     text-align: right;
-    padding-right: 2vw;
+    padding-right: 1vw;
+    box-sizing: border-box;
   }
 }
 

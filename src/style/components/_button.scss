@@ -6,6 +6,7 @@
   color: #fff;
   border-width: 0px;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
+  margin: $margin;
 }
 
 .button:hover {
@@ -17,8 +18,7 @@
 }
 
 .form-button {
-  width: 20%;
-  margin: $margin;
+  width: 15vw;
 }
 
 .create-button {

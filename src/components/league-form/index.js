@@ -145,50 +145,62 @@ class LeagueForm extends React.Component {
         />
 
         <div className='radio-div'>
-        <input 
-          type="radio"
-          name="scoring" 
-          value="regular"
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          checked={this.state.scoring === 'regular' ? true : false}
-        />
-        <label>regular</label>
+          <div>
+            <input 
+              type="radio"
+              name="scoring" 
+              value="regular"
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              checked={this.state.scoring === 'regular' ? true : false}
+            />
+            <label>regular</label>
+            <span>about regular scoring</span>
+          </div>
 
-        <input 
-          type="radio"
-          name="scoring" 
-          value="underDog"
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        />
-        <label>Under Dog</label>
+          <div>
+            <input 
+              type="radio"
+              name="scoring" 
+              value="underDog"
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+            />
+            <label>Under Dog</label>
+            <span>about underdog scoring</span>
+          </div>
         </div>
 
         <div className='radio-div'>
-        <input 
-          type="radio"
-          name="privacy" 
-          value="public"
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          checked={this.state.privacy === 'public' ? true : false}
-        />
-        <label>public</label>
+          <div>
+            <input 
+              type="radio"
+              name="privacy" 
+              value="public"
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              checked={this.state.privacy === 'public' ? true : false}
+            />
+            <label>public</label>
+            <span>about public</span>
+          </div>
 
-        <input 
-          type="radio"
-          name="privacy" 
-          value="private"
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          checked={this.state.privacy === 'private' ? true : false}
-        />
-        <label>private</label>
+          <div>
+            <input 
+              type="radio"
+              name="privacy" 
+              value="private"
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              checked={this.state.privacy === 'private' ? true : false}
+            />
+            <label>private</label>
+            <span>about private</span>
+          </div>
         </div>
 
         {util.renderIf(this.state.privacy === 'private',
