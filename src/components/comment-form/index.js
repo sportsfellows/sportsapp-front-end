@@ -1,4 +1,3 @@
-import './_comment-form.scss';
 import React from 'react';
 import superagent from 'superagent';
 
@@ -67,7 +66,7 @@ class CommentForm extends React.Component {
         {util.renderIf(content,
           <div className='commentFormButtonDiv'>
             <div className='ButtonDiv'>
-              <button type='submit'> post </button>
+              <button className='button' type='submit'> post </button>
             </div>
           </div>
         )}

@@ -52,7 +52,7 @@ class GroupAllContainer extends React.Component {
                 <span className='span-owner'>{group.ownerName} </span>
                 <span className='span-size'>{group.size} </span>
                 <span className='span-scoring'>{group.scoring}</span>
-                <span className='span-join'><button onClick={boundGroupJoinClick}>join</button></span>
+                <span className='span-join'><button className='button' onClick={boundGroupJoinClick}>join</button></span>
               </p>
             </div>
           })}

@@ -207,7 +207,7 @@ class LeagueForm extends React.Component {
           </div>
         )}
 
-        <button type='submit'> {buttonText} </button>
+        <button className='button' type='submit'> {buttonText} </button>
       </form>
     );
   }

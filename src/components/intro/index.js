@@ -82,7 +82,7 @@ class Intro extends React.Component {
               <p className="author">
                 
               </p>
-              <button onClick={() => this.setState({formDisplay: true})}id="start-button" >
+              <button className='button' onClick={() => this.setState({formDisplay: true})}id="start-button" >
                 START
               </button>
             </div>
@@ -96,11 +96,11 @@ class Intro extends React.Component {
 
                   <div className='userauth-buttons'>
                     {util.renderIf(this.state.authFormAction==='Sign In',
-                      <button onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
+                      <button className='button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
                     )}
 
                     {util.renderIf(this.state.authFormAction==='Sign Up',
-                      <button onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
+                      <button className='button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
                     )}
                   </div>
                 </Modal>
