@@ -3,10 +3,10 @@ import React from 'react';
 class CreateSection extends React.Component {
   render() {
     return (
-      <div className={`component-container${this.props.formType}`}>
+      <div className={`container component-container${this.props.formType}`}>
         <div className='inner-wrapper'>
-          <p className='create-header'>Create Your Own {this.props.formType}! </p>
-          <p className='create-text'>Create a {this.props.formType} of your own, and invite your friends!</p>
+          <p className='header create-header'>Create Your Own {this.props.formType}! </p>
+          <p className='text create-text'>Create a {this.props.formType} of your own, and invite your friends!</p>
           <button className='button create-button' onClick={this.props.handleCreate}>Create {this.props.formType} </button>
         </div>
       </div>

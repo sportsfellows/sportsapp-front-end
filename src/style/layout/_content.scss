@@ -6,6 +6,12 @@
 }
 .container {
   width: auto;
+  padding: 1vw;
+  background: #fff;
+  border: 1px solid $color-gray;
+  border-radius: $border-radius;
+  margin: 20px 0;
+  position: relative;
 }
 .page-outer-div {
   min-height: 90vh;
@@ -14,4 +20,23 @@
   margin-right: auto;
   padding-left: 12px;
   padding-right: 12px;
+}
+.header {
+  border: 1px solid $color-gray;
+  border-width: 0 0 1px;
+  padding: 0 8px 8px;
+  margin-bottom: 30px;
+  color: $color-primary;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+}
+
+.text {
+  padding: $pad;
+}
+
+.join-text {
+  text-align: center;
 }

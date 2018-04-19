@@ -2,21 +2,22 @@
   height: 0;
 
   section {
-    transform: translateY(-6vw);
+    // transform: translateY(7.5vw);
     position: relative;
     margin-bottom: 1vw;
+    margin-left: 1vw;
     width: 100%;
     
     p {
       // background: $color-primary-dark;
-      background: #ccc;
+      background-color: $color-error;
       color: #FFF;
       display: inline-block;
       padding: .5vw;
       width: auto;
       // border: 2px solid $color-primary-dark;
-      border: 2px solid black;
-      border-radius: 1vw / 2;
+      border: 1px solid black;
+      border-radius: $border-radius;
     }
 
     .fa-caret-up {
