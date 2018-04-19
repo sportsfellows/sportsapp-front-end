@@ -111,7 +111,7 @@ class LeagueForm extends React.Component {
         )}
 
         {util.renderIf(!this.props.league,
-            <h2>create.</h2>
+            <h2>create a league.</h2>
         )}
 
         <input
@@ -145,6 +145,7 @@ class LeagueForm extends React.Component {
         />
 
         <div className='radio-div'>
+          <p>scoring:</p>
           <div>
             <input 
               type="radio"
@@ -174,6 +175,7 @@ class LeagueForm extends React.Component {
         </div>
 
         <div className='radio-div'>
+          <p>privacy:</p>
           <div>
             <input 
               type="radio"

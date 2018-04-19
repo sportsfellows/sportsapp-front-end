@@ -32,6 +32,7 @@ class ProfileContainer extends React.Component {
             onComplete={this.handleProfileUpdate}
           />
         </div>
+        
       </div>
     )
   }
