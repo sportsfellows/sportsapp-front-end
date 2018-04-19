@@ -162,7 +162,7 @@ class GroupForm extends React.Component {
             onChange={this.handleChange}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
-            checked
+            checked={this.state.privacy === 'public' ? true : false}
           />
           <label>public</label>
 
