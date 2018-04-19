@@ -1,0 +1,52 @@
+.button {
+  cursor: pointer;
+  padding: $pad;
+  border-radius: $border-radius;
+  background-color: $color-secondary;
+  color: #fff;
+  border-width: 0px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
+}
+
+.button:hover {
+  background-color: $color-secondary-hover;
+}
+
+.form-button {
+
+}
+
+.form-button:hover {
+
+}
+
+.create-button {
+  color: #fff;
+  margin-top: 1rem;
+  width:100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .create-button {
+    bottom: 1vw;
+    position: absolute;
+    right: 1rem;
+    width: auto;
+  }
+}
+
+.join-button {
+  margin-top: 1rem;
+  width:100%;
+}
+
+.join-button a {
+  color: #fff;
+}
+
+@media only screen and (min-width: 500px) {
+  .join-button {
+    width: auto;
+    margin-left: 10vw;
+  }
+}

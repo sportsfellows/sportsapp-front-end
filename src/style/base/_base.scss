@@ -18,8 +18,12 @@ h1, h2, h3, h4, h5, h6, p, a, span {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-a {
+a, a:visited {
   text-decoration: none;
+  color: $color-secondary;
+}
+a:hover {
+  color: $color-secondary-hover;
 }
 ul, li {
   list-style-type: none;
@@ -53,13 +57,13 @@ input[type='text'], input[type='password'] {
   white-space: pre-wrap;
 }
 button {
-  cursor: pointer;
-  padding: $pad;
-  border-radius: $border-radius;
-  background-color: $color-secondary;
-  color: #fff;
-  border-width: 0px;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
+  // cursor: pointer;
+  // padding: $pad;
+  // border-radius: $border-radius;
+  // background-color: $color-secondary;
+  // color: #fff;
+  // border-width: 0px;
+  // box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
 }
 
 button:hover {
