@@ -1,4 +1,3 @@
-// import './_comment-form.scss';
 import React from 'react';
 import superagent from 'superagent';
 

@@ -1,4 +1,3 @@
-// import './_createSection.scss';
 import React from 'react';
 
 class CreateSection extends React.Component {
