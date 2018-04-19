@@ -5,9 +5,8 @@
   input {
     width: 100%;
     border-radius: $border-radius;
-    border-color: $color-black;
-    border-width: 1px;
-    border-style: solid;
+    border-width: 0px;
+    background-color: #c2c2c2;
     padding: $pad;
     margin: $margin;
   }
@@ -15,29 +14,21 @@
   input:focus {
     background-color: $color-primary-hover;
     border-radius: $border-radius;
-    border-color: $color-black;
-    border-width: 1px;
-    border-style: solid;
+    border-width: 0px;
   }
 
   button {
-    // padding: $pad;
     margin: $margin;
-    // border-radius: $border-radius;
-    // border-color: $color-black;
-    // border-width: 1px;
-    // border-style: solid;
     width: 20%;
   }
 }
 
-.profile-form, .league-form, .group-form {
+.profile-form, .league-form, .group-form, .league-all-private-form, .group-all-private-form {
   input {
     width: 50%;
+    background-color: #c2c2c2;
     border-radius: $border-radius;
-    border-color: $color-black;
-    border-width: 1px;
-    border-style: solid;
+    border-width: 0px;
     padding: $pad;
     margin: $margin;
   }
@@ -49,9 +40,7 @@
   input:focus {
     background-color: $color-primary-hover;
     border-radius: $border-radius;
-    border-color: $color-black;
-    border-width: 1px;
-    border-style: solid;
+    border-width: 0px;
   }
 
   label {
@@ -61,9 +50,9 @@
   
   div.radio-div {
     width: 48%;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $color-black;
+    font-size: 1.6vw;
+    background-color: #c2c2c2;
+    border-width: 0px;
     border-radius: $border-radius;
     margin: $margin;
     padding: $pad;

@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest } from '../../actions/league-actions.js';
-import { groupsFetchRequest, allPublicGroupsFetchRequest, groupJoinRequest, privateGroupJoinRequest } from '../../actions/group-actions.js';
+import { groupsFetchRequest, allPublicGroupsFetchRequest, groupJoinRequest, privateGroupJoinRequest, groupFetch } from '../../actions/group-actions.js';
+import { messageBoardGroupFetchRequest } from '../../actions/messageBoard-actions.js';
+import { commentsFetchRequest } from '../../actions/comment-actions.js';
 import GroupAllPrivateForm from '../group-all-private-form';
 import * as util from './../../lib/util.js';
 
@@ -18,23 +20,22 @@ class GroupAllContainer extends React.Component {
     this.props.allPublicGroupsFetch();
   }
 
-  handleGroupJoin = groupID => {
-    console.log('groupID: ', groupID);
-    return this.props.groupJoin(groupID)
-      .then(group => {
-        console.log('handle group join - group: ', group);
-        this.props.history.push(`/group/${group._id}`)
-      })
+  handleGroupJoin = (group, e) => {
+    return this.props.groupJoin(group._id)
+      .then(() => this.props.messageBoardGroupFetch(group._id))
+      .then(messageBoard => this.props.commentsFetch(messageBoard.comments))
+      .then(() => this.props.history.push(`/group/${group._id}`))
       .catch(util.logError);
   };
 
   handlePrivateGroupJoin = credentials => {
-    console.log('credentials: ', credentials);
     return this.props.privateGroupJoin(credentials)
-      .then(group => {
-        console.log('group: ', group);
-        return this.props.history.push(`/group/${group._id}`)
+      .then(group => this.props.messageBoardGroupFetch(group._id))
+      .then(messageBoard => {
+        this.props.commentsFetch(messageBoard.comments);
+        return messageBoard.groupID
       })
+      .then(groupID => this.props.history.push(`/group/${groupID}`))
       .catch(util.logError);
   };
 
@@ -42,11 +43,19 @@ class GroupAllContainer extends React.Component {
     return (
       <section className='groups-container page-outer-div'>
         <div className='public-groups'>
-          {this.props.publicGroups.map(group =>
-            <div key={group._id}>
-              <p>{group.groupName} {group.ownerName} {group.size} {group.scoring}<button onClick={() => this.handleGroupJoin(group._id)}>join</button></p>
+          <h2>public groups.</h2>
+          {this.props.publicGroups.map(group => {
+            let boundGroupJoinClick = this.handleGroupJoin.bind(this, group);
+            return <div key={group._id}>
+              <p>
+                <span className='span-name'>{group.groupName} </span>
+                <span className='span-owner'>{group.ownerName} </span>
+                <span className='span-size'>{group.size} </span>
+                <span className='span-scoring'>{group.scoring}</span>
+                <span className='span-join'><button onClick={boundGroupJoinClick}>join</button></span>
+              </p>
             </div>
-          )}
+          })}
         </div>
         
         <GroupAllPrivateForm onComplete={this.handlePrivateGroupJoin}/>
@@ -72,6 +81,9 @@ let mapDispatchToProps = dispatch => {
     allPublicGroupsFetch: () => dispatch(allPublicGroupsFetchRequest()),
     groupJoin: groupID => dispatch(groupJoinRequest(groupID)),
     privateGroupJoin: credentials => dispatch(privateGroupJoinRequest(credentials)),
+    groupFetchRequest: group => dispatch(groupFetch(group)),
+    messageBoardGroupFetch: groupID => dispatch(messageBoardGroupFetchRequest(groupID)),
+    commentsFetch: commentArr => dispatch(commentsFetchRequest(commentArr)),
   };
 };
 

@@ -12,7 +12,7 @@
   font-size: 30px;
 }
 .logo-text:hover {
-  color: $color-lightgray;
+  color: $color-gray-hover;
 }
 .bold {
   font-weight: 900;
@@ -58,7 +58,7 @@
   fill:  $color-gray
 }
 .social:hover .social-icons {
-  fill:  $color-lightgray;
+  fill:  $color-gray-hover;
 }
 .social-icons path {
   transition: all 0.35s cubic-bezier(0.77, 0, 0.175, 1);
@@ -99,8 +99,7 @@ nav .fa-caret-down {
   right: 67px;
   top: 65px;
   padding: 15px;
-  border-width: 1px 1px 1px 1px;
-  border-top: 0px;
+  border-width: 0px 1px 1px 1px;
   border-style: solid;
   border-color: rgb(194, 194, 194);
 }
@@ -112,10 +111,10 @@ nav .fa-caret-down {
   transition: all 0.35s cubic-bezier(0.77, 0, 0.175, 1);
 }
 .dropdownDiv .link:hover {
-  color:  $color-lightgray;
+  color:  $color-gray-hover;
 }
 nav .avatarDiv:hover .colorChangeHover {
-  color:  $color-lightgray;
+  color:  $color-gray-hover;
 }
 .colorChangeHover{
   transition: all 0.35s cubic-bezier(0.77, 0, 0.175, 1);

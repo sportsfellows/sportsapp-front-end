@@ -16,10 +16,12 @@
 
 
 .join-button {
-  color: $color-primary;
   margin-top: 1rem;
   width:100%;
-  background: #FFF;
+}
+
+.join-button a {
+  color: #fff;
 }
 
 @media only screen and (min-width: 500px) {

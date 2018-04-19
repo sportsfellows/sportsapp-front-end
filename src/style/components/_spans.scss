@@ -1,0 +1,44 @@
+p.my-leagues, p.my-groups, p.public-leagues, .public-groups p {
+  background-color: $color-lightgray;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-gray;
+  border-radius: $border-radius;
+  // margin: $margin;
+  padding: $pad;
+  width: auto;
+  cursor: pointer;
+
+  .span-name {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-owner {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-size {
+    display: inline-block;
+    width: 10vw;
+  }
+  .span-owner {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-privacy {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-scoring {
+    display: inline-block;
+    width: 15vw;
+  }
+  .span-join {
+    display: inline-block;
+    width: 10vw;
+  }
+}
+
+.public-leagues, .public-groups {
+  margin-bottom: 5vh;
+}

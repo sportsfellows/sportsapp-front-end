@@ -89,6 +89,7 @@ class LeagueAllPrivateForm extends React.Component {
         'error': this.state.error && this.state.submitted,
       })}>
 
+        <h2>join a private league.</h2>
         <input
           className={util.classToggler({error: leagueNameError })}
           type='text'
