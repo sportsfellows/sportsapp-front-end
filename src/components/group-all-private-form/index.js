@@ -66,7 +66,6 @@ class GroupAllPrivateForm extends React.Component {
     if(!this.state.error) {
       this.props.onComplete(this.state)
         .catch(err => {
-          console.log('hi');
           console.error(err);
           this.setState({ 
             error,
@@ -85,7 +84,7 @@ class GroupAllPrivateForm extends React.Component {
     let { focused, submitted, groupName, passwordError, groupNameError } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className={util.classToggler({
-        'group-all-private-form': true,
+        'form group-all-private-form': true,
         'error': this.state.error && this.state.submitted,
       })}>
         <h2>join a private group.</h2>

@@ -50,12 +50,6 @@ class LandingContainer extends React.Component {
       .catch(util.logError);
   }
 
-  // handleGroupCreate = group => {
-  //   return this.props.groupCreate(group)
-  //     .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
-  //     .catch(util.logError);
-  // }
-
   handleProfileUpdate = profile => {
     return this.props.userProfileUpdate(profile)
       .catch(util.logError);
@@ -65,7 +59,6 @@ class LandingContainer extends React.Component {
     this.props.leagueFetchRequest(league);
     return this.props.messageBoardLeagueFetch(league._id)
       .then(messageBoard => {
-        console.log('messageBoard.body: ', messageBoard.body);
         this.props.commentsFetch(messageBoard.comments);
       })
       .then( () =>  this.props.history.push(`/league/${league._id}`))
@@ -76,20 +69,13 @@ class LandingContainer extends React.Component {
     this.props.groupFetchRequest(group);
     return this.props.messageBoardGroupFetch(group._id)
       .then(messageBoard => {
-        console.log('messageBoard.body: ', messageBoard.body);
         this.props.commentsFetch(messageBoard.comments);
       })
       .then( () =>  this.props.history.push(`/group/${group._id}`))
       .catch(util.logError);
   }
 
-  // onGroupClick = (group, e) => {
-  //   this.props.groupFetchRequest(group);
-  //   this.props.history.push(`/group/${group._id}`);
-  // }
-
   render() {
-    console.log('hi');
     let { params } = this.props.match;
     let handleComplete = params.userAuth === 'signin' ? this.handleSignin : this.handleSignup;
     let formTypeLeague = 'league';
@@ -106,12 +92,12 @@ class LandingContainer extends React.Component {
             <CreateSection formType={formTypeLeague} handleCreate={() => this.setState({ leagueFormDisplay: true })}/>
 
             {util.renderIf(this.props.leagues,
-              <div>
-                <h2>my leagues.</h2>
+              <div className='container'>
+                <p className='header'>my leagues</p>
                 {this.props.leagues.map(league => {
                   let boundLeagueClick = this.onLeagueClick.bind(this, league);
                   return <div key={league._id}>
-                    <p className='my-leagues' onClick={boundLeagueClick}>
+                    <p className='span-row' onClick={boundLeagueClick}>
                       <span className='span-name'>{league.leagueName} </span>
                       <span className='span-owner'>{league.ownerName} </span>
                       <span className='span-size'>{league.size} </span>
@@ -135,12 +121,12 @@ class LandingContainer extends React.Component {
             <CreateSection formType={formTypeGroup} handleCreate={() => this.setState({ groupFormDisplay: true })}/>
             {util.renderIf(this.props.groups,
 
-              <div>
-                <h2>my groups.</h2>
+              <div className='container'>
+                <p className='header'>my groups</p>
                 {this.props.groups.map(group => {
                   let boundGroupClick = this.onGroupClick.bind(this, group);
                   return <div key={group._id}>
-                    <p onClick={boundGroupClick} className='my-groups'>
+                    <p onClick={boundGroupClick} className='span-row'>
                       <span className='span-name'>{group.groupName} </span>
                       <span className='span-owner'>{group.ownerName} </span>
                       <span className='span-size'>{group.size} </span>

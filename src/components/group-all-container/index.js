@@ -47,7 +47,7 @@ class GroupAllContainer extends React.Component {
           {this.props.publicGroups.map(group => {
             let boundGroupJoinClick = this.handleGroupJoin.bind(this, group);
             return <div key={group._id}>
-              <p>
+              <p className='span-row'>
                 <span className='span-name'>{group.groupName} </span>
                 <span className='span-owner'>{group.ownerName} </span>
                 <span className='span-size'>{group.size} </span>

@@ -30,17 +30,3 @@ export default (state=null, action) => {
       return state;
   }
 };
-
-// userID: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'user' },
-// username: {type: String, required: true },
-// image: { type: String },
-// country: { type: String, uppercase: true },
-// state: { type: String, uppercase: true },
-// birthdate: { type: Number }, //(mmddyyyy);
-// accountBalance: { type: Number, default: 0 },
-// status: { type: String, default: 'active'},
-// createdOn: { type: Date, default: Date.now },
-// lastLogin: { type: Date, default: Date.now },
-// leagues: [{type: mongoose.Schema.Types.ObjectId, ref: 'league'}],
-// groups: [{type: mongoose.Schema.Types.ObjectId, ref: 'group'}],
-// tags: [{type: String }],

@@ -28,7 +28,6 @@ export const userPickCreateRequest = userPick => (dispatch, getState) => {
     .set('Authorization', `Bearer ${userAuth}`)
     .send(userPick)
     .then( res => {
-      console.log('userpick res.body: ', res.body);
       dispatch(userPickCreate(res.body));
       return res.body;
     });
@@ -41,7 +40,6 @@ export const userPickUpdateRequest = userPick => (dispatch, getState) => {
     .set('Authorization', `Bearer ${userAuth}`)
     .send(userPick)
     .then( res => {
-      console.log('userpick res.body: ', res.body);
       dispatch(userPickUpdate(res.body));
       return res.body;
     });
@@ -53,7 +51,6 @@ export const userPicksFetchRequest = leagueID  => (dispatch, getState) => {
   return superagent.get(`${__API_URL__}/api/userpicks/${leagueID}`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      console.log('userpick res.body: ', res.body);
       dispatch(userPicksFetch(res.body));
       return res.body;
     });
@@ -61,11 +58,9 @@ export const userPicksFetchRequest = leagueID  => (dispatch, getState) => {
 
 export const userPickFetchRequest = userPickID  => (dispatch, getState) => {
   let { userAuth } = getState();
-  console.log(' userPickFetchRequest HIT userPickID: ', userPickID);
   return superagent.get(`${__API_URL__}/api/userpick/${userPickID}`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      console.log('userpick res.body: ', res.body);
       dispatch(userPickFetch(res.body));
       return res.body;
     });

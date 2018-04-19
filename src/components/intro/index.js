@@ -17,19 +17,14 @@ class Intro extends React.Component {
   }
 
   handleSignin = (user, errCB) => {
-    console.log('handle signin: ', user);
     return this.props.signIn(user)
       .then(() => this.props.userProfileFetch())
       .then(profile => {
-        // return (profile.body.leagues.length ? this.props.leaguesFetch(profile.body.leagues) : profile);
         if(profile.body.leagues.length) this.props.leaguesFetch(profile.body.leagues);
         return profile;
       })
       .then(profile => {
-        // if(this.props.userProfile.groups.length) return this.props.groupsFetch(this.props.userProfile.groups);
-        console.log('profile.body.groups: ', profile.body.groups);
         return this.props.groupsFetch(profile.body.groups);
-        // if(profile.body.groups.length) this.props.groupsFetch(profile.body.groups);
       })
       .catch(err => {
         util.logError(err);
@@ -38,7 +33,6 @@ class Intro extends React.Component {
   };
 
   handleSignup = (user, errCB) => {
-    console.log('handle signup: ', user);
     return this.props.signUp(user)
       .then(() => this.props.userProfileFetch())
       .catch(err => {
@@ -56,7 +50,7 @@ class Intro extends React.Component {
     return (
       <div className="intro">
         <section id="introView" className="view introView">
-          <div className="container">
+          <div>
             <h1 className="headline center">BUILD YOUR OWN BRACKET!</h1>
           </div>
           <div className="banner-image">
@@ -66,7 +60,7 @@ class Intro extends React.Component {
               <img className="intro-lebron intro-images" src={lebron} />
             </div>
           </div>
-          <div className="container">
+          <div>
             <div className="narrow-container center">
               <p className="description">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
@@ -88,11 +82,11 @@ class Intro extends React.Component {
 
                   <div className='userauth-buttons'>
                     {util.renderIf(this.state.authFormAction==='Sign In',
-                      <button className='button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
+                      <button className='button form-button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
                     )}
 
                     {util.renderIf(this.state.authFormAction==='Sign Up',
-                      <button className='button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
+                      <button className='button form-button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
                     )}
                   </div>
                 </Modal>

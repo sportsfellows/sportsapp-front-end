@@ -38,13 +38,10 @@ export const commentFetchRequest = commentID => (dispatch, getState) => {
 
 export const commentsFetchRequest = commentsArr => (dispatch, getState) => {
   let { userAuth } = getState();
-  console.log('commetnsArr: ', commentsArr);
   return superagent.post(`${__API_URL__}/api/comments/messageboard`)
     .set('Authorization', `Bearer ${userAuth}`)
     .send(commentsArr)
     .then(res => {
-      console.log('res: ', res);
-      console.log('res.body: ', res.body);
       dispatch(commentsFetch(res.body));
       return res.body;
     });

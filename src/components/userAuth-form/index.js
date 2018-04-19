@@ -1,7 +1,6 @@
 import React from 'react';
 import superagent from 'superagent';
 import { isEmail, isAlphanumeric, isAscii } from 'validator';
-// import debounce from 'lodash/fp/debounce';
 
 import Tooltip from '../helpers/tooltip';
 import * as util from '../../lib/util';
@@ -102,7 +101,6 @@ class UserAuthForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log('state: ', this.state);
     if(!this.state.error) {
       this.props.onComplete(this.state, this.handleError)
         .catch(err => {
@@ -136,7 +134,7 @@ class UserAuthForm extends React.Component {
     let { focused, submitted, username, emailError, passwordError, usernameError, usernameAvailable } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className={util.classToggler({
-        'userauth-form': true,
+        'form userauth-form': true,
         'error': this.state.error && this.state.submitted,
       })}>
 
@@ -198,7 +196,7 @@ class UserAuthForm extends React.Component {
           <a href='https://accounts.google.com/o/oauth2/v2/auth?client_id=767730296032-vod2j41qvpemvu2glfusclouco0l1ld0.apps.googleusercontent.com&response_type=code&scope=openid%20profile%20email&prompt=consent&redirect_uri=http://localhost:3000/oauth/google' rel="noopener noreferrer" className='outh'>signin with Google</a>
         )} */}
 
-        <button className='button' type='submit'> {this.props.authFormAction} </button>
+        <button className='button form-button' type='submit'> {this.props.authFormAction} </button>
       </form>
     );
   }

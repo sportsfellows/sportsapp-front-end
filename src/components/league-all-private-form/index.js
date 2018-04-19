@@ -66,7 +66,6 @@ class LeagueAllPrivateForm extends React.Component {
     if(!this.state.error) {
       this.props.onComplete(this.state)
         .catch(err => {
-          console.log('hi');
           console.error(err);
           this.setState({ 
             error,
@@ -85,7 +84,7 @@ class LeagueAllPrivateForm extends React.Component {
     let { focused, submitted, leagueName, passwordError, leagueNameError } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className={util.classToggler({
-        'league-all-private-form': true,
+        'form league-all-private-form': true,
         'error': this.state.error && this.state.submitted,
       })}>
 
@@ -113,7 +112,7 @@ class LeagueAllPrivateForm extends React.Component {
           onBlur={this.handleBlur}
         />
 
-        <button className='button join-button' type='submit'> Join League </button>
+        <button className='button' type='submit'> Join League </button>
       </form>
     );
   }

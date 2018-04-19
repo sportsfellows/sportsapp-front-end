@@ -10,21 +10,10 @@ export default (state=[], action) => {
   switch(type) {
     case 'MESSAGEBOARD_FETCH':
       return [payload, ...state];
-    // case 'LEAGUES_FETCH':
-    //   return [...payload, ...state];
-    // case 'LEAGUE_CREATE':
-    //   validateLeague(payload);
-    //   return [payload, ...state];
-    // case 'LEAGUE_UPDATE':
-    //   if(state === []) throw new Error('USAGE ERROR: can not update league not in state');
-    //   validateLeague(payload);
-    //   return state.map(league => league._id === payload._id ? payload : league);
     case 'LEAGUE_DELETE':
       if(state === []) throw new Error('USAGE ERROR: can not delete league not in state');
       validateLeague(payload);
       return state.filter(league => league._id !== payload._id);
-    // case 'LEAGUE_JOIN':
-    //   return [payload, ...state];
     case 'SIGN_OUT':
       return [];
     default:

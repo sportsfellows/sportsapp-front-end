@@ -17,7 +17,6 @@ class ProfileForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     return this.props.onComplete(this.state);
   } 
 
@@ -30,7 +29,7 @@ class ProfileForm extends React.Component {
   render() {
     return (
       <section className='profile-form'>
-        <form onSubmit={this.handleSubmit}>
+        <form className='form' onSubmit={this.handleSubmit}>
           <input 
             type="text" 
             placeholder="State" 
@@ -53,7 +52,7 @@ class ProfileForm extends React.Component {
             type="date"
             name="birthdate"
             onChange={this.handleChange}/>
-          <button className='button' type="submit">Submit</button>
+          <button className='button form-button' type="submit">Submit</button>
         </form>  
       </section>
     );
