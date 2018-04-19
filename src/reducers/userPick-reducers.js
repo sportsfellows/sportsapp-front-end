@@ -14,9 +14,15 @@ export default (state=[], action) => {
       return state.map(userPick => userPick._id === payload._id ? payload : userPick);
     case 'USER_PICKS_FETCH':
       return payload;
+    case 'USER_PICK_FETCH':
+      // validateUserPick(payload);
+      return [payload, ...state];
     case 'USER_PICK_CREATE':
       validateUserPick(payload);
-      return [payload, ...state];
+      return state;
+    // case 'USER_PICK_CREATE':
+    //   validateUserPick(payload);
+    //   return [payload, ...state];
     case 'SIGN_OUT':
       return [];
     default:

@@ -10,8 +10,13 @@ export const userPickUpdate = userPick => ({
   payload: userPick,
 });
 
-export const userPicksFetch = userPick => ({
+export const userPicksFetch = userPicks => ({
   type: 'USER_PICKS_FETCH',
+  payload: userPicks,
+});
+
+export const userPickFetch = userPick => ({
+  type: 'USER_PICK_FETCH',
   payload: userPick,
 });
 
@@ -50,6 +55,18 @@ export const userPicksFetchRequest = leagueID  => (dispatch, getState) => {
     .then(res => {
       console.log('userpick res.body: ', res.body);
       dispatch(userPicksFetch(res.body));
+      return res.body;
+    });
+};
+
+export const userPickFetchRequest = userPickID  => (dispatch, getState) => {
+  let { userAuth } = getState();
+  console.log(' userPickFetchRequest HIT userPickID: ', userPickID);
+  return superagent.get(`${__API_URL__}/api/userpick/${userPickID}`)
+    .set('Authorization', `Bearer ${userAuth}`)
+    .then(res => {
+      console.log('userpick res.body: ', res.body);
+      dispatch(userPickFetch(res.body));
       return res.body;
     });
 };
