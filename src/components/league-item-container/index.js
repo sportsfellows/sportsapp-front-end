@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest, leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/league-actions.js';
 import { groupsFetchRequest } from '../../actions/group-actions.js';
-// import { messageBoardLeagueFetchRequest, messageBoardGroupFetchRequest } from '../../actions/messageBoard-actions.js';
-import LeagueForm from '../league-form';
+import { scoreBoardsFetchRequest } from '../../actions/scoreboard-actions.js';
+import UserPickContainer from '../user-pick-container';
 import MessageBoardContainer from '../message-board-container';
+import LeagueItemScoreBoard from '../league-item-scoreboard';
 import * as util from '../../lib/util.js';
 
 class LeagueContainer extends React.Component {
@@ -16,15 +16,12 @@ class LeagueContainer extends React.Component {
   }
 
   componentWillMount() {
-    return util.userValidation(this.props);
+    util.userValidation(this.props);
+    this.props.scoreBoardsFetch(this.props.currentLeague._id);
   }
 
-  // handleLeagueCreate = league => {
-  //   console.log('handle leage create hi');
-  //   league.sportingEventID='5ad2a2bffb35c1479596fdc2';
-  //   return this.props.leagueCreate(league)
-  //     // .then(() => )
-  //     .catch(util.logError);
+  // componentDidMount(){
+  //   this.props.scoreBoardsFetch(this.props.currentLeague._id);
   // }
 
   handleComplete = league => {
@@ -36,11 +33,17 @@ class LeagueContainer extends React.Component {
   render(){
     console.log('this.props.currentMessageBoard: ', this.props.currentMessageBoard);
     return (
-      <div className='league-container'>
-        {/* <LeagueForm onComplete={this.handleLeagueCreate} /> */}
-        {/* <LeagueForm league={this.props.league} onComplete={this.handleLeagueCreate} /> */}
-
+      <div className='leagueItem-container page-outer-div'>
+        <UserPickContainer sportingEventID={this.props.currentLeague.sportingEventID} leagueID={this.props.currentLeague._id} />
         <MessageBoardContainer mBoardId={this.props.currentMessageBoard._id}/>
+        <div className='scoreBoardOuter'>
+          <p> ScoreBoard</p>
+          {this.props.scoreBoards.map(scoreBoard =>
+            <div key={scoreBoard._id}>
+              <LeagueItemScoreBoard  scoreBoard={scoreBoard} />
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -49,10 +52,9 @@ class LeagueContainer extends React.Component {
 let mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
-  leagues: state.leagues,
-  messageBoards: state.messageBoards,
   currentLeague: state.currentLeague,
   currentMessageBoard: state.currentMessageBoard,
+  scoreBoards: state.scoreBoards,
 });
 
 let mapDispatchToProps = dispatch => ({
@@ -62,7 +64,7 @@ let mapDispatchToProps = dispatch => ({
   groupsFetch: groupArr => dispatch(groupsFetchRequest(groupArr)),
   leagueFetch: league => dispatch(leagueFetchRequest(league)),
   leagueUpdate: league => dispatch(leagueUpdateRequest(league)),
-  leagueDelete: league => dispatch(leagueDeleteRequest(league)),
+  scoreBoardsFetch: leagueID => dispatch(scoreBoardsFetchRequest(leagueID)),
   // messageBoardLeagueFetch: leagueID => dispatch(messageBoardLeagueFetchRequest(leagueID)),
 });
 
