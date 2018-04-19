@@ -12,40 +12,25 @@ class UserPickContainer extends React.Component {
     super(props);
   }
 
-  // componentDidMount(){
-  //   this.props.userPicksFetch(this.props.leagueID)
-  //     .then((picks) => {
-  //       console.log('picks: ', picks);
-  //       console.log(picks.map(a => a.gameID._id));
-  //       this.props.gamesFetch(this.props.sportingEventID)
-  //     })
-  //     .catch(util.logError);
-  // }
-
   componentDidMount(){
     this.props.userPicksFetch(this.props.leagueID)
       .then(picks => {
-        console.log('picks: ', picks);
-        return this.props.gamesFetch(this.props.sportingEventID)
-          .then(games => console.log('games: ', games))
+        let gameIDArr = [];
+        gameIDArr.push(picks.map(userPick => userPick.gameID._id));
+        return this.props.gamesFetch(this.props.sportingEventID, gameIDArr)
       })
       .catch(util.logError);
   }
 
   handleUpdate = userPick => {
-    console.log('userPick update: ', userPick);
     return this.props.userPickUpdate(userPick)
       .catch(console.error);
   };
 
   handleCreate = userPick => {
-    console.log('userPick create: ', userPick);
     userPick.leagueID= this.props.leagueID;
     return this.props.userPickCreate(userPick)
-      .then(userPick => {
-        console.log('userpick returned from create: ', userPick);
-        return this.props.userPickFetch(userPick._id)
-      })
+      .then(userPick => this.props.userPickFetch(userPick._id))
       .catch(console.error);
   };
 
@@ -86,7 +71,7 @@ let mapDispatchToProps = (dispatch) => ({
   userPickUpdate: userPick => dispatch(userPickUpdateRequest(userPick)),
   userPickCreate: userPick => dispatch(userPickCreateRequest(userPick)),
   userPickFetch: userPick => dispatch(userPickFetchRequest(userPick)),
-  gamesFetch: sportingEventID => dispatch(gamesFetchRequest(sportingEventID)),
+  gamesFetch: (sportingEventID, gameIDArr) => dispatch(gamesFetchRequest(sportingEventID, gameIDArr)),
   gameUpdate: game => dispatch(gameUpdateRequest(game)),
 });
 

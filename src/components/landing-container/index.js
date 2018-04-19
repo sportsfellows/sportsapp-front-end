@@ -50,12 +50,6 @@ class LandingContainer extends React.Component {
       .catch(util.logError);
   }
 
-  // handleGroupCreate = group => {
-  //   return this.props.groupCreate(group)
-  //     .then(newGroup => this.props.history.push(`/group/${newGroup.body._id}`))
-  //     .catch(util.logError);
-  // }
-
   handleProfileUpdate = profile => {
     return this.props.userProfileUpdate(profile)
       .catch(util.logError);
@@ -65,7 +59,6 @@ class LandingContainer extends React.Component {
     this.props.leagueFetchRequest(league);
     return this.props.messageBoardLeagueFetch(league._id)
       .then(messageBoard => {
-        console.log('messageBoard.body: ', messageBoard.body);
         this.props.commentsFetch(messageBoard.comments);
       })
       .then( () =>  this.props.history.push(`/league/${league._id}`))
@@ -76,20 +69,13 @@ class LandingContainer extends React.Component {
     this.props.groupFetchRequest(group);
     return this.props.messageBoardGroupFetch(group._id)
       .then(messageBoard => {
-        console.log('messageBoard.body: ', messageBoard.body);
         this.props.commentsFetch(messageBoard.comments);
       })
       .then( () =>  this.props.history.push(`/group/${group._id}`))
       .catch(util.logError);
   }
 
-  // onGroupClick = (group, e) => {
-  //   this.props.groupFetchRequest(group);
-  //   this.props.history.push(`/group/${group._id}`);
-  // }
-
   render() {
-    console.log('hi');
     let { params } = this.props.match;
     let handleComplete = params.userAuth === 'signin' ? this.handleSignin : this.handleSignup;
     let formTypeLeague = 'league';

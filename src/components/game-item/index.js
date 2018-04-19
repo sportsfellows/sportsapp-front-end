@@ -1,4 +1,3 @@
-// import './_game-item.scss';
 import React from 'react';
 
 class GameItem extends React.Component {
@@ -9,18 +8,15 @@ class GameItem extends React.Component {
 
   awayTeamPick = team => {
     this.setState({ pick: team });
-    console.log('awayTeamPick: ', this.state);
     return this.props.onComplete({gameID: this.state.gameID, gameTime: this.state.gameTime, pick: this.state.awayTeam});
   };
 
   homeTeamPick = team => {
-    console.log('homeTeamPick: ', this.state);
     return this.props.onComplete({gameID: this.state.gameID, gameTime: this.state.gameTime, pick: this.state.homeTeam});
   };
   
   render() {
     let { game } = this.props;
-    console.log('game: ', game);
     return (
       <div className='gameItem'>
         <div className='awayTeamDiv'>

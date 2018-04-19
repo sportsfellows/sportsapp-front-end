@@ -20,10 +20,6 @@ class LeagueContainer extends React.Component {
     this.props.scoreBoardsFetch(this.props.currentLeague._id);
   }
 
-  // componentDidMount(){
-  //   this.props.scoreBoardsFetch(this.props.currentLeague._id);
-  // }
-
   handleComplete = league => {
     return this.props.leagueUpdate(league)
       .then(() => this.props.history.push(`/league/${this.props.league._id}`))
@@ -31,7 +27,6 @@ class LeagueContainer extends React.Component {
   }
 
   render(){
-    console.log('this.props.currentMessageBoard: ', this.props.currentMessageBoard);
     return (
       <div className='leagueItem-container page-outer-div'>
         <UserPickContainer sportingEventID={this.props.currentLeague.sportingEventID} leagueID={this.props.currentLeague._id} />
@@ -65,7 +60,6 @@ let mapDispatchToProps = dispatch => ({
   leagueFetch: league => dispatch(leagueFetchRequest(league)),
   leagueUpdate: league => dispatch(leagueUpdateRequest(league)),
   scoreBoardsFetch: leagueID => dispatch(scoreBoardsFetchRequest(leagueID)),
-  // messageBoardLeagueFetch: leagueID => dispatch(messageBoardLeagueFetchRequest(leagueID)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeagueContainer);

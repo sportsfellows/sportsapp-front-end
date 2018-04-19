@@ -19,8 +19,3 @@ export default (state=null, action) => {
       return state;
   }
 };
-
-// sportingEventName: { type: String, required: true },
-// desc: { type: String, required: true },
-// createdOn: { type: Date, default: Date.now },
-// tags: [{type: String }],

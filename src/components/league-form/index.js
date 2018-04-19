@@ -1,7 +1,6 @@
 import React from 'react';
 import superagent from 'superagent';
 import { isEmail, isAlphanumeric, isAscii } from 'validator';
-// import debounce from 'lodash/fp/debounce';
 
 import Tooltip from '../helpers/tooltip';
 import * as util from '../../lib/util';
