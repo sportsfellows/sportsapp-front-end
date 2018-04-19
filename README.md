@@ -10,6 +10,61 @@ If you are not participating in a league or would like to communicate with those
 
 Information about the backend of Bracket Busters can be found here: [CF Madness](https://github.com/sportsfellows/sports-app)
 
+## Tech/Framework/Packages
+
+- node 
+- MongoDB
+- travis
+- heroku
+- github
+- npm
+- node packages:
+  - babel-core          
+  - babel-loader          
+  - babel-plugin-transform-class-properties          
+  - babel-plugin-transform-object-rest-spread          
+  - babel-preset-env          
+  - babel-preset-react          
+  - bootstrap          
+  - clean-webpack-plugin          
+  - cors          
+  - css-loader          
+  - dotenv          
+  - express          
+  - extract-text-webpack-plugin          
+  - file-loader          
+  - font-awesome          
+  - html-webpack-plugin          
+  - lodash          
+  - node-sass          
+  - npm          
+  - raw-loader          
+  - react          
+  - react-bootstrap          
+  - react-dom          
+  - react-redux          
+  - react-router          
+  - react-router-dom          
+  - redux          
+  - redux-logger          
+  - resolve-url-loader          
+  - sass-loader          
+  - style-loader          
+  - superagent          
+  - uglifyjs-webpack-plugin          
+  - url-loader          
+  - validator          
+  - webpack          
+  - webpack-dev-server          
+- devDependencies:
+  - babel-jest          
+  - enzyme          
+  - enzyme-adapter-react-16          
+  - eslint          
+  - eslint-plugin-react          
+  - jest          
+  - redux-devtools-extension          
+
 ## Component Tree
 ```
 <App>
