@@ -21,7 +21,7 @@ class GroupItemContainer extends React.Component {
   render(){
     console.log('this.props.currentMessageBoard: ', this.props.currentMessageBoard);
     return (
-      <div className='group-container'>
+      <div className='group-container page-outer-div'>
         <MessageBoardContainer mBoardId={this.props.currentMessageBoard._id}/>
       </div>
     );

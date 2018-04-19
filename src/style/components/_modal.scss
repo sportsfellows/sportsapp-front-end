@@ -29,8 +29,11 @@
   max-width: 700px;
   border-radius: .5vw;
 }
-.modal-header, .modal-content {
+.modal-header {
   padding: 3vw;
+}
+.modal-content {
+  padding: 3vw 6vw 3vw 3vw;
 }
 .modal-heading {
   text-align: center;
@@ -44,13 +47,12 @@
   border: 0;
   cursor: pointer;
   font-size: 3vw;
+  color: $color-primary;
 }
 .modal-close:hover {
-  // choose color
-  color: #777;
+  color: $color-primary-hover;
 }
 .modal-heading {
-  // choose font size
   font-size: 3.5vw;
   font-weight: bold;
   text-transform: uppercase;

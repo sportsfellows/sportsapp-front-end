@@ -102,7 +102,7 @@ class LeagueForm extends React.Component {
     let buttonText = this.props.league ? 'update' : 'create';
     return (
       <form onSubmit={this.handleSubmit} className={util.classToggler({
-        'league-form': true,
+        'form league-form': true,
         'error': this.state.error && this.state.submitted,
       })}>
 
@@ -207,7 +207,7 @@ class LeagueForm extends React.Component {
           </div>
         )}
 
-        <button className='button' type='submit'> {buttonText} </button>
+        <button className='button form-button' type='submit'> {buttonText} </button>
       </form>
     );
   }

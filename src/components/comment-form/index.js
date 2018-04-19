@@ -44,7 +44,7 @@ class CommentForm extends React.Component {
   render() {
     let { focused, content} = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className='comment-form'>
+      <form onSubmit={this.handleSubmit} className='form comment-form'>
         <div className='photo-div'>
           <img src={this.props.image} />
         </div>
