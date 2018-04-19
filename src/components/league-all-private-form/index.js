@@ -113,7 +113,7 @@ class LeagueAllPrivateForm extends React.Component {
           onBlur={this.handleBlur}
         />
 
-        <button type='submit'> Join League </button>
+        <button className='button join-button' type='submit'> Join League </button>
       </form>
     );
   }

@@ -112,7 +112,7 @@ class GroupAllPrivateForm extends React.Component {
           onBlur={this.handleBlur}
         />
 
-        <button type='submit'> Join Group </button>
+        <button className='button' type='submit'> Join Group </button>
       </form>
     );
   }

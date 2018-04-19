@@ -7,11 +7,16 @@
 @import './base/base';
 @import './lib/mixins';
 @import './layout/content';
+@import './components/button';
+@import './components/comment-form';
+@import './components/comment-item';
+@import './components/createSection';
+@import './components/joinSection';
 @import './components/navbar';
+@import './components/modal';
 @import './components/intro';
 @import './components/footer';
 @import './components/forms';
 @import './components/spans';
 @import './components/profile';
-
-
+@import './components/tooltip';
