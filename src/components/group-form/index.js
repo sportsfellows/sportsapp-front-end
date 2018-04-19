@@ -111,7 +111,7 @@ class GroupForm extends React.Component {
         )}
 
         {util.renderIf(!this.props.group,
-            <h2>create.</h2>
+            <h2>create a group.</h2>
         )}
 
         <input
@@ -155,26 +155,33 @@ class GroupForm extends React.Component {
         />
 
         <div className='radio-div'>
-          <input 
-            type="radio"
-            name="privacy" 
-            value="public"
-            onChange={this.handleChange}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            checked={this.state.privacy === 'public' ? true : false}
-          />
-          <label>public</label>
+          <p>privacy:</p>
+          <div>
+            <input 
+              type="radio"
+              name="privacy" 
+              value="public"
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              checked={this.state.privacy === 'public' ? true : false}
+            />
+            <label>public</label>
+            <span>about public</span>
+          </div>
 
-          <input 
-            type="radio"
-            name="privacy" 
-            value="private"
-            onChange={this.handleChange}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-          />
-          <label>private</label>
+          <div>
+            <input 
+              type="radio"
+              name="privacy" 
+              value="private"
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+            />
+            <label>private</label>
+            <span>about private</span>
+          </div>
         </div>
 
         {util.renderIf(this.state.privacy === 'private',

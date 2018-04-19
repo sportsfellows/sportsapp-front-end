@@ -1,34 +1,16 @@
-.modal-body {
-
-  input {
-    width: 100%;
-    border-radius: $border-radius;
-    border-width: 0px;
-    background-color: #c2c2c2;
-    padding: $pad;
-    margin: $margin;
-  }
-
-  input:focus {
-    background-color: $color-primary-hover;
-    border-radius: $border-radius;
-    border-width: 0px;
-  }
-
-}
-
 .form {
   input {
-    // width: 50%;
+    width: 100%;
     background-color: #c2c2c2;
     border-radius: $border-radius;
     border-width: 0px;
     padding: $pad;
     margin: $margin;
+    box-sizing: border-box;
   }
 
   input[type="radio"] {
-    width: 5%;
+    width: 2vw;
   }
 
   input:focus {
@@ -39,20 +21,32 @@
 
   label {
     display: inline-block;
-    width: 30%;
+    width: 20%;
   }
   
-  div.radio-div {
-    // width: 48%;
+  .radio-div {
     font-size: 1.6vw;
-    background-color: #c2c2c2;
+    // background-color: #c2c2c2;
     border-width: 0px;
     border-radius: $border-radius;
     margin: $margin;
     padding: $pad;
   }
 
+  // .radio-div div {
+  //   padding: $pad;
+  // }
+
   .username-availability {
     margin-left: $margin;
   }
+}
+
+.userauth-form {
+  margin-right: 3vw;
+}
+
+.page-form {
+  width: 50%;
+  display: inline-block;
 }

@@ -26,11 +26,13 @@ class ProfileContainer extends React.Component {
     return (
       <div className='profile-container page-outer-div'>
         <h2>tell us about yourself.</h2>
-
-        <ProfileForm 
-          userProfile={this.props.userProfile} 
-          onComplete={this.handleProfileUpdate}
-        />
+        <div className='page-form'>
+          <ProfileForm 
+            userProfile={this.props.userProfile} 
+            onComplete={this.handleProfileUpdate}
+          />
+        </div>
+        
       </div>
     )
   }
