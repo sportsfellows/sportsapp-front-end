@@ -111,7 +111,7 @@ class LandingContainer extends React.Component {
                 {this.props.leagues.map(league => {
                   let boundLeagueClick = this.onLeagueClick.bind(this, league);
                   return <div key={league._id}>
-                    <p className='my-leagues' onClick={boundLeagueClick}>
+                    <p className='span-row' onClick={boundLeagueClick}>
                       <span className='span-name'>{league.leagueName} </span>
                       <span className='span-owner'>{league.ownerName} </span>
                       <span className='span-size'>{league.size} </span>
@@ -140,7 +140,7 @@ class LandingContainer extends React.Component {
                 {this.props.groups.map(group => {
                   let boundGroupClick = this.onGroupClick.bind(this, group);
                   return <div key={group._id}>
-                    <p onClick={boundGroupClick} className='my-groups'>
+                    <p onClick={boundGroupClick} className='span-row'>
                       <span className='span-name'>{group.groupName} </span>
                       <span className='span-owner'>{group.ownerName} </span>
                       <span className='span-size'>{group.size} </span>

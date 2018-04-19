@@ -1,4 +1,4 @@
-p.my-leagues, p.my-groups, p.public-leagues, .public-groups p {
+.span-row {
   background-color: $color-lightgray;
   border-width: 1px;
   border-style: solid;
@@ -11,31 +11,27 @@ p.my-leagues, p.my-groups, p.public-leagues, .public-groups p {
 
   .span-name {
     display: inline-block;
-    width: 15vw;
+    width: 15%;
   }
   .span-owner {
     display: inline-block;
-    width: 15vw;
+    width: 15%;
   }
   .span-size {
     display: inline-block;
-    width: 10vw;
-  }
-  .span-owner {
-    display: inline-block;
-    width: 15vw;
+    width: 10%;
   }
   .span-privacy {
     display: inline-block;
-    width: 15vw;
+    width: 15%;
   }
   .span-scoring {
     display: inline-block;
-    width: 15vw;
+    width: 15%;
   }
   .span-join {
     display: inline-block;
-    width: 10vw;
+    width: 15%;
   }
 }
 
