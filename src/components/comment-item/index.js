@@ -1,4 +1,4 @@
-import './_comment-item.scss';
+// import './_comment-item.scss';
 import React from 'react';
 
 export class CommentItem extends React.Component {
