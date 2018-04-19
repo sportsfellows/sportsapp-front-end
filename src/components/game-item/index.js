@@ -23,15 +23,15 @@ class GameItem extends React.Component {
     console.log('game: ', game);
     return (
       <div className='gameItem'>
-        <button className='button game-buttons awayTeamButton' onClick={this.awayTeamPick}>
-          <p className='teamName'>{game.awayTeam.teamName}</p>
+        <div className='awayTeamDiv'>
+          <button className='teamName teamNameButton' onClick={this.awayTeamPick}>{game.awayTeam.teamName}</button>
           <p className='teamRecord'>{game.awayTeam.wins} - {game.awayTeam.losses}</p>
-        </button>
+        </div>
         <span className='game-dateTime'>{game.dateTime}</span>
-        <button className='button game-buttons homeTeamButton' onClick={this.homeTeamPick}>
-          <p className='teamName'>{game.homeTeam.teamName}</p>
+        <div className='homeTeamDiv' >
+          <button className='teamName teamNameButton' onClick={this.homeTeamPick}>{game.homeTeam.teamName}</button>
           <p className='teamRecord'>{game.homeTeam.wins} - {game.homeTeam.losses}</p>
-        </button>
+        </div>
       </div>
     );
   }
