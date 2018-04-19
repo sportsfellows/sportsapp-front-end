@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import UserPickItem from '../user-pick-item';
 import GameItem from '../game-item';
 import { gamesFetchRequest, gameUpdateRequest } from '../../actions/game-actions.js';
-import { userPicksFetchRequest, userPickUpdateRequest, userPickCreateRequest } from '../../actions/userPick-actions.js';
+import { userPicksFetchRequest, userPickUpdateRequest, userPickCreateRequest, userPickFetchRequest, } from '../../actions/userPick-actions.js';
 import * as util from '../../lib/util.js';
 
 class UserPickContainer extends React.Component {
@@ -42,6 +42,10 @@ class UserPickContainer extends React.Component {
     console.log('userPick create: ', userPick);
     userPick.leagueID= this.props.leagueID;
     return this.props.userPickCreate(userPick)
+      .then(userPick => {
+        console.log('userpick returned from create: ', userPick);
+        return this.props.userPickFetch(userPick._id)
+      })
       .catch(console.error);
   };
 
@@ -50,11 +54,11 @@ class UserPickContainer extends React.Component {
       <div className='userPick-container'>
         <div className='userPicksDiv'>
           <p> My Picks</p>
-          {/* {this.props.userPicks.map(userPick =>
-            <div key={userPick._id}>
+          {this.props.userPicks.map((userPick, idx) =>
+            <div key={idx}>
               <UserPickItem  userPick={userPick} onUpdate={this.handleUpdate}/>
             </div>
-          )} */}
+          )}
         </div>
 
         <div className='gamesDiv'>
@@ -81,6 +85,7 @@ let mapDispatchToProps = (dispatch) => ({
   userPicksFetch: leagueID => dispatch(userPicksFetchRequest(leagueID)),
   userPickUpdate: userPick => dispatch(userPickUpdateRequest(userPick)),
   userPickCreate: userPick => dispatch(userPickCreateRequest(userPick)),
+  userPickFetch: userPick => dispatch(userPickFetchRequest(userPick)),
   gamesFetch: sportingEventID => dispatch(gamesFetchRequest(sportingEventID)),
   gameUpdate: game => dispatch(gameUpdateRequest(game)),
 });
