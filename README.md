@@ -85,7 +85,7 @@ Information about the backend of Bracket Busters can be found here: [CF Madness]
       <PrivateLeagueForm>
     <LeagueItemContainer>
       <LeagueItem>
-      <LeagueForm> - for editing
+      <LeagueForm>
       <Messageboard>
       <Scoreboard>
       <UserPickContainer>
