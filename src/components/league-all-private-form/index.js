@@ -66,7 +66,6 @@ class LeagueAllPrivateForm extends React.Component {
     if(!this.state.error) {
       this.props.onComplete(this.state)
         .catch(err => {
-          console.log('hi');
           console.error(err);
           this.setState({ 
             error,

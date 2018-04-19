@@ -13,7 +13,6 @@ export const signOut = () => {
 
 // ASYNC
 export const signUpRequest = user => dispatch => {
-  console.log('signup request action: ', user);
   return superagent.post(`${__API_URL__}/api/signup`)
     .withCredentials()
     .send(user)
@@ -34,7 +33,6 @@ export const signUpRequest = user => dispatch => {
 };
 
 export const signInRequest = user => dispatch => {
-  console.log('signin request');
   return superagent.get(`${__API_URL__}/api/signin`)
     .withCredentials()
     .auth(user.username, user.password)
@@ -55,7 +53,6 @@ export const signInRequest = user => dispatch => {
 };
 
 export const tokenSignInRequest = token => dispatch => {
-  console.log(' token signin request');
   return superagent.get(`${__API_URL__}/api/signin/token`)
     .set('Authorization', `Bearer ${token}`)
     .then( res => {
@@ -73,9 +70,3 @@ export const tokenSignInRequest = token => dispatch => {
       return res;
     });
 };
-
-// username: {type: String, required: true, unique: true },
-// email: { type: String, required: true, unique: true },
-// password: {type: String, required: true },
-// findHash: { type: String, unique: true },
-

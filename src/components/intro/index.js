@@ -17,19 +17,14 @@ class Intro extends React.Component {
   }
 
   handleSignin = (user, errCB) => {
-    console.log('handle signin: ', user);
     return this.props.signIn(user)
       .then(() => this.props.userProfileFetch())
       .then(profile => {
-        // return (profile.body.leagues.length ? this.props.leaguesFetch(profile.body.leagues) : profile);
         if(profile.body.leagues.length) this.props.leaguesFetch(profile.body.leagues);
         return profile;
       })
       .then(profile => {
-        // if(this.props.userProfile.groups.length) return this.props.groupsFetch(this.props.userProfile.groups);
-        console.log('profile.body.groups: ', profile.body.groups);
         return this.props.groupsFetch(profile.body.groups);
-        // if(profile.body.groups.length) this.props.groupsFetch(profile.body.groups);
       })
       .catch(err => {
         util.logError(err);
@@ -38,7 +33,6 @@ class Intro extends React.Component {
   };
 
   handleSignup = (user, errCB) => {
-    console.log('handle signup: ', user);
     return this.props.signUp(user)
       .then(() => this.props.userProfileFetch())
       .catch(err => {

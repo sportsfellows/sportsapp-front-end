@@ -12,15 +12,10 @@ class MessageBoardContainer extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    // this.props.commentsFetch()
-    //   .catch(util.logError);
-  }
   handleComplete = comment => {
     comment.username = this.props.userProfile.username;
     if(this.props.userProfile.image) comment.image = this.props.userProfile.image;
     comment.messageBoardID = this.props.mBoardId;
-    console.log('comment: ', comment); 
     return this.props.commentCreate(comment)
       .catch(console.error);
   }

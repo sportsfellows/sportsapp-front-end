@@ -9,7 +9,6 @@ export default (state=[], action) => {
 
   switch(type) {
     case 'GAMES_FETCH':
-      console.log('payload: ', payload);
       return payload;
     case 'GAME_UPDATE':
       if(state === []) throw new Error('USAGE ERROR: can not update game not in state');

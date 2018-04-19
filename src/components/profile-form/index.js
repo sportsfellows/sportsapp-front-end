@@ -17,7 +17,6 @@ class ProfileForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     return this.props.onComplete(this.state);
   } 
 

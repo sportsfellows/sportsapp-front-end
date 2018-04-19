@@ -1,4 +1,3 @@
-// import './_user-pick-item.scss';
 import React from 'react';
 import * as util from './../../lib/util.js';
 
@@ -18,24 +17,18 @@ class UserPickItem extends React.Component {
   }
 
   componentWillReceiveProps(props){
-    console.log('props: ', props.userPick);
     if(props.userPick)
       this.setState(props.userPick)
   }
 
   awayTeamPickUpdate = team => {
-    // this.setState({ pick: team });
-    // console.log('awayTeamPick: ', this.state);
     this.setState({editing: false});
     return this.props.onUpdate({ _id: this.state._id, pick: this.state.awayTeamID });
-    console.log('hi');
   };
 
   homeTeamPickUpdate = team => {
-    // console.log('homeTeamPick: ', this.state);
     this.setState({editing: false});
     return this.props.onUpdate({ _id: this.state._id, pick: this.state.homeTeamID });
-    console.log('hi');
   };
 
   handleEdit = () => {
@@ -46,7 +39,6 @@ class UserPickItem extends React.Component {
     let { userPick } = this.props;
     let { editing } = this.state;
     let currentPick = userPick.pick === this.state.homeTeamID ? this.state.homeTeamName : this.state.awayTeamName;
-    console.log('userPick: ', userPick);
     return (
       <div className='userPickItem'>
         <div className='gawayTeamDiv'>

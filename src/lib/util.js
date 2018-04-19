@@ -10,7 +10,6 @@ export const userValidation = props => {
     
     process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
     if(token) {
-      console.log('token: ', token);
       props.tokenSignIn(token)
         .then(() => props.userProfileFetch())
         .then(profile => {
@@ -18,16 +17,13 @@ export const userValidation = props => {
           return profile;
         })
         .then(profile => {
-          console.log('profile.body.groups: ', profile.body.groups);
           return props.groupsFetch(profile.body.groups);
-          // if(profile.body.groups.length) this.props.groupsFetch(profile.body.groups);
         })
         .catch( () => {
           logError;
           if(props.location.pathname !== '/') return history.replace('/');
         });
     } else {
-      console.log('no token');
       if(props.location.pathname !== '/') return history.replace('/');
     }
   }

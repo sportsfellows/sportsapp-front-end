@@ -11,7 +11,6 @@ export default (state=[], action) => {
 
   switch(type) {
     case 'LEAGUE_FETCH':
-      console.log('league fetch payload: ', payload);
       return checkAndAdd(payload, state);
     case 'LEAGUES_FETCH':
       return [...payload, ...state];

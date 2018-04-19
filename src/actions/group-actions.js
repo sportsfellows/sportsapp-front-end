@@ -58,12 +58,10 @@ export const groupFetchRequest = group => (dispatch, getState) => {
 
 export const groupsFetchRequest = groupsArr => (dispatch, getState) => {
   let { userAuth } = getState();
-  console.log('groups fetch req hit: ', groupsArr);
   return superagent.post(`${__API_URL__}/api/groups/user`)
     .set('Authorization', `Bearer ${userAuth}`)
     .send(groupsArr)
     .then(res => {
-      console.log('res.body: ', res.body);
       dispatch(groupsFetch(res.body));
       return res;
     });
@@ -71,11 +69,9 @@ export const groupsFetchRequest = groupsArr => (dispatch, getState) => {
 
 export const allPublicGroupsFetchRequest = () => (dispatch, getState) => {
   let { userAuth } = getState();
-  console.log('allpublic groups hit');
   return superagent.get(`${__API_URL__}/api/groups/all/public`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      console.log('res.body: ', res.body);
       dispatch(allPublicGroupsFetch(res.body));
       return res;
     });
@@ -105,11 +101,9 @@ export const groupUpdateRequest = group => (dispatch, getState) => {
 
 export const groupJoinRequest = groupID => (dispatch, getState) => {
   let { userAuth } = getState();
-  console.log('group join request hit: ', groupID);
   return superagent.put(`${__API_URL__}/api/group/${groupID}/adduser`)
     .set('Authorization', `Bearer ${userAuth}`)
     .then(res => {
-      console.log('res.body: ', res.body);
       dispatch(groupJoin(res.body));
       return res.body;
     });
@@ -117,12 +111,10 @@ export const groupJoinRequest = groupID => (dispatch, getState) => {
 
 export const privateGroupJoinRequest = credentials => (dispatch, getState) => {
   let { userAuth } = getState();
-  console.log('privategroupjoinreq hit: ', credentials);
   return superagent.post(`${__API_URL__}/api/group/private/adduser`)
     .set('Authorization', `Bearer ${userAuth}`)
     .send(credentials)
     .then(res => {
-      console.log('res.body: ', res.body);
       dispatch(groupJoin(res.body));
       return res.body;
     });
