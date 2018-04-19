@@ -36,12 +36,12 @@ class UserPickItem extends React.Component {
     console.log('props: ', this.props.userPick);
     return (
       <div className='userPickItem'>
-        <button className='game-buttons awayTeamButton' onClick={this.awayTeamPick}>
+        <button className='button game-buttons awayTeamButton' onClick={this.awayTeamPick}>
           {/* <p className='teamName'>{this.state.awayTeamName}</p> */}
           <p className='teamRecord'>{userPick.gameID.awayTeam.wins} - {userPick.gameID.awayTeam.losses}</p>
         </button>
         <span className='game-dateTime'>{userPick.gameTime}</span>
-        <button className='game-buttons homeTeamButton' onClick={this.homeTeamPick}>
+        <button className='button game-buttons homeTeamButton' onClick={this.homeTeamPick}>
           {/* <p className='teamName'>{this.state.homeTeamName}</p> */}
           <p className='teamRecord'>{userPick.gameID.homeTeam.wins} - {userPick.gameID.homeTeam.losses}</p>
         </button>

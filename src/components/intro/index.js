@@ -88,11 +88,11 @@ class Intro extends React.Component {
 
                   <div className='userauth-buttons'>
                     {util.renderIf(this.state.authFormAction==='Sign In',
-                      <button className='button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
+                      <button className='button form-button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
                     )}
 
                     {util.renderIf(this.state.authFormAction==='Sign Up',
-                      <button className='button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
+                      <button className='button form-button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
                     )}
                   </div>
                 </Modal>

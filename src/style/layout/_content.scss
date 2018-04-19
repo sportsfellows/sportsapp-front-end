@@ -1,9 +1,6 @@
 .link {
   cursor: pointer;
 }
-// .hidden {
-//   display: none;
-// }
 .center {
   text-align: center;
 }
@@ -11,6 +8,7 @@
   width: auto;
 }
 .page-outer-div {
+  min-height: 90vh;
   padding-top: 80px;
   margin-left: auto;
   margin-right: auto;

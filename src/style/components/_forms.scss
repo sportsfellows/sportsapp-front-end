@@ -1,5 +1,3 @@
-@import '../lib/vars'; 
-
 .modal-body {
 
   input {
@@ -17,13 +15,9 @@
     border-width: 0px;
   }
 
-  button {
-    margin: $margin;
-    width: 20%;
-  }
 }
 
-.profile-form, .league-form, .group-form, .league-all-private-form, .group-all-private-form {
+.form {
   input {
     width: 50%;
     background-color: #c2c2c2;
@@ -58,14 +52,4 @@
     padding: $pad;
   }
 
-  button {
-    width: 20%;
-    margin: $margin;
-    display: block;
-  }
-
 }
-
-  .group-form div {
-    margin: $margin;
-  }
