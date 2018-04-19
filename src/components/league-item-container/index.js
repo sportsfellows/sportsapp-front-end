@@ -4,8 +4,10 @@ import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { leaguesFetchRequest, leagueFetchRequest, leagueDeleteRequest, leagueUpdateRequest } from '../../actions/league-actions.js';
 import { groupsFetchRequest } from '../../actions/group-actions.js';
+import { scoreBoardsFetchRequest } from '../../actions/scoreboard-actions.js';
 import UserPickContainer from '../user-pick-container';
 import MessageBoardContainer from '../message-board-container';
+import LeagueItemScoreBoard from '../league-item-scoreboard';
 import * as util from '../../lib/util.js';
 
 class LeagueContainer extends React.Component {
@@ -14,8 +16,13 @@ class LeagueContainer extends React.Component {
   }
 
   componentWillMount() {
-    return util.userValidation(this.props);
+    util.userValidation(this.props);
+    this.props.scoreBoardsFetch(this.props.currentLeague._id);
   }
+
+  // componentDidMount(){
+  //   this.props.scoreBoardsFetch(this.props.currentLeague._id);
+  // }
 
   handleComplete = league => {
     return this.props.leagueUpdate(league)
@@ -29,6 +36,14 @@ class LeagueContainer extends React.Component {
       <div className='leagueItem-container page-outer-div'>
         <UserPickContainer sportingEventID={this.props.currentLeague.sportingEventID} leagueID={this.props.currentLeague._id} />
         <MessageBoardContainer mBoardId={this.props.currentMessageBoard._id}/>
+        <div className='scoreBoardOuter'>
+          <p> ScoreBoard</p>
+          {this.props.scoreBoards.map(scoreBoard =>
+            <div key={scoreBoard._id}>
+              <LeagueItemScoreBoard  scoreBoard={scoreBoard} />
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -39,6 +54,7 @@ let mapStateToProps = state => ({
   userProfile: state.userProfile,
   currentLeague: state.currentLeague,
   currentMessageBoard: state.currentMessageBoard,
+  scoreBoards: state.scoreBoards,
 });
 
 let mapDispatchToProps = dispatch => ({
@@ -48,6 +64,7 @@ let mapDispatchToProps = dispatch => ({
   groupsFetch: groupArr => dispatch(groupsFetchRequest(groupArr)),
   leagueFetch: league => dispatch(leagueFetchRequest(league)),
   leagueUpdate: league => dispatch(leagueUpdateRequest(league)),
+  scoreBoardsFetch: leagueID => dispatch(scoreBoardsFetchRequest(leagueID)),
   // messageBoardLeagueFetch: leagueID => dispatch(messageBoardLeagueFetchRequest(leagueID)),
 });
 

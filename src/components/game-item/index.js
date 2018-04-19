@@ -1,4 +1,4 @@
-import './_game-item.scss';
+// import './_game-item.scss';
 import React from 'react';
 
 class GameItem extends React.Component {

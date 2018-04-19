@@ -38,7 +38,7 @@ class UserPickContainer extends React.Component {
       .catch(console.error);
   };
 
-  handleComplete = userPick => {
+  handleCreate = userPick => {
     console.log('userPick create: ', userPick);
     userPick.leagueID= this.props.leagueID;
     return this.props.userPickCreate(userPick)
@@ -52,7 +52,7 @@ class UserPickContainer extends React.Component {
           <p> My Picks</p>
           {/* {this.props.userPicks.map(userPick =>
             <div key={userPick._id}>
-              <UserPickItem  userPick={userPick} onComplete={this.handleUpdate}/>
+              <UserPickItem  userPick={userPick} onUpdate={this.handleUpdate}/>
             </div>
           )} */}
         </div>
@@ -61,7 +61,7 @@ class UserPickContainer extends React.Component {
           <p> games that need picks </p>
           {this.props.games.map(game =>
             <div key={game._id}>
-              <GameItem  game={game} onComplete={this.handleComplete}/>
+              <GameItem  game={game} onComplete={this.handleCreate}/>
             </div>
           )}
         </div>
