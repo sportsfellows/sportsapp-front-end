@@ -15,14 +15,10 @@ export default (state=[], action) => {
     case 'USER_PICKS_FETCH':
       return payload;
     case 'USER_PICK_FETCH':
-      // validateUserPick(payload);
       return [payload, ...state];
     case 'USER_PICK_CREATE':
       validateUserPick(payload);
       return state;
-    // case 'USER_PICK_CREATE':
-    //   validateUserPick(payload);
-    //   return [payload, ...state];
     case 'SIGN_OUT':
       return [];
     default:

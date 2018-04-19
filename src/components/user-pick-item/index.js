@@ -4,12 +4,16 @@ import React from 'react';
 class UserPickItem extends React.Component {
   constructor(props){
     super(props);
-    // this.state = { _id: props.userPick._id, pick: props.userPick.pick, 
-    //   awayTeamID: props.userPick.gameID.awayTeam._id,
-    //   awayTeamName: props.userPick.gameID.awayTeam.teamName,
-    //   homeTeamID: props.userPick.gameID.homeTeam._id,
-    //   homeTeamName: props.userPick.gameID.homeTeam.teamName, 
-    //   editing: false}
+    this.state = { _id: props.userPick._id, pick: props.userPick.pick, 
+      awayTeamID: props.userPick.gameID.awayTeam._id,
+      awayTeamName: props.userPick.gameID.awayTeam.teamName,
+      awayTeamWins: props.userPick.gameID.awayTeam.wins,
+      awayTeamLosses: props.userPick.gameID.awayTeam.losses,
+      homeTeamID: props.userPick.gameID.homeTeam._id,
+      homeTeamName: props.userPick.gameID.homeTeam.teamName,
+      homeTeamWins: props.userPick.gameID.homeTeam.wins,
+      homeTeamLosses: props.userPick.gameID.homeTeam.losses,
+      editing: false}
   }
 
   componentWillReceiveProps(props){
@@ -34,21 +38,18 @@ class UserPickItem extends React.Component {
   render() {
     let { userPick } = this.props;
     console.log('propseavevdewvesvwevewv: ', userPick);
+    let x = userPick.gameID.gameTime;
     return (
       <div className='userPickItem'>
         <div className='game-buttons awayTeamButton' onClick={this.awayTeamPickUpdate}>
-          {/* <p className='teamName'>{userPick.gameID.awayTeam}</p> */}
-        </div>
-
-        {/* <div className='game-buttons awayTeamButton' onClick={this.awayTeamPickUpdate}>
-          <p className='teamName'>{userPick.gameID.awayTeam.teamName}</p>
-          <p className='teamRecord'>{userPick.gameID.awayTeam.wins} - {userPick.gameID.awayTeam.losses}</p>
+          <p className='teamName'>{this.state.awayTeamName}</p>
+          <p className='teamRecord'>{this.state.awayTeamWins} - {this.state.awayTeamLosses}</p>
         </div>
         <span className='game-dateTime'>{userPick.dateTime}</span>
         <div className='game-buttons homeTeamButton' onClick={this.homeTeamPickUpdate}>
-          <p className='teamName'>{userPick.gameID.homeTeam.teamName}</p>
-          <p className='teamRecord'>{userPick.gameID.homeTeam.wins} - {userPick.gameID.homeTeam.losses}</p>
-        </div> */}
+          <p className='teamName'>{this.state.homeTeamName}</p>
+          <p className='teamRecord'>{this.state.homeTeamWins} - {this.state.homeTeamLosses}</p>
+        </div>
       </div>
     );
   }
