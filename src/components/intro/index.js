@@ -56,8 +56,13 @@ class Intro extends React.Component {
     return (
       <div className="intro">
         <section id="introView" className="view introView">
+<<<<<<< HEAD
           <div className="container">
             <h1 className="headline center">LET'S PLAY!</h1>
+=======
+          <div>
+            <h1 className="headline center">BUILD YOUR OWN BRACKET!</h1>
+>>>>>>> b8ae80cf6dff088e4b27455362417d560d271bfc
           </div>
           <div className="banner-image">
             <div className="background">
@@ -66,7 +71,7 @@ class Intro extends React.Component {
               <img className="intro-lebron intro-images" src={lebron} />
             </div>
           </div>
-          <div className="container">
+          <div>
             <div className="narrow-container center">
               <div className="description">
               <div align='left'>
@@ -96,11 +101,11 @@ class Intro extends React.Component {
 
                   <div className='userauth-buttons'>
                     {util.renderIf(this.state.authFormAction==='Sign In',
-                      <button className='button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
+                      <button className='button form-button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
                     )}
 
                     {util.renderIf(this.state.authFormAction==='Sign Up',
-                      <button className='button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
+                      <button className='button form-button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
                     )}
                   </div>
                 </Modal>

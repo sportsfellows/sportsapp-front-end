@@ -102,7 +102,7 @@ class GroupForm extends React.Component {
     let buttonText = this.props.group ? 'update' : 'create';
     return (
       <form onSubmit={this.handleSubmit} className={util.classToggler({
-        'group-form': true,
+        'form group-form': true,
         'error': this.state.error && this.state.submitted,
       })}>
 
@@ -193,7 +193,7 @@ class GroupForm extends React.Component {
           </div>
         )}
 
-        <button className='button' type='submit'> {buttonText} </button>
+        <button className='button form-button' type='submit'> {buttonText} </button>
       </form>
     );
   }

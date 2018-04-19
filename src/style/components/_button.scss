@@ -12,12 +12,13 @@
   background-color: $color-secondary-hover;
 }
 
-.form-button {
-
+#start-button {
+  width: 15vw;
 }
 
-.form-button:hover {
-
+.form-button {
+  width: 20%;
+  margin: $margin;
 }
 
 .create-button {

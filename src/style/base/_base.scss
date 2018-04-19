@@ -14,6 +14,7 @@
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
 h1, h2, h3, h4, h5, h6, p, a, span {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -51,23 +52,10 @@ main {
   position: relative;
 }
 input {
-  box-sizing : border-box;
+  // box-sizing : border-box;
 }
 input[type='text'], input[type='password'] {
   white-space: pre-wrap;
-}
-button {
-  // cursor: pointer;
-  // padding: $pad;
-  // border-radius: $border-radius;
-  // background-color: $color-secondary;
-  // color: #fff;
-  // border-width: 0px;
-  // box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
-}
-
-button:hover {
-  background-color: $color-primary-hover;
 }
 
 h2.title, h2 {
