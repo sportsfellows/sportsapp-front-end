@@ -96,7 +96,13 @@ class LandingContainer extends React.Component {
 
             {util.renderIf(this.props.leagues,
               <div className='container join-container'>
-                <p className='header usersLeagueAndGroupsHeader'>my leagues</p>
+                <p className='header usersLeagueAndGroupsHeader myLeaguesList'>my leagues</p>
+                <div className='myleaguesHeader'>
+                  <p className='l-name myL-headers'> LEAGUE NAME </p>
+                  <p className='l-creator myL-headers'> CREATOR </p>
+                  <p className='l-players myL-headers'> PLAYERS </p>
+                  <p className='l-scoring myL-headers'> SCORING </p>
+                </div>
                 {util.renderIf(this.props.leagues.length < 1,
                   <div className='usersLeagueAndGroups'>
                     <img className='russ' src={russ} />
@@ -105,15 +111,16 @@ class LandingContainer extends React.Component {
                 )}
                 {this.props.leagues.map(league => {
                   let boundLeagueClick = this.onLeagueClick.bind(this, league);
-                  return <div key={league._id}>
-                    <p className='span-row' onClick={boundLeagueClick}>
-                      <span className='span-name'>{league.leagueName} </span>
-                      <span className='span-owner'>{league.ownerName} </span>
-                      <span className='span-size'>{league.size} </span>
-                      <span className='span-scoring'>{league.scoring} </span>
-                    </p>
+                  return <div key={league._id} className='rowColors'>
+                    <div className='span-row' onClick={boundLeagueClick}>
+                      <p className='span-name'>{league.leagueName} </p>
+                      <p className='span-owner'>{league.ownerName} </p>
+                      <p className='span-size'>{league.size} </p>
+                      <p className='span-scoring'>{league.scoring} </p>
+                    </div>
                   </div>
                 })}
+                <div className='spacerRow'> </div>
               </div>
             )}
             
@@ -134,6 +141,12 @@ class LandingContainer extends React.Component {
 
               <div className='container'>
                 <p className='header usersLeagueAndGroupsHeader'>my groups</p>
+                <div className='myleaguesHeader'>
+                  <p className='l-name myL-headers'> LEAGUE NAME </p>
+                  <p className='l-creator myL-headers'> CREATOR </p>
+                  <p className='l-players myL-headers'> SIZE </p>
+                  <p className='l-scoring myL-headers'> PRIVACY </p>
+                </div>
                 {util.renderIf(this.props.groups.length < 1,
                   <div className='usersLeagueAndGroups'>
                     <img className='kd' src={kd} />
@@ -142,7 +155,7 @@ class LandingContainer extends React.Component {
                 )}
                 {this.props.groups.map(group => {
                   let boundGroupClick = this.onGroupClick.bind(this, group);
-                  return <div key={group._id}>
+                  return <div className='rowColors' key={group._id}>
                     <p onClick={boundGroupClick} className='span-row'>
                       <span className='span-name'>{group.groupName} </span>
                       <span className='span-owner'>{group.ownerName} </span>
@@ -151,6 +164,7 @@ class LandingContainer extends React.Component {
                     </p>
                   </div>
                 })}
+                <div className='spacerRow'> </div>
               </div>
             )}
 

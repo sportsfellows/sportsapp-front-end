@@ -54,9 +54,8 @@
   }  
 }
 .usersLeagueAndGroupsHeader {
-  margin: 20px 12px 0 12px;
+  margin: 20px 12px 20px 12px;
   padding-bottom: 12px;
-  border-bottom: #dcdddf 1px solid;
 }
 .join-container {
   margin: 20px auto 0;
@@ -90,4 +89,82 @@
   border-radius: 50%;
   background: #e1e1e1;
 }
+.myleaguesHeader {
+  margin-top: 12px;
+}
+.myL-headers {
+  color: #9B9B9B;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 16px;
+  display: inline-block;
+}
+.l-name {
 
+}
+.l-creator {
+
+}
+.l-players {
+
+}
+.l-scoring {
+
+}
+@media (min-width: 500px) {
+  .myL-headers {
+    font-size: 15px;
+  }
+  .l-name, .span-row .span-name {
+    width: 30%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    // border-right: 1px solid #D8D8D8;
+  }
+  .l-creator, .span-row .span-owner {
+    width: 30%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    // border-right: 1px solid #D8D8D8;
+  }
+  .l-players, .span-row .span-size {
+    width: 15%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    // border-right: 1px solid #D8D8D8;
+  }
+  .l-scoring, .span-row .span-scoring, .span-row .span-privacy {
+    width: 25%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    
+  }
+  .myL-headers {
+    padding: 8px 0;
+  }
+}
+.span-row {
+  border-bottom: 1px solid #D8D8D8;
+}
+.span-row p {
+  color: #4a4a4a;
+  font-weight: 900;
+}
+.spacerRow {
+  height: 30px;
+}
+
+.rowColors:nth-child(odd) {
+  background: #EDEEF0;
+  border-right: 1px solid #d8d8d8;
+  border-left: 1px solid #d8d8d8;
+  border-top: 1px solid #d8d8d8;
+}
