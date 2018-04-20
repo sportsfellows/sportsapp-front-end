@@ -4,14 +4,14 @@
   cursor: pointer;
   padding: $pad;
   border-radius: $border-radius;
-  background-color: $color-secondary;
+  background-color: $color-primary;
   color: #FFF;
   border-width: 0px;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
 }
 
 .button:hover {
-  background-color: $color-secondary-hover;
+  background-color: $color-primary-hover;
 }
 
 #start-button {
