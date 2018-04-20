@@ -64,13 +64,11 @@ class Intro extends React.Component {
             <div className="narrow-container center">
               <p className="description">
                 Bracket Busters users compete against their friends by choosing winners for real world sports games. You are able to create and manage your own leagues and will have a personal scoreboard for each participant. Each league will also have its own message board that will allow you to communicate with those in your league. Each league also has the option to be private or public.
+                <br/> <br/>
               </p>
 
               <p className='description'>
                 If you are not participating in a league or would like to communicate with those outside of your league, you can also create a group. Like a league, each group has its own message board so users can communicate with each other.
-              </p>
-              <p className="author">
-                Are you ready?
               </p>
               <button className='button' onClick={() => this.setState({formDisplay: true})}id="start-button" >
                 START
@@ -86,11 +84,11 @@ class Intro extends React.Component {
 
                   <div className='userauth-buttons'>
                     {util.renderIf(this.state.authFormAction==='Sign In',
-                      <button className='button form-button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
+                      <button className='b-button dark-button' onClick={() => this.setState({authFormAction: 'Sign Up'})}>Sign Up</button>
                     )}
 
                     {util.renderIf(this.state.authFormAction==='Sign Up',
-                      <button className='button form-button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
+                      <button className='b-button dark-button' onClick={() => this.setState({authFormAction: 'Sign In'})}>Sign In</button>
                     )}
                   </div>
                 </Modal>

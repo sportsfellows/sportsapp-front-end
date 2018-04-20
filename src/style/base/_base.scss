@@ -1,14 +1,17 @@
-@import '../lib/vars'; 
+@import './../lib/vars'; 
+@import './../lib/mixins';
 
-
+body {
+  background: #EDEEF0;
+}
 .font-sm {
-  @include responsive-font(2.5vw, 12px, 20px);
+  font-size: 14px;
 }
 .font-md {
-  @include responsive-font(3.8vw, 20px, 32px);
+ font-size: 22px;
 }
 .font-lg {
-  @include responsive-font(5.1vw, 28px, 44px);
+  font-size: 29px;
 }
 
 *, *:before, *:after {
@@ -21,10 +24,6 @@ h1, h2, h3, h4, h5, h6, p, a, span {
 }
 a, a:visited {
   text-decoration: none;
-  color: $color-secondary;
-}
-a:hover {
-  color: $color-secondary-hover;
 }
 ul, li {
   list-style-type: none;
@@ -53,7 +52,7 @@ main {
 }
 input {
   box-sizing : border-box;
-  font-size: 1.5vw;
+  font-size: 14px;
 }
 input[type='text'], input[type='password'] {
   white-space: pre-wrap;
@@ -62,4 +61,15 @@ input[type='text'], input[type='password'] {
 h2.title, h2 {
   margin-bottom: $margin;
   margin-left: $margin;
+}
+button, a, .modal-close, form input {
+  transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1), -webkit-transform 0.1s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1), transform 0.1s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1), transform 0.1s cubic-bezier(0.77, 0, 0.175, 1), -webkit-transform 0.1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+button:focus, a:focus, {
+  outline: none;
+}
+button a {
+  cursor: pointer !important;
 }

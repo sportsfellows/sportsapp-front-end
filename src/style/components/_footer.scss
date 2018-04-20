@@ -1,11 +1,23 @@
+@import './../lib/vars'; 
+
 footer {
-  background-color: $color-gray;
-  margin-top: 3vh;
+  background-color: #000;
   padding: 1.6vw;
   text-align: right;
-
   p {
-    padding: 1px;
-    font-size: 1vw;
+    letter-spacing: 1px;
   }
+  p, i {
+    font-size: 18px;
+    color: #FFF;
+  }
+  i:hover {
+    color: rgba(255,255,255, 0.8);
+  }
+  .fa-github {
+    margin: 0 4px;
+  }
+}
+.introFooter{
+  display: none;
 }

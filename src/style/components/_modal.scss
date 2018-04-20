@@ -1,5 +1,7 @@
+@import './../lib/vars'; 
+
 .modal {
-  position: absolute;
+  position: fixed;
   z-index: 101;
   top: 0;
   left: 0;
@@ -21,7 +23,7 @@
   background-color: #fff;
   top: 50%;
   left: 50%;
-  box-shadow: 0 0 1.5em hsla(0, 0%, 0%, 0.35);
+  box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.35);
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -33,7 +35,7 @@
   padding: 3vw;
 }
 .modal-content {
-  padding: 3vw;
+  padding: 0 3vw 3vw 3vw;
 }
 .modal-heading {
   text-align: center;
@@ -47,16 +49,18 @@
   border: 0;
   cursor: pointer;
   font-size: 3vw;
-  color: $color-primary;
+  color: $lg;
 }
 .modal-close:hover {
-  color: $color-primary-hover;
+  color: $dg;
 }
 .modal-heading {
-  font-size: 3.5vw;
-  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  color: $dg;
+  font-size: 29px;
+  line-height: 1;
   text-transform: uppercase;
-  color: $color-gray;
 }
 
 // .intro {
