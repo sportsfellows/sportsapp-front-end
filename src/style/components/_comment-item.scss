@@ -1,28 +1,34 @@
-@import './../lib/vars'; 
-
 .comment-item {
   margin-top: 12px;
+  width: 100%;
 
   .comment-photo-div {
     display: inline-block;
     margin-right: 8px;
+    padding: $pad;
+    width: 10vw;
 
     img {
-      height: 48px;
       width: 48px;
-      border-radius: 5px;
+      margin-left: 4vw;
      }
 
-     .comment-commenter {
-       color: $color-primary;
-     }
   }
-
-  .comment-text-div {
-    display: inline-block;  
     
+  .comment-text-div {
+    display: inline-block; 
+    margin: 0;
+    vertical-align: top;
+    width: 70vw;
+    
+    .comment-commenter {
+      color: $color-secondary;
+      font-weight: bold;
+      padding: $pad;
+    }
     .comment-content {
-      color: $color-primary;
+      color: $color-black;
+      padding: $pad;
     }
    }
  }
