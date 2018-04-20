@@ -87,6 +87,7 @@ class LandingContainer extends React.Component {
           <Intro />
         )}
 
+      <div className='grid-container'>
         {util.renderIf(this.props.userAuth,
           <div>
             <CreateSection formType={formTypeLeague} handleCreate={() => this.setState({ leagueFormDisplay: true })}/>
@@ -163,6 +164,8 @@ class LandingContainer extends React.Component {
             )}
           </div>
         )}
+        <div className='spacer'></div>
+      </div>
       </section>
     );
   }

@@ -1,6 +1,9 @@
 @import './../lib/vars'; 
 @import './../lib/mixins';
 
+body {
+  background: $color-primary;
+}
 .font-sm {
   font-size: 14px;
 }
