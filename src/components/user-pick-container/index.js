@@ -1,3 +1,4 @@
+import './_user-pick-container.scss';
 import React from 'react';
 import { connect } from 'react-redux';
 import UserPickItem from '../user-pick-item';
