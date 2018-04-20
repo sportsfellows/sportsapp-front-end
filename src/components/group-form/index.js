@@ -167,7 +167,7 @@ class GroupForm extends React.Component {
               checked={this.state.privacy === 'public' ? true : false}
             />
             <label>public</label>
-            <span>Public leagues are open for anyone to join.</span>
+            <span>Public groups are open for anyone to join.</span>
           </div>
 
           <div>
