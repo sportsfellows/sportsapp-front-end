@@ -2,7 +2,8 @@
 @import './../lib/mixins';
 
 body {
-  background: #EDEEF0;
+  // background: #EDEEF0;
+  background: #FFF;
 }
 .font-sm {
   font-size: 14px;
@@ -33,18 +34,6 @@ ul, li {
 li {
   display: list-item;
   text-align: -webkit-match-parent;
-}
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: $color-lightgray;
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  border-color: $color-gray;
-  height: 65px;
-  width: 100%;
-  z-index: 101;
 }
 main {
   margin-top: 38px;

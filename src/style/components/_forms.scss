@@ -30,19 +30,12 @@
   }
   
   .radio-div {
-    font-size: 1.6vw;
-    // background-color: #c2c2c2;
-    border-width: 0px;
-    border-radius: $border-radius;
-    margin: $margin;
+    color: #4A4A4A;
+    font-size: 16px;
     padding: $pad;
   }
 
-  // .radio-div div {
-  //   padding: $pad;
-  // }
-
-  .username-availability {
+  .username-availability, .groupName-availability {
     margin-left: $margin;
   }
 }
