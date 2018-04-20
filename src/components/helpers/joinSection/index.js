@@ -26,7 +26,7 @@ class JoinSection extends React.Component {
               </div>
             </div>
           )}
-          <button className='button create-button'><Link to={`/${this.props.joinType}s`}>Join {this.props.joinType}</Link> </button>
+          <button className='create-button'><Link to={`/${this.props.joinType}s`}>Join {this.props.joinType}</Link> </button>
         </div>
       </div>
     );

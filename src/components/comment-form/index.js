@@ -66,7 +66,7 @@ class CommentForm extends React.Component {
         {util.renderIf(content,
           <div className='commentFormButtonDiv'>
             <div className='ButtonDiv'>
-              <button className='button' type='submit'> post </button>
+              <button className='b-button red-button' type='submit'> post </button>
             </div>
           </div>
         )}
