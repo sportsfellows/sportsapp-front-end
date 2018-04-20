@@ -32,7 +32,10 @@ class ProfileContainer extends React.Component {
             onComplete={this.handleProfileUpdate}
           />
         </div>
-        
+        <div className='profile-image-div'>
+          <h2>{this.props.userProfile.username}</h2>
+          <img className='profile-image' src={this.props.userProfile.image} />
+        </div>
       </div>
     )
   }

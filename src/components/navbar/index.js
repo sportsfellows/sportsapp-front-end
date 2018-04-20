@@ -10,12 +10,24 @@ import {  signOut  } from '../../actions/userAuth-actions.js';
 class Navbar extends React.Component {
   constructor(props){
     super(props);
-    this.state={hidden: true};
+    this.state={hidden: true, intro: false};
   }
 
-  // componentWillMount() {
-  //   util.userValidation(this.props);
-  // }
+
+  componentWillMount() {
+    this.tokenCheck();
+  }
+
+  tokenCheck = () => {
+    if(!this.props.userAuth) {
+      let token;
+      process.env.NODE_ENV === 'production' ? token = readCookie('Bracket-Busters-Token') : token = localStorage.token;  
+      if(!token) this.setState({ intro: true })
+    }
+    else {
+      this.setState({ intro: false })
+    }
+  }
 
   handleSignOut = () => {
     this.props.signOut();
@@ -27,10 +39,10 @@ class Navbar extends React.Component {
     let profileName = this.props.userProfile && this.props.userProfile.username ? <span className='colorChangeHover nav-userName'> {this.props.userProfile.username} </span>: <span></span>;
     let profileLink = this.props.userProfile && this.props.userProfile._id ? `/user/${this.props.userProfile._id}` : '';
     return (
-      <header>
+      <header className={util.classToggler({ 'intro': !this.props.userAuth })}>
         <nav>
           <div className='logo'>
-              <Link to='/' className='link logo-text'><span className='bold pr3'>BRACKET</span><span className='light'>BUSTERS</span></Link>
+              <Link to='/' className={util.classToggler({ 'link': true, 'logo-text': true, 'intro-text': !this.props.userAuth })}><span className='bold pr3'>BRACKET</span><span className='light'>BUSTERS</span></Link>
           </div>
           <ul className='socials'>
             

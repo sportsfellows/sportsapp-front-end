@@ -1,3 +1,4 @@
+@import './../lib/vars'; 
 .link {
   cursor: pointer;
 }
@@ -5,34 +6,131 @@
   text-align: center;
 }
 .container {
-  width: auto;
-  padding: 1vw;
   background: #fff;
-  border: 1px solid $color-gray;
-  border-radius: $border-radius;
-  margin: 20px 0;
+  border-radius: 10px;
+  margin-bottom: 10px;
   position: relative;
+  transform: translateZ(0);
+  overflow: hidden;
 }
 .page-outer-div {
   min-height: 80vh;
   padding-top: 80px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-.header {
-  border: 1px solid $color-gray;
-  border-width: 0 0 1px;
-  padding: 0 8px 8px;
-  margin-bottom: 30px;
-  color: $color-primary;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5rem;
-  text-transform: uppercase;
+  // padding-left: 12px;
+  // padding-right: 12px;
+  background: #EDEEF0;
 }
 
 .text {
   padding: $pad;
+}
+.float-right {
+  float: right;
+}
+.spacer {
+  height: 20px;
+}
+
+// GRID MODIFIED SLIGHTLY FR0M http://j4n.co/blog/Creating-your-own-css-grid-system
+.grid-container {
+  width : 100%;
+  max-width : 1200px;
+  margin: auto;
+}
+.row:before, .row:after {
+  content:"";
+  display: table;
+  clear:both;
+}
+[class*='col-'] {
+  float: left;
+  min-height: 1px; 
+}
+[class*='col-'] {
+  float: left;
+  min-height: 1px; 
+  width: 16.66%; 
+}
+.col-1{ width: 16.66%;}
+.col-2{ width: 33.33%;}
+.col-3{ width: 50%;}
+.col-4{ width: 66.664%;}
+.col-5{ width: 83.33%;}
+.col-6{ width: 100%;}
+.grid-container *{
+  box-sizing: border-box; 
+}
+.grid-container{
+  width: 100%; 
+  max-width: 1200px;      
+}
+
+/*-- cleafix -- */ 
+.row:before, .row:after {
+  content:"";
+  display: table ;
+  clear:both;
+}
+
+[class*='col-'] {
+  float: left; 
+  min-height: 1px; 
+  width: 16.66%; 
+  /*-- gutter -- */
+  padding: 12px; 
+}
+
+.col-1{ width: 16.66%;}
+.col-2{ width: 33.33%;}
+.col-3{ width: 50%;}
+.col-4{ width: 66.66%;}
+.col-5{ width: 83.33%;}
+.col-6{ width: 100%;}
+
+[class*='col-'] > p {
+ padding: 0;
+ margin: 0;
+}
+
+@media all and (max-width:1230px){
+  .grid-container {
+    max-width: 98vw;
+    max-width: calc(100vw - 60px);
+  }
+}
+
+@media all and (max-width:800px){
+  .col-1{ width: 33.33%;}
+  .col-2{ width: 50%;}
+  .col-3{ width: 83.33%;}
+  .col-4{ width: 100%;}
+  .col-5{ width: 100%;}
+  .col-6{ width: 100%;}
+  .row .col-2:last-of-type{
+    width: 100%; 
+  }
+  .row .col-5 ~ .col-1{
+    width: 100%; 
+  }
+}
+
+@media all and (max-width:650px){
+  .col-1{ width: 50%;}
+  .col-2{ width: 100%;}
+  .col-3{ width: 100%;}
+  .col-4{ width: 100%;}
+  .col-5{ width: 100%;}
+  .col-6{ width: 100%;}
+}
+
+@media all and (max-width:550px){
+  .grid-container {
+    max-width: 98vw;
+    max-width: calc(100vw - 20px);
+  }
+}
+.container .text {
+  margin: 0 12px;
 }

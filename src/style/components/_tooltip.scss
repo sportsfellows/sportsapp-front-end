@@ -1,32 +1,59 @@
+// @import './../lib/vars'; 
+// .tooltip {
+//   height: 0;
+
+//   main {
+//     // transform: translateY(-3em);
+//     position: relative;
+//     margin-bottom: .5em;
+//     width: 100%;
+    
+//     p {
+//       background: $color-black;
+//       color: $color-white;
+//       display: inline-block;
+//       padding: .5em;
+//       width: auto;
+//       border: 2px solid #000;
+//       border-radius: .25em;
+//     }
+
+//     .fa-caret-down {
+//       position: absolute;
+//       bottom: -9px;
+//       left: 10px;
+//     }
+
+//   }
+// }
+
 .tooltip {
   height: 0;
 
   section {
-    // transform: translateY(7.5vw);
+    transform: translateY(-27px);
     position: relative;
     margin-bottom: 1vw;
-    margin-left: 1vw;
     width: 100%;
     
     p {
-      // background: $color-primary-dark;
-      background-color: $color-error;
-      color: #FFF;
+      background: #FFF;
+      color: $color-primary;
+      font-weight: 700;
       display: inline-block;
       padding: .5vw;
       width: auto;
-      // border: 2px solid $color-primary-dark;
-      border: 1px solid black;
-      border-radius: $border-radius;
+      border: 2px solid $color-primary;
+      border-radius: 4px;
+      margin-left: 10px;
     }
 
     .fa-caret-up {
       position: absolute;
       top: -9px;
-      left: 10px;
-      color: black;
-      // color: $color-primary-dark;
+      left: 20px;
+      color: $color-primary;
     }
 
   }
-};
+}
