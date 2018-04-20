@@ -23,7 +23,7 @@ class GameItem extends React.Component {
           <button className='teamName teamNameButton' onClick={this.awayTeamPick}>{game.awayTeam.teamName}</button>
           <p className='teamRecord'>{game.awayTeam.wins} - {game.awayTeam.losses}</p>
         </div>
-        <span className='game-dateTime'>{game.dateTime}</span>
+        <span className='game-dateTime'>{new Date(game.dateTime).toDateString()}</span> 
         <div className='homeTeamDiv' >
           <button className='teamName teamNameButton' onClick={this.homeTeamPick}>{game.homeTeam.teamName}</button>
           <p className='teamRecord'>{game.homeTeam.wins} - {game.homeTeam.losses}</p>

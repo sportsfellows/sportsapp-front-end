@@ -50,7 +50,7 @@ class UserPickItem extends React.Component {
           )}
           <p className='teamRecord'>{this.state.awayTeamWins} - {this.state.awayTeamLosses}</p>
         </div>
-        <span className='game-dateTime'>{userPick.gameTime}</span>
+        <span className='game-dateTime'>{new Date(userPick.gameTime).toDateString()}</span>
         <span className='currentPick'>current pick {currentPick}</span>
         <div className='homeTeamDiv'>
           {util.renderIf(editing, 
@@ -61,7 +61,7 @@ class UserPickItem extends React.Component {
           )}
           <p className='teamRecord'>{this.state.homeTeamWins} - {this.state.homeTeamLosses}</p>
 
-          <p className='editingButton' onClick={this.handleEdit}>edit icon </p>
+          <p className='editingButton' onClick={this.handleEdit}><i class="fa fa-edit"></i></p>
         </div>
       </div>
     );
