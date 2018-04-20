@@ -163,8 +163,6 @@ class LandingContainer extends React.Component {
             )}
           </div>
         )}
-        <Link to="/user/jb">user</Link>
-        <Link to="/league/jb">league</Link>
       </section>
     );
   }

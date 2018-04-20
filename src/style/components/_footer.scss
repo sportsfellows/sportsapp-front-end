@@ -1,6 +1,11 @@
 footer {
-  height: 70px;
   background-color: $color-gray;
-  margin-top: 1vh;
-  padding: $pad;
+  margin-top: 3vh;
+  padding: 1.6vw;
+  text-align: right;
+
+  p {
+    padding: 1px;
+    font-size: 1vw;
+  }
 }
