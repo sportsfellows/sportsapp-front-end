@@ -42,6 +42,10 @@ class GroupAllContainer extends React.Component {
   render() {
     return (
       <section className='groups-container page-outer-div'>
+        <div className='grid-container'>
+
+        <GroupAllPrivateForm onComplete={this.handlePrivateGroupJoin}/>
+        
         <div className='public-groups'>
           <h2>public groups.</h2>
           {this.props.publicGroups.map(group => {
@@ -57,8 +61,8 @@ class GroupAllContainer extends React.Component {
             </div>
           })}
         </div>
-        
-        <GroupAllPrivateForm onComplete={this.handlePrivateGroupJoin}/>
+
+      </div>
       </section>
     );
   }

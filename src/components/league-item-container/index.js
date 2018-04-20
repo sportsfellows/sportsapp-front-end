@@ -29,6 +29,7 @@ class LeagueContainer extends React.Component {
   render(){
     return (
       <div className='leagueItem-container page-outer-div'>
+      <div className='grid-container'>
         <UserPickContainer sportingEventID={this.props.currentLeague.sportingEventID} leagueID={this.props.currentLeague._id} />
         <MessageBoardContainer mBoardId={this.props.currentMessageBoard._id}/>
         <div className='scoreBoardOuter'>
@@ -38,6 +39,7 @@ class LeagueContainer extends React.Component {
               <LeagueItemScoreBoard  scoreBoard={scoreBoard} />
             </div>
           )}
+        </div>
         </div>
       </div>
     );

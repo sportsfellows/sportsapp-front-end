@@ -144,7 +144,7 @@ class LeagueForm extends React.Component {
         />
 
         <div className='radio-div'>
-          <p>scoring:</p>
+          <p className='labelDesc'>Scoring:</p>
           <div>
             <input 
               type="radio"
@@ -174,7 +174,7 @@ class LeagueForm extends React.Component {
         </div>
 
         <div className='radio-div'>
-          <p>privacy:</p>
+          <p className='labelDesc'>Privacy:</p>
           <div>
             <input 
               type="radio"
@@ -185,8 +185,10 @@ class LeagueForm extends React.Component {
               onBlur={this.handleBlur}
               checked={this.state.privacy === 'public' ? true : false}
             />
+
             <label>public</label>
             <span>Public leagues are open for anyone to join.</span>
+
           </div>
 
           <div>
@@ -199,8 +201,10 @@ class LeagueForm extends React.Component {
               onBlur={this.handleBlur}
               checked={this.state.privacy === 'private' ? true : false}
             />
+
             <label>private</label>
             <span>Set up within your office, or a group of family or friends.</span>
+
           </div>
         </div>
 
@@ -219,8 +223,7 @@ class LeagueForm extends React.Component {
             <Tooltip message={passwordError} show={ focused === 'password' || submitted}/>
           </div>
         )}
-
-        <button className='button form-button' type='submit'> {buttonText} </button>
+        <p className='textRight'><button className='red-button b-button' type='submit'> {buttonText} </button></p>
       </form>
     );
   }

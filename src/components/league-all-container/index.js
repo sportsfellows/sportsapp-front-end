@@ -42,9 +42,24 @@ class LeagueAllContainer extends React.Component {
   render(){
     return (
       <div className='leagues-container page-outer-div'>
+      <div className='grid-container'>
+      <div className='container'>
+        <div className='inner-wrapper'>
+          <p className='header create-header'>Join A Private League! </p>
+          <LeagueAllPrivateForm onComplete={this.handlePrivateLeagueJoin}/>
+        </div>
+      </div>
+      
 
-        <div className='public-leagues'>
-          <h2>public leagues.</h2>
+      <div className='container'>
+          <p className='header usersLeagueAndGroupsHeader'>Public Leagues</p>
+
+          <div className='myleaguesHeader'>
+            <p className='l-name myL-headers'> LEAGUE NAME </p>
+            <p className='l-creator myL-headers'> CREATOR </p>
+            <p className='l-players myL-headers'> PLAYERS </p>
+            <p className='l-scoring myL-headers'> SCORING </p>
+          </div>
           {this.props.publicLeagues.map(league => {
             let boundLeagueJoinClick = this.handleLeagueJoin.bind(this, league);
             return <div key={league._id}>
@@ -59,8 +74,8 @@ class LeagueAllContainer extends React.Component {
           })}
         </div>
         
-        <LeagueAllPrivateForm onComplete={this.handlePrivateLeagueJoin}/>
-
+        
+      </div>
       </div>
     );
   }
