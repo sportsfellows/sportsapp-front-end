@@ -52,7 +52,7 @@ class ProfileForm extends React.Component {
             type="date"
             name="birthdate"
             onChange={this.handleChange}/>
-          <button className='button form-button' type="submit">Submit</button>
+          <p className='textRight'><button className='red-button b-button' type="submit">Submit</button></p>
         </form>  
       </section>
     );
