@@ -15,10 +15,10 @@
   color: $color-gray-hover;
 }
 .bold {
-  font-weight: 900;
+  font-weight: 600;
 }
 .light {
-  font-weight: normal;
+  font-weight: 200;
 }
 .pr3 {
   padding-right: 3px;
@@ -50,7 +50,7 @@
   margin-right: 8px;
 }
 .social:nth-child(3) {
-  margin-right: 16px;
+  margin-right: 28px;
 }
 .social-icons {
   height: 40px;
@@ -136,4 +136,24 @@ nav .avatar img {
 }
 .nav-userName {
   display: none;
+}
+.intro {
+  background: #FFF;
+  border: none;
+}
+.intro-text {
+  color: #9B9B9B !important;
+}
+.intro-text:hover {
+  color: $color-gray-hover !important;
+}
+@media screen and (min-width: 768px) {
+  .intro .headline {
+    font-size: 41px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .intro .headline {
+    font-size: 60px;
+  }
 }

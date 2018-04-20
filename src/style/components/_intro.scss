@@ -1,3 +1,5 @@
+@import './../lib/vars'; 
+
 .headline {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
@@ -37,15 +39,15 @@
 }
 .narrow-container {
   max-width: 600px;
-  margin: 25px auto 0;
+  margin: 25px auto 40px;
 }
 .description {
-  font-family: $font-secondary;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   line-height: calc(18/14);
   color: #4A4A4A;
   padding: 0 15px;
+  font-family: 'Lato';
 }
 .author {
   font-weight: 600;
@@ -55,11 +57,27 @@
   font-family: $font-secondary;
 }
 #start-button {
-  font-weight: 800;
-  cursor: pointer;
-  text-align: center;
-  font-size: 14px;
-  font-family: 'Oswald', sans-serif;
+  line-height: 1;
+  padding: 13px 0;
+  font-size: 18px;
+  font-family: 'Roboto';
+  letter-spacing: 1px;
+  font-weight: 700;
+  width: 100px;
+  border-radius: 50px;
   margin-top: 15px;
-  border: 0;
+  color: #4a4a4a;
+  background: #fff;
+  border: 2px solid #4a4a4a;
 }
+#start-button:hover {
+  color: #FF001F;
+  border-color: #FF001F;
+}
+
+
+// .test {
+//   font-size:  @include responsive-font(2.5vw, 2px, 10px);
+// }
+// font-size:  @include responsive-font(2.5vw, 12px, 20px);
+	// font-size:  @include responsive-font(3.8vw, 20px, 32px);
