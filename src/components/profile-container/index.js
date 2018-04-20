@@ -25,6 +25,7 @@ class ProfileContainer extends React.Component {
   render(){
     return (
       <div className='profile-container page-outer-div'>
+      <div className='grid-container'>
         <h2>tell us about yourself.</h2>
         <div className='page-form'>
           <ProfileForm 
@@ -35,6 +36,7 @@ class ProfileContainer extends React.Component {
         <div className='profile-image-div'>
           <h2>{this.props.userProfile.username}</h2>
           <img className='profile-image' src={this.props.userProfile.image} />
+        </div>
         </div>
       </div>
     )
