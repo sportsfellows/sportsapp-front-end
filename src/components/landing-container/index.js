@@ -118,7 +118,7 @@ class LandingContainer extends React.Component {
             )}
             
             {util.renderIf(this.props.leagues.length > 0,
-              <JoinSection joinType={formTypeLeague}/>
+              <JoinSection joinType={formTypeLeague} alreadyJoined={this.props.leagues.length}/>
             )}
             
             {util.renderIf(this.state.leagueFormDisplay,
@@ -154,8 +154,8 @@ class LandingContainer extends React.Component {
               </div>
             )}
 
-            {util.renderIf(this.props.groups.length > 1,
-              <JoinSection joinType={formTypeGroup}/>
+            {util.renderIf(this.props.groups.length > 0,
+              <JoinSection joinType={formTypeGroup} joinedAlready={this.props.groups.length}/>
             )}
 
             {util.renderIf(this.state.groupFormDisplay,
