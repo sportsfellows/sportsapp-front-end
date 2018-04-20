@@ -43,11 +43,13 @@ class GroupAllContainer extends React.Component {
     return (
       <section className='groups-container page-outer-div'>
         <div className='grid-container'>
+        <div className='container'>
+        <p className='header center usersLeagueAndGroupsHeader'>Join a Public League</p>
 
-        <GroupAllPrivateForm onComplete={this.handlePrivateGroupJoin}/>
-        
-        <div className='public-groups'>
-          <h2>public groups.</h2>
+          <GroupAllPrivateForm onComplete={this.handlePrivateGroupJoin}/>
+        </div>
+        <div className='public-groups container'>
+        <p className='header usersLeagueAndGroupsHeader'>Public Groups</p>
           {this.props.publicGroups.map(group => {
             let boundGroupJoinClick = this.handleGroupJoin.bind(this, group);
             return <div key={group._id}>
@@ -55,8 +57,8 @@ class GroupAllContainer extends React.Component {
                 <span className='span-name'>{group.groupName} </span>
                 <span className='span-owner'>{group.ownerName} </span>
                 <span className='span-size'>{group.size} </span>
-                <span className='span-scoring'>{group.scoring}</span>
-                <span className='span-join'><button className='button' onClick={boundGroupJoinClick}>join</button></span>
+
+                <span className='span-join'><button className='b-button red-button' onClick={boundGroupJoinClick}>join</button></span>
               </p>
             </div>
           })}

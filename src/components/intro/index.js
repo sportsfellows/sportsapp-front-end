@@ -70,7 +70,7 @@ class Intro extends React.Component {
               <p className='description'>
                 If you are not participating in a league or would like to communicate with those outside of your league, you can also create a group. Like a league, each group has its own message board so users can communicate with each other.
               </p>
-              <button className='button' onClick={() => this.setState({formDisplay: true})}id="start-button" >
+              <button className='b-button red-button' onClick={() => this.setState({formDisplay: true})}id="start-button" >
                 START
               </button>
             </div>
