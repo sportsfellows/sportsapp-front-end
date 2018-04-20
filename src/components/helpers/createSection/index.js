@@ -2,10 +2,13 @@ import React from 'react';
 
 class CreateSection extends React.Component {
   render() {
+    let muscles = require('./../assets/muscles.png');
     return (
       <div className={`container component-container${this.props.formType}`}>
         <div className='inner-wrapper'>
+          
           <p className='header create-header'>Create Your Own {this.props.formType}! </p>
+          <img className="muscles" src={muscles} />
           <p className='text create-text'>Create a {this.props.formType} of your own, and invite your friends!</p>
           <button className='button create-button' onClick={this.props.handleCreate}>Create {this.props.formType} </button>
         </div>
@@ -56,3 +59,5 @@ export default CreateSection;
 //     width: auto;
 //   }
 // }
+
+

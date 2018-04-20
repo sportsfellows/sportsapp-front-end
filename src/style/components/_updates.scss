@@ -1,0 +1,53 @@
+.create-header {
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #4A4A4A;
+  font-size: 30px;
+  text-align: center;
+}
+
+.create-button {
+  justify-content: center;
+  height: 20px;
+  letter-spacing: 1px;
+  padding: 0 10px;
+  background: #000;
+  font-size: 14px;
+}
+.create-button:hover {
+  background: rgba(0,0,0,.7);
+}
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+}
+@media screen and (max-width: 750px) {
+  .muscles {
+    margin: auto;
+    display: block;
+    max-width: 90vw;
+  }
+  .create-text {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 751px) {
+  .muscles {
+    max-width: 90vw;
+  }
+  .create-text {
+    float: right;
+    max-width: 300px;
+    font-size: 30px;
+    color: #4A4A4A;
+    font-weight: 400;
+    margin-top: 100px !important;
+  }
+  .create-button {
+    font-size: 30px;
+    position: inherit;
+    width: 100%;
+    height: auto;
+  }  
+}

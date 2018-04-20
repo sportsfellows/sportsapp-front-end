@@ -6,13 +6,12 @@
   text-align: center;
 }
 .container {
-  width: auto;
-  padding: 1vw;
   background: #fff;
-  border: 1px solid $color-gray;
-  border-radius: $border-radius;
-  margin: 20px 0;
+  border-radius: 10px;
+  margin-bottom: 10px;
   position: relative;
+  transform: translateZ(0);
+  overflow: hidden;
 }
 .page-outer-div {
   min-height: 80vh;
@@ -21,18 +20,18 @@
   margin-right: auto;
   // padding-left: 12px;
   // padding-right: 12px;
-  background: #FFF;
+  background: #EDEEF0;
 }
 .header {
-  border: 1px solid $color-gray;
   border-width: 0 0 1px;
-  padding: 0 8px 8px;
-  margin-bottom: 30px;
+  padding: 0 8px 20px;
   color: $color-primary;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.5rem;
   text-transform: uppercase;
+  margin: 12px;
+  // border-bottom: #dcdddf 1px solid;
 }
 
 .text {
@@ -143,4 +142,6 @@
     max-width: calc(100vw - 20px);
   }
 }
-
+.container .text {
+  margin: 0 12px;
+}

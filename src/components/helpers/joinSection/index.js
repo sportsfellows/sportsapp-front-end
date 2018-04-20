@@ -6,7 +6,7 @@ class JoinSection extends React.Component {
     return (
       <div className={`container inline-container${this.props.joinType}`}>
         <div className='inner-wrapper'>
-          <p className='text center join-text'>Join a {this.props.joinType}, and invite your friends!           <button className='button join-button'><Link to={`/${this.props.joinType}s`}>Join {this.props.joinType}</Link> </button></p>
+          <p className='text center join-text'>Join a {this.props.joinType}, and invite your friends! <button className='button join-button'><Link to={`/${this.props.joinType}s`}>Join {this.props.joinType}</Link> </button></p>
 
         </div>
       </div>
