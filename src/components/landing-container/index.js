@@ -97,12 +97,14 @@ class LandingContainer extends React.Component {
             {util.renderIf(this.props.leagues,
               <div className='container join-container'>
                 <p className='header usersLeagueAndGroupsHeader myLeaguesList'>my leagues</p>
+                {util.renderIf(this.props.leagues.length > 0,
                 <div className='myleaguesHeader'>
                   <p className='l-name myL-headers'> LEAGUE NAME </p>
                   <p className='l-creator myL-headers'> CREATOR </p>
                   <p className='l-players myL-headers'> PLAYERS </p>
                   <p className='l-scoring myL-headers'> SCORING </p>
                 </div>
+                )}
                 {util.renderIf(this.props.leagues.length < 1,
                   <div className='usersLeagueAndGroups'>
                     <img className='russ' src={russ} />
@@ -120,7 +122,9 @@ class LandingContainer extends React.Component {
                     </div>
                   </div>
                 })}
-                <div className='spacerRow'> </div>
+                {util.renderIf(this.props.leagues.length > 0,
+                  <div className='spacerRow'> </div>
+                )}
               </div>
             )}
             
@@ -141,12 +145,14 @@ class LandingContainer extends React.Component {
 
               <div className='container'>
                 <p className='header usersLeagueAndGroupsHeader'>my groups</p>
+                {util.renderIf(this.props.groups.length > 0,
                 <div className='myleaguesHeader'>
                   <p className='l-name myL-headers'> LEAGUE NAME </p>
                   <p className='l-creator myL-headers'> CREATOR </p>
                   <p className='l-players myL-headers'> SIZE </p>
                   <p className='l-scoring myL-headers'> PRIVACY </p>
                 </div>
+                )}
                 {util.renderIf(this.props.groups.length < 1,
                   <div className='usersLeagueAndGroups'>
                     <img className='kd' src={kd} />
@@ -164,7 +170,9 @@ class LandingContainer extends React.Component {
                     </p>
                   </div>
                 })}
+                {util.renderIf(this.props.groups.length > 0,
                 <div className='spacerRow'> </div>
+                )}
               </div>
             )}
 
@@ -196,7 +204,9 @@ class LandingContainer extends React.Component {
             )}
           </div>
         )}
-        <div className='spacer'></div>
+         {/* {util.renderIf(this.props.groups.length > 0, */}
+          <div className='spacer'></div>
+         {/* )} */}
       </div>
       </section>
     );
