@@ -42,6 +42,8 @@ class LeagueAllContainer extends React.Component {
   render(){
     return (
       <div className='leagues-container page-outer-div'>
+      <div className='grid-container'>
+      <LeagueAllPrivateForm onComplete={this.handlePrivateLeagueJoin}/>
 
         <div className='public-leagues'>
           <h2>public leagues.</h2>
@@ -59,8 +61,8 @@ class LeagueAllContainer extends React.Component {
           })}
         </div>
         
-        <LeagueAllPrivateForm onComplete={this.handlePrivateLeagueJoin}/>
-
+        
+      </div>
       </div>
     );
   }

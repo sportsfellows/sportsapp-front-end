@@ -155,7 +155,7 @@ class GroupForm extends React.Component {
         />
 
         <div className='radio-div'>
-          <p>privacy:</p>
+          <p className='labelDesc'>Privacy:</p>
           <div>
             <input 
               type="radio"
@@ -166,7 +166,7 @@ class GroupForm extends React.Component {
               onBlur={this.handleBlur}
               checked={this.state.privacy === 'public' ? true : false}
             />
-            <label>public</label>
+            <label>Public</label>
             <span>about public</span>
           </div>
 
@@ -179,7 +179,7 @@ class GroupForm extends React.Component {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
             />
-            <label>private</label>
+            <label>Private</label>
             <span>about private</span>
           </div>
         </div>
@@ -199,8 +199,8 @@ class GroupForm extends React.Component {
             <Tooltip message={passwordError} show={ focused === 'password' || submitted}/>
           </div>
         )}
-
-        <button className='button form-button' type='submit'> {buttonText} </button>
+        
+          <p className='textRight'><button className='red-button b-button' type='submit'> {buttonText} </button></p>
       </form>
     );
   }
