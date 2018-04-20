@@ -155,8 +155,8 @@ class LeagueForm extends React.Component {
               onBlur={this.handleBlur}
               checked={this.state.scoring === 'regular' ? true : false}
             />
-            <label>Regular</label>
-            <span>about regular scoring</span>
+            <label>regular</label>
+            <span>If win, you get 10 points.</span>
           </div>
 
           <div>
@@ -169,7 +169,7 @@ class LeagueForm extends React.Component {
               onBlur={this.handleBlur}
             />
             <label>Under Dog</label>
-            <span>about underdog scoring</span>
+            <span>If win, you get 20 points.</span>
           </div>
         </div>
 
@@ -185,8 +185,10 @@ class LeagueForm extends React.Component {
               onBlur={this.handleBlur}
               checked={this.state.privacy === 'public' ? true : false}
             />
-            <label>Public</label>
-            <span>about public</span>
+
+            <label>public</label>
+            <span>Public leagues are open for anyone to join.</span>
+
           </div>
 
           <div>
@@ -199,8 +201,10 @@ class LeagueForm extends React.Component {
               onBlur={this.handleBlur}
               checked={this.state.privacy === 'private' ? true : false}
             />
-            <label>Private</label>
-            <span>about private</span>
+
+            <label>private</label>
+            <span>Set up within your office, or a group of family or friends.</span>
+
           </div>
         </div>
 

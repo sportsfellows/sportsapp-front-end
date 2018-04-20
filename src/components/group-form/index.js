@@ -166,8 +166,9 @@ class GroupForm extends React.Component {
               onBlur={this.handleBlur}
               checked={this.state.privacy === 'public' ? true : false}
             />
-            <label>Public</label>
-            <span>about public</span>
+            <label>public</label>
+            <span>Public groups are open for anyone to join.</span>
+
           </div>
 
           <div>
@@ -179,8 +180,9 @@ class GroupForm extends React.Component {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
             />
-            <label>Private</label>
-            <span>about private</span>
+
+            <label>private</label>
+            <span>Set up within your office, or a group of family or friends.</span>
           </div>
         </div>
 

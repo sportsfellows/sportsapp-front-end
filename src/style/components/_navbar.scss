@@ -41,6 +41,12 @@
 header {
   background: #000;
   border: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 65px;
+  width: 100%;
+  z-index: 101;
 }
 .logo {
   position: absolute;
