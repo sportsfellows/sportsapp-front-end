@@ -204,9 +204,9 @@ class LandingContainer extends React.Component {
             )}
           </div>
         )}
-         {/* {util.renderIf(this.props.groups.length > 0, */}
+         {util.renderIf(this.props.groups.length > 0,
           <div className='spacer'></div>
-         {/* )} */}
+         )}
       </div>
       </section>
     );

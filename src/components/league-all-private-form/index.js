@@ -88,7 +88,6 @@ class LeagueAllPrivateForm extends React.Component {
         'error': this.state.error && this.state.submitted,
       })}>
 
-        <h2>join a private league.</h2>
         <input
           className={util.classToggler({error: leagueNameError })}
           type='text'
@@ -112,7 +111,7 @@ class LeagueAllPrivateForm extends React.Component {
           onBlur={this.handleBlur}
         />
 
-        <button className='button form-button' type='submit'> Join League </button>
+        <p className='textRight'><button className='red-button b-button joinPrivate' type='submit'> Join </button></p>
       </form>
     );
   }

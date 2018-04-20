@@ -100,18 +100,6 @@
   padding: 8px 16px;
   display: inline-block;
 }
-.l-name {
-
-}
-.l-creator {
-
-}
-.l-players {
-
-}
-.l-scoring {
-
-}
 @media (min-width: 500px) {
   .myL-headers {
     font-size: 15px;
@@ -178,3 +166,16 @@
   font-weight: 700;
   margin-bottom: 10px;
 }
+.landing-page .intro {
+  margin-top: -15px;
+}
+.league-all-private-form {
+  margin-top: 30px;
+  width: 100%;
+  display: block;
+}
+.league-all-private-form  input {
+  width: 80%;
+  margin-left: 10%;
+}
+.joinPrivate { margin-right: 10%; margin-bottom: 30px;}
