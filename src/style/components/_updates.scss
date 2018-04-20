@@ -67,9 +67,7 @@
 .usersLeagueAndGroups .container {
   margin: 20px auto 0;
 }
-.join-container .join-text {
-  text-align: left;
-}
+
 .container .create-button a {
   background: transparent;
   color: #FFF !important;
@@ -84,5 +82,12 @@
   font-size: 30px;
   color: #4A4A4A;
   font-weight: 400;
+}
+.russ, .kd {
+  text-align: center;
+  margin: auto;
+  display: block;
+  border-radius: 50%;
+  background: #e1e1e1;
 }
 

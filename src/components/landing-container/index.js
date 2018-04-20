@@ -80,6 +80,8 @@ class LandingContainer extends React.Component {
     let handleComplete = params.userAuth === 'signin' ? this.handleSignin : this.handleSignup;
     let formTypeLeague = 'league';
     let formTypeGroup = 'group';
+    let russ = require('./../helpers/assets/russ.png');
+    let kd = require('./../helpers/assets/kd.png');
     return (
       <section className='landing-page page-outer-div'>
         
@@ -97,6 +99,7 @@ class LandingContainer extends React.Component {
                 <p className='header usersLeagueAndGroupsHeader'>my leagues</p>
                 {util.renderIf(this.props.leagues.length < 1,
                   <div className='usersLeagueAndGroups'>
+                    <img className='russ' src={russ} />
                     <JoinSection joinType={formTypeLeague}/>
                   </div>
                 )}
@@ -133,6 +136,7 @@ class LandingContainer extends React.Component {
                 <p className='header usersLeagueAndGroupsHeader'>my groups</p>
                 {util.renderIf(this.props.groups.length < 1,
                   <div className='usersLeagueAndGroups'>
+                    <img className='kd' src={kd} />
                     <JoinSection joinType={formTypeGroup}/>
                   </div>
                 )}
