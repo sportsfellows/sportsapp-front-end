@@ -8,14 +8,14 @@ export class CommentItem extends React.Component {
   render(){
     let { comment } = this.props;
     return ( 
-      <div className='comment-item container'>
+      <div className='comment-item'>
         <div className='comment-photo-div'>
           
-          <div className='comment-commenter'> {comment.username} </div>
           <img src={this.props.image} />
         </div>
         <div className='comment-text-div'>
-          <p className='comment-content'>{comment.content}</p>
+          <div className='comment-commenter'> {comment.username} </div>
+          <div className='comment-content'>{comment.content}</div>
         </div>
       </div>
     );

@@ -1,25 +1,37 @@
 @import './../lib/vars'; 
 
 .comment-form {
-  margin-bottom: 24px;
+  margin-bottom: 55px;
+  margin-left: 4vw;
 
   .photo-div {
     display: inline-block;
-    margin-right: 8px;
+    width: 10vw;
+    box-sizing: border-box;
+    border: 1px solid #d3d6db;
+    border-right: 0;
+    height: 11vw;
+
 
     img {
-      height: 48px;
-      width: 48px;
+      width: 6vw;
+      border-radius: 50%;
+      margin-left: 2vw;
+      margin-top: 2vw;
     }
   }
 
   .commentInput-div {
+    display: inline-block;
+    width: 70vw;
     border: 1px solid #d3d6db;
-    border-radius: $border-radius;
     padding: 3px;
+    box-sizing: border-box;
+    height: 11vw;
+    vertical-align: top;
 
     .commentInputWrapper {
-      padding: 12px 8px;
+      padding: 20px;
 
       input {
         font-size: 16px;
@@ -40,6 +52,10 @@
   .commentFormButtonDiv {
     border: 1px solid #d3d6db;
     border-top: 0;
+    width: 80vw;
+    position: absolute;
+    left: 4vw;
+    box-sizing: border-box;
 
     .ButtonDiv {
       background: #f6f7f9;
