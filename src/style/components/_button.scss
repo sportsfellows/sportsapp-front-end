@@ -1,9 +1,11 @@
+@import './../lib/vars'; 
+
 .button {
   cursor: pointer;
   padding: $pad;
   border-radius: $border-radius;
   background-color: $color-secondary;
-  color: #fff;
+  color: #FFF;
   border-width: 0px;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
 }
@@ -22,7 +24,7 @@
 }
 
 .create-button {
-  color: #fff;
+  color: #FFF;
   margin-top: 1rem;
   width:100%;
 }
@@ -42,7 +44,7 @@
 }
 
 .join-button a {
-  color: #fff;
+  color: #FFF;
 }
 
 @media only screen and (min-width: 500px) {
@@ -50,4 +52,43 @@
     width: auto;
     margin-left: 10vw;
   }
+}
+.b-button {
+  line-height: 1;
+  padding: 13px 0;
+  font-size: 16px;
+  font-family: 'Roboto';
+  letter-spacing: 1px;
+  font-weight: 500;
+  width: 100px;
+  border-radius: 21px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.red-button {
+  color: #FFF;
+  background: #FF001F;
+  border: 2px solid #FF001F;
+}
+.red-button:hover {
+  color: $color-primary;
+  background: #FFF;
+  border-width: 2px;
+  font-weight: 900;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.dark-button {
+  color: #4A4A4A;
+  border-color: #4A4A4A;
+  background: #FFF;
+  font-weight: 900;
+  border-width: 2px;
+
+}
+.dark-button:hover {
+  background: #4A4A4A;
+  color: #FFF;
+  font-weight: 500;
 }

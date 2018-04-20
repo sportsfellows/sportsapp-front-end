@@ -174,7 +174,7 @@ class UserAuthForm extends React.Component {
         {util.renderIf(username && this.props.authFormAction=== 'Sign Up',
           <div className='username-availability-outer'>
             <p className='username-availability'>
-              {username} {usernameAvailable ? 'available': 'not available'}
+              {username} {usernameAvailable ? 'is available': 'is not available'}
             </p>
           </div>
         )}
@@ -196,7 +196,7 @@ class UserAuthForm extends React.Component {
           <a href='https://accounts.google.com/o/oauth2/v2/auth?client_id=767730296032-vod2j41qvpemvu2glfusclouco0l1ld0.apps.googleusercontent.com&response_type=code&scope=openid%20profile%20email&prompt=consent&redirect_uri=http://localhost:3000/oauth/google' rel="noopener noreferrer" className='outh'>signin with Google</a>
         )} */}
 
-        <button className='button form-button' type='submit'> {this.props.authFormAction} </button>
+        <button className='red-button b-button float-right ml20' type='submit'> {this.props.authFormAction} </button>
       </form>
     );
   }
