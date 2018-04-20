@@ -44,7 +44,7 @@ class GroupAllContainer extends React.Component {
       <section className='groups-container page-outer-div'>
         <div className='grid-container'>
         <div className='container'>
-        <p className='header center usersLeagueAndGroupsHeader'>Join a Public League</p>
+        <p className='header center usersLeagueAndGroupsHeader'>Join a Private Group</p>
 
           <GroupAllPrivateForm onComplete={this.handlePrivateGroupJoin}/>
         </div>
