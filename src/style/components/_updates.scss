@@ -1,9 +1,10 @@
-.create-header {
+.create-header, .header {
   font-weight: 900;
   text-transform: uppercase;
   color: #4A4A4A;
   font-size: 30px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .create-button {
@@ -22,7 +23,7 @@
   margin: 20px auto;
 }
 @media screen and (max-width: 750px) {
-  .muscles {
+  .muscles, .holla {
     margin: auto;
     display: block;
     max-width: 90vw;
@@ -49,5 +50,6 @@
     position: inherit;
     width: 100%;
     height: auto;
+    padding: 10px;
   }  
 }
