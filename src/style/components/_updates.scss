@@ -7,7 +7,7 @@
   margin-top: 20px;
 }
 
-.create-button {
+.create-button, .create-button a {
   justify-content: center;
   height: 20px;
   letter-spacing: 1px;
@@ -45,11 +45,44 @@
     font-weight: 400;
     margin-top: 100px !important;
   }
-  .create-button {
-    font-size: 30px;
-    position: inherit;
+  .container .create-button, .container .create-button a {
+    font-size: 30px !important;
+    position: inherit !important;
     width: 100%;
     height: auto;
     padding: 10px;
   }  
 }
+.usersLeagueAndGroupsHeader {
+  margin: 20px 12px 0 12px;
+  padding-bottom: 12px;
+  border-bottom: #dcdddf 1px solid;
+}
+.join-container {
+  margin: 20px auto 0;
+}
+.usersLeagueAndGroups {
+  margin-top: 24px;
+}
+.usersLeagueAndGroups .container {
+  margin: 20px auto 0;
+}
+.join-container .join-text {
+  text-align: left;
+}
+.container .create-button a {
+  background: transparent;
+  color: #FFF !important;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-size: 16px;
+  font-weight: 900;
+}
+.container .join-text {
+  font-size: 30px;
+  color: #4A4A4A;
+  font-weight: 400;
+}
+

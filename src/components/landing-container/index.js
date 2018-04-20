@@ -93,8 +93,13 @@ class LandingContainer extends React.Component {
             <CreateSection formType={formTypeLeague} handleCreate={() => this.setState({ leagueFormDisplay: true })}/>
 
             {util.renderIf(this.props.leagues,
-              <div className='container'>
-                <p className='header'>my leagues</p>
+              <div className='container join-container'>
+                <p className='header usersLeagueAndGroupsHeader'>my leagues</p>
+                {util.renderIf(this.props.leagues.length < 1,
+                  <div className='usersLeagueAndGroups'>
+                    <JoinSection joinType={formTypeLeague}/>
+                  </div>
+                )}
                 {this.props.leagues.map(league => {
                   let boundLeagueClick = this.onLeagueClick.bind(this, league);
                   return <div key={league._id}>
@@ -109,7 +114,9 @@ class LandingContainer extends React.Component {
               </div>
             )}
             
-            <JoinSection joinType={formTypeLeague}/>
+            {util.renderIf(this.props.leagues.length > 0,
+              <JoinSection joinType={formTypeLeague}/>
+            )}
             
             {util.renderIf(this.state.leagueFormDisplay,
               <Modal heading='Create League' close={() => this.setState({ leagueFormDisplay: false })}>
@@ -123,7 +130,12 @@ class LandingContainer extends React.Component {
             {util.renderIf(this.props.groups,
 
               <div className='container'>
-                <p className='header'>my groups</p>
+                <p className='header usersLeagueAndGroupsHeader'>my groups</p>
+                {util.renderIf(this.props.groups.length < 1,
+                  <div className='usersLeagueAndGroups'>
+                    <JoinSection joinType={formTypeGroup}/>
+                  </div>
+                )}
                 {this.props.groups.map(group => {
                   let boundGroupClick = this.onGroupClick.bind(this, group);
                   return <div key={group._id}>
@@ -138,7 +150,9 @@ class LandingContainer extends React.Component {
               </div>
             )}
 
-            <JoinSection joinType={formTypeGroup}/>
+            {util.renderIf(this.props.groups.length > 1,
+              <JoinSection joinType={formTypeGroup}/>
+            )}
 
             {util.renderIf(this.state.groupFormDisplay,
               <Modal heading='Create Group' close={() => this.setState({ groupFormDisplay: false })}>
